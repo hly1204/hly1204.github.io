@@ -21,7 +21,7 @@ nav:
     - 下降幂多项式: blog/12-27-2020-falling_factorial_polynomial.md
     - 特征多项式: blog/1-6-2021-characteristic_polynomial.md
     - Lucas 定理: blog/1-12-2021-Lucas_theorem.md
-    - 最小树形图: blog/2-16-2020-minimum_directed_spanning_tree.md
+    - 最小树形图: blog/2-16-2021-minimum_directed_spanning_tree.md
 
 theme:
   name: material # 主题名，必须，否则为默认
