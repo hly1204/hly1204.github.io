@@ -58,9 +58,40 @@ $$\sum_{1\leq j\leq k}a_jN_jM_j\equiv a_i+\sum_{1\leq j\leq k,j\neq i}a_jN_jM_j\
 
 !!! quote "拉格朗日插值公式"
 
-    对于点集 $\\{(x_{i},y_{i})\\}$ 其中 $i\in\\{0,\dots ,k-1\\}$ 且对于 $i\neq j$ 有 $x_{i}\neq x_{j}$ ，拉格朗日插值公式为
+    对于点集 $\\{(x_{i},y_{i})\\}$ 其中 $i\in\\{0,\dots ,k-1\\}$ 且对于 $\forall i\neq j$ 有 $x_{i}\neq x_{j}$ ，拉格朗日插值公式为
 
     $$A(x)=\sum_{i=0}^{k-1}y_{i}\prod_{j\neq i}\frac{x-x_{j}}{x_{i}-x_{j}}$$
+
+    其中 $A(x)$ 满足 $A(x_i)=y_i$ 对于 $\forall i\in\\{0,\dots ,k-1\\}$ 都成立。
+
+    ??? note "不严谨的证明"
+
+        拉格朗日插值公式就是中国剩余定理应用于多项式上的结果，考虑合并下列同余方程组：
+
+        $$\begin{cases}
+        A(x)\equiv y_0\pmod{(x-x_0)}\\\\
+        A(x)\equiv y_1\pmod{(x-x_1)}\\\\
+        \vdots \\\\
+        A(x)\equiv y_{k-1}\pmod{(x-x_{k-1})}
+        \end{cases}$$
+
+        我们也假设对于 $\forall i\neq j$ 有 $x_i\neq x_j$ 且 $A(x)\bmod{(x-a)}=A(a)$ 也很显然。
+
+        设 $N(x)=\prod_{i=0}^{k-1}(x-x_i)$ 和 $N_{i}(x)=N(x)/(x-x_i)$ 及 $M_{i}(x)=N_{i}^{-1}(x)\bmod{(x-x_i)}$ 及
+
+        $$A(x)\equiv \sum_{i=0}^{k-1}y_iN_i(x)M_i(x)\pmod{N(x)}$$
+
+        对于任一 $i$ 有
+
+        $$\sum_{j=0}^{k-1}y_jN_j(x)M_j(x)\equiv y_i+\sum_{0\leq j\lt k,j\neq i}y_jN_j(x)M_j(x)\pmod{(x-x_i)}$$
+
+        后一个和式中显然 $N_j(x)$ 都是 $x-x_i$ 的倍式，那么 $N_j(x)\equiv 0\pmod{(x-x_i)}$ ，也就是都能满足 $A(x_i)=y_i$ 。
+
+        稍加整理得到了
+
+        $$A(x)\equiv \sum_{i=0}^{k-1}y_i\frac{\prod_{j\neq i}(x-x_j)}{\prod_{j\neq i}(x_i-x_j)}\pmod{N(x)}$$
+
+        和公式一致，但是公式省略了后面的模运算和同余符号。 $\square$
 
 设 $M(x)=\prod_{i=0}^{k-1}(x-x_{i})$ ， $s_{i}=\prod_{j\neq i}\frac{1}{x_{i}-x_{j}}$ ，那么我们可以将 $A(x)$ 表示为
 
