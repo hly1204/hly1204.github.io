@@ -11,10 +11,10 @@
 定义中您可能已经注意到 Bézout 等式 $RR^{-1}-NN'=1$ 这告诉我们 $N'\equiv -N^{-1}\pmod{R}$ 。这里将[^1]中算法描述如下
 
 $$\begin{array}{ll}
-\textbf{procedure }\operatorname{REDC}(T) \\\\
-\qquad m\gets (T\bmod R)N'\bmod{R} \\\\
-\qquad t\gets (T+mN)/R \\\\
-\qquad \textbf{if }t\geq N\textbf{ then return }t-N \\\\
+\textbf{procedure }\operatorname{REDC}(T) \\
+\qquad m\gets (T\bmod R)N'\bmod{R} \\
+\qquad t\gets (T+mN)/R \\
+\qquad \textbf{if }t\geq N\textbf{ then return }t-N \\
 \qquad \textbf{else return } t
 \end{array}$$
 
@@ -51,10 +51,10 @@ $$x_{n+1}=x_{n}+x_{n}(1-bx_{n})$$
 
 假设 $x_{n}\equiv b^{-1}\pmod p$ 对于某个 $p$ 成立，那么 $x_{n}b\equiv 1+kp\pmod{p^{2}}$ 对于某个整数 $k$ 成立，那么
 
-$$\begin{aligned}x_{n+1}&=x_{n}(2-bx_{n})\\\\
-&\equiv x_{n}(2-(1+kp))\pmod{p^{2}}\\\\
-&\equiv b^{-1}(1+kp)(1-kp)\pmod{p^{2}}\\\\
-&\equiv b^{-1}(1-k^{2}p^{2})\pmod{p^{2}}\\\\
+$$\begin{aligned}x_{n+1}&=x_{n}(2-bx_{n})\\
+&\equiv x_{n}(2-(1+kp))\pmod{p^{2}}\\
+&\equiv b^{-1}(1+kp)(1-kp)\pmod{p^{2}}\\
+&\equiv b^{-1}(1-k^{2}p^{2})\pmod{p^{2}}\\
 &\equiv b^{-1}\pmod{p^{2}}\end{aligned}$$
 
 在这里我们只需将 $p$ 替换为 $2$ 即可。 $\square$

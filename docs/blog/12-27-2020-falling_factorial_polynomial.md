@@ -1,4 +1,4 @@
-这里主要是学习了一下下降幂多项式的基础（非常基础的），对于所有多项式，认为属于 $\mathbb{F}\_{p}[x]$ ，对于所有形式幂级数，认为属于 $\mathbb{F}\_{p}[[x]]$ 。
+这里主要是学习了一下下降幂多项式的基础（非常基础的），对于所有多项式，认为属于 $\mathbb{F}_{p}[x]$ ，对于所有形式幂级数，认为属于 $\mathbb{F}_{p}[[x]]$ 。
 
 一般认为 $\deg(0)=-\infty$ 。这篇文章可能会持续的补充一些内容。
 
@@ -15,9 +15,9 @@ $$x^{\underline{i}}=x(x-1)\cdots (x-i+1)=\frac{x!}{(x-i)!}$$
 我们定义算子 $\Delta$ 应用于函数表示 $\Delta(f(x))=f(x+1)-f(x)$ ，那么
 
 $$\begin{aligned}
-\Delta(x^{\underline{m}})&=(x+1)^{\underline{m}}-x^{\underline{m}}\\\\
-&=(x+1)x(x-1)\cdots (x-m+2)-x(x-1)\cdots (x-m+1)\\\\
-&=mx(x-1)\cdots (x-m+2)\\\\
+\Delta(x^{\underline{m}})&=(x+1)^{\underline{m}}-x^{\underline{m}}\\
+&=(x+1)x(x-1)\cdots (x-m+2)-x(x-1)\cdots (x-m+1)\\
+&=mx(x-1)\cdots (x-m+2)\\
 &=mx^{\underline{m-1}}
 \end{aligned}$$
 
@@ -69,10 +69,10 @@ $$A^{(t)}(c)=\sum_{i=t}^{n}a_{i}i!\frac{c^{i-t}}{(i-t)!}$$
 先从第二类斯特林数说起， ${n\brace k}$ 表示将 $n$ 个物品分为 $k$ 个非空子集的方案数。注意到上表格中有一个特例，即 ${0\brace 0}=1$ 把 $0$ 件物品分为 $0$ 个非空子集，我们认为只存在一种方法。而对于 $n\gt 0$ 不存在这样的方法，故 ${n\brace 0}=0$ 。下面，我们观察其与下降幂多项式之间非常密切的关系，显然我们有以下等式
 
 $$\begin{aligned}
-x^{0}&=x^{\underline{0}}\\\\
-x^{1}&=x^{\underline{1}}\\\\
-x^{2}&=x^{\underline{2}}+x^{\underline{1}}\\\\
-x^{3}&=x^{\underline{3}}+3x^{\underline{2}}+x^{\underline{1}}\\\\
+x^{0}&=x^{\underline{0}}\\
+x^{1}&=x^{\underline{1}}\\
+x^{2}&=x^{\underline{2}}+x^{\underline{1}}\\
+x^{3}&=x^{\underline{3}}+3x^{\underline{2}}+x^{\underline{1}}\\
 x^{4}&=x^{\underline{4}}+6x^{\underline{3}}+7x^{\underline{2}}+x^{\underline{1}}
 \end{aligned}$$
 
@@ -86,9 +86,9 @@ $$x^{n}=\sum_{k}{n\brace k}x^{\underline{k}}$$
 
 $$\begin{aligned}
 x\sum_{k}{n-1\brace k}x^{\underline{k}}&=\sum_{k}{n-1\brace k}x^{\underline{k+1}}+\sum_{k}{n-1\brace
-k}kx^{\underline{k}}\\\\
-&=\sum_{k}{n-1\brace k-1}x^{\underline{k}}+\sum_{k}{n-1\brace k}kx^{\underline{k}}\\\\
-&=\sum_{k}\left(k{n-1\brace k}+{n-1\brace k-1}\right)x^{\underline{k}}\\\\
+k}kx^{\underline{k}}\\
+&=\sum_{k}{n-1\brace k-1}x^{\underline{k}}+\sum_{k}{n-1\brace k}kx^{\underline{k}}\\
+&=\sum_{k}\left(k{n-1\brace k}+{n-1\brace k-1}\right)x^{\underline{k}}\\
 &=\sum_{k}{n\brace k}x^{\underline{k}}
 \end{aligned}$$
 
@@ -130,8 +130,8 @@ $$x^{\overline{n}}=\sum_{k}{n\brack k}x^{k}$$
 因为我们有 $(x+n-1)\cdot x^{k}=x^{k+1}+(n-1)x^{k}$ ，那么 $x^{\overline{n}}$ 等于
 
 $$\begin{aligned}
-(x+n-1)x^{\overline{n-1}}&=(x+n-1)\sum_{k}{n-1\brack k}x^{k}\\\\
-&=(n-1)\sum_{k}{n-1\brack k}x^{k}+\sum_{k}{n-1\brack k-1}x^{k}\\\\
+(x+n-1)x^{\overline{n-1}}&=(x+n-1)\sum_{k}{n-1\brack k}x^{k}\\
+&=(n-1)\sum_{k}{n-1\brack k}x^{k}+\sum_{k}{n-1\brack k-1}x^{k}\\
 &=\sum_{k}{n\brack k}x^{k}
 \end{aligned}$$
 
@@ -145,7 +145,7 @@ $$\begin{aligned}
 
     $$x^{\overline{n}}=\begin{cases}
     x^{\overline{n/2}}(x+n/2)^{\overline{n/2}}&\text{if }n\text{
-    is even}\\\\
+    is even}\\
     (x+n-1)x^{\overline{(n-1)/2}}(x+(n-1)/2)^{\overline{(n-1)/2}}&\text{else}
     \end{cases}$$
 

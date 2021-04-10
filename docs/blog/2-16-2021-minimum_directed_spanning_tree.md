@@ -35,32 +35,32 @@
     令 $G=(V,E,w)$ 为一个边有权的有向图且令 $r\in V$ 。令 $C$ 为一个 $G$ 中的有向圈包含了所有除了 $r$ 之外花销最小的入边。那么存在一个 MDST 包含了 $C$ 中除了某一条边之外的所有边。
 
 证明：令 $T$ 为 $G$ 在 $r$ 的 MDST 。令 $v_1$ 为一个 $C$ 上的节点且在 $T$ （注意这里的“在 $T$ 中”是很关键的）中 $r$ 到 $v_1$
-的路径上不经过其他任何节点。（一定会存在至少一个这样的节点即从 $r$ 出发最近的节点“之一”）令 $v_1,v_2,\dots,v_k$ 为 $C$ 上的节点且按照他们出现的顺序。如果 $(v_1,v_2),(v_2,v_3),\dots ,(v_{k-1},v_k)\in T$ 那么结束了。因为前面提到 $T$ 包含了除了 $C$ 中一条边之外的所有边，那么 $T=C\cup \\{(r,v_1)\\}\setminus \\{(v_k,v_1)\\}$ 。但是如果 $(v_1,v_2),\dots ,(v_{i-1},v_i)\in T$ 但是 $(v_i,v_{i+1})\notin T$ 在某个 $i\lt k$ 。令 $(u,v_{i+1})\in T$ 为 $v_{i+1}$ 在 $T$ 中的入边。 $v_i$ 在 $T$ 中的祖先有 $T$ 上 $r$ 到 $v_1$ 上的节点和 $C$ 上 $v_1,v_2,\dots ,v_{i-1}$ 。因此 $v_i$ 不是 $v_{i+1}$ 的后代。通过 推论 1.2 有 $T'=T\cup \\{(v_i,v_{i+1})\\}\setminus \\{(u,v_{i+1})\\}$ 也是一棵以 $r$ 为根的 DST 。因为 $(v_i,v_{i+1})$ 为 $v_{i+1}$ 入边中花销最小的，我们有 $w(v_i,v_{i+1})\leq w(u,v_{i+1})$ 因此 $w(T')\leq w(T)$ 。因此 $T'$ 也是以 $r$ 为根的 MDST 。至此我们可以构造以 $r$ 为根的 MDST 包含将 $C$ 中除了 $(v_k,v_1)$ 之外的所有边。
+的路径上不经过其他任何节点。（一定会存在至少一个这样的节点即从 $r$ 出发最近的节点“之一”）令 $v_1,v_2,\dots,v_k$ 为 $C$ 上的节点且按照他们出现的顺序。如果 $(v_1,v_2),(v_2,v_3),\dots ,(v_{k-1},v_k)\in T$ 那么结束了。因为前面提到 $T$ 包含了除了 $C$ 中一条边之外的所有边，那么 $T=C\cup \{(r,v_1)\}\setminus \{(v_k,v_1)\}$ 。但是如果 $(v_1,v_2),\dots ,(v_{i-1},v_i)\in T$ 但是 $(v_i,v_{i+1})\notin T$ 在某个 $i\lt k$ 。令 $(u,v_{i+1})\in T$ 为 $v_{i+1}$ 在 $T$ 中的入边。 $v_i$ 在 $T$ 中的祖先有 $T$ 上 $r$ 到 $v_1$ 上的节点和 $C$ 上 $v_1,v_2,\dots ,v_{i-1}$ 。因此 $v_i$ 不是 $v_{i+1}$ 的后代。通过 推论 1.2 有 $T'=T\cup \{(v_i,v_{i+1})\}\setminus \{(u,v_{i+1})\}$ 也是一棵以 $r$ 为根的 DST 。因为 $(v_i,v_{i+1})$ 为 $v_{i+1}$ 入边中花销最小的，我们有 $w(v_i,v_{i+1})\leq w(u,v_{i+1})$ 因此 $w(T')\leq w(T)$ 。因此 $T'$ 也是以 $r$ 为根的 MDST 。至此我们可以构造以 $r$ 为根的 MDST 包含将 $C$ 中除了 $(v_k,v_1)$ 之外的所有边。
 
 假设 $C$ 包含了所有花销最小的入边。我们知道可以 MDST 包含了 $C$ 中的所有边除了某一条，但是是哪条呢？我们应该丢弃哪条？ Edmonds 给出了一个优雅的解决方法。我们收缩环 $C$ 为一个超级节点，记 $\overline G$ 为收缩后的图，并更新收缩后的所有入边，在收缩后的图中递归的找到一棵以 $r$ 为根的 MDST $\overline T$ 。如果边 $\overline e\in \overline T$ 在 $\overline G$ 中为 $C$ 的入边，而收缩前这条边为 $e=(u,v)$ 是环 $C$ 中的 $v$ 的入边。我们将 $C$ 中除了 $v$ 的入边之外的所有边都加入 $\overline T$ 中，我们会在后文说明这就是原图 $G$ 的 MDST 。接下来我们将这个实现形式化并证明其正确性。
 
-令 $C$ 为 $G$ 中的一个环并令 $\overline G=G/C$ 为收缩 $C$ 之后的图。形式化的，如果 $C$ 为边 $(v_1,v_2),\dots ,(v_{k-1},v_k),(v_k,v_1)$ 组成，那么 $\overline G$ 中包含的点集为 $V\cup \\{c\\}\setminus \\{v_1,\dots ,v_k\\}$ 即环 $C$ 由超级节点 $c$ 替代。而边集 $\overline E=\\{\overline e\neq (c,c)\mid e\in E\\}$ 其中若 $e=(u,v)$ 那么 $\overline e=(\overline u,\overline v)$ （注意 $(c,c)$ 的自环被移除，但是重边会被保留）。通过上述记号，我们确认了对于 $\overline E$ 中的每条边是由 $E$ 中如何变化而来的，并且假设 $\overline E\subseteq E$ 。
+令 $C$ 为 $G$ 中的一个环并令 $\overline G=G/C$ 为收缩 $C$ 之后的图。形式化的，如果 $C$ 为边 $(v_1,v_2),\dots ,(v_{k-1},v_k),(v_k,v_1)$ 组成，那么 $\overline G$ 中包含的点集为 $V\cup \{c\}\setminus \{v_1,\dots ,v_k\}$ 即环 $C$ 由超级节点 $c$ 替代。而边集 $\overline E=\{\overline e\neq (c,c)\mid e\in E\}$ 其中若 $e=(u,v)$ 那么 $\overline e=(\overline u,\overline v)$ （注意 $(c,c)$ 的自环被移除，但是重边会被保留）。通过上述记号，我们确认了对于 $\overline E$ 中的每条边是由 $E$ 中如何变化而来的，并且假设 $\overline E\subseteq E$ 。
 
-在图 $G$ 的以 $r$ 为根的 DSTs 包含了 $C$ 中除了某条边之外的所有边和 $\overline G$ 的以 $r$ 为根的 DSTs 之间有一个很自然的一对一的联系。如果 $T$ 为以 $r$ 为根的 DST 且 $T\cap C=C\setminus \\{e\\}$ ，那么 $\overline T=T\setminus (C\setminus \\{e\\})$ 为 $\overline G$ 以 $r$ 为根的 DST 。相反的，如果 $\overline T$ 是 $\overline G$ 以 $r$ 为根的 DST ，我们可以“展开”它为 DST ，记为 $G$ 的 $\exp(\overline T)$ 。令 $e\in \overline E$ 为 $\overline T$ 中 $c$ 的入边。如果 $e=(u,v)$ 其中 $v\in C$ ，令 $e'=(u',v)$ 为 $C$ 中 $v$ 的入边。我们令
+在图 $G$ 的以 $r$ 为根的 DSTs 包含了 $C$ 中除了某条边之外的所有边和 $\overline G$ 的以 $r$ 为根的 DSTs 之间有一个很自然的一对一的联系。如果 $T$ 为以 $r$ 为根的 DST 且 $T\cap C=C\setminus \{e\}$ ，那么 $\overline T=T\setminus (C\setminus \{e\})$ 为 $\overline G$ 以 $r$ 为根的 DST 。相反的，如果 $\overline T$ 是 $\overline G$ 以 $r$ 为根的 DST ，我们可以“展开”它为 DST ，记为 $G$ 的 $\exp(\overline T)$ 。令 $e\in \overline E$ 为 $\overline T$ 中 $c$ 的入边。如果 $e=(u,v)$ 其中 $v\in C$ ，令 $e'=(u',v)$ 为 $C$ 中 $v$ 的入边。我们令
 
-$$\exp(\overline T)=\overline T\cup (C\setminus \\{e'\\})$$
+$$\exp(\overline T)=\overline T\cup (C\setminus \{e'\})$$
 
 即 $\exp(\overline T)$ 为将 $C$ 上除了 $e'$ 的所有边加入 $\overline T$ 形成的。那么容易检验 $\exp(\overline T)$ 为 $G$ 以 $r$ 为根的 DST 且包含了 $C$ 中除了某一条边的所有边。也容易检验 $\overline T$ 为 $\overline G$ 的以 $r$ 为根的 DST 且关联 $G$ 的 DST $T$ 那么 $\exp(\overline T)=T$ 。
 
 若 $e=(u,v)\in E$ 为超级节点 $c$ 的入边，我们令 $e_C=(u',v)$ 为 $C$ 中 $v$ 的入边。接下来我们定义一个新的花销函数 $\overline w:E\to \mathbb{R}$ 为
 
-$$\overline w(e)=\begin{cases}w(e)-w(e_C)&\text{if }e\text{ enters }C\\\\w(e)&\text{otherwise}\end{cases}$$
+$$\overline w(e)=\begin{cases}w(e)-w(e_C)&\text{if }e\text{ enters }C\\w(e)&\text{otherwise}\end{cases}$$
 
 !!! quote "引理 4.2"
 
     令 $G=(V,E,w)$ 为一个边有权的有向图。令 $r\in V$ 。令 $C$ 为 $G$ 中一个有向环。令 $T$ 为 $G$ 以 $r$ 为根的 DST 满足 $\vert T\cap C\vert =\vert C\vert -1$ 即 $T$ 包含了 $C$ 中除了某条边之外的所有边。且令 $\overline T$ 为 $\overline G=G/C$ 的 DST ，与 $T$ 相关联，那么有
     $$\overline w(\overline T)=w(T)-w(C)$$
 
-证明：假设 $T\cap C=C\setminus \\{e\\}$ 。那么 $\overline T=T\setminus (C\setminus \\{e\\})$ 。令 $e'$ 为 $T$ 中进入 $C$ 的入边（注意 $e$ 和 $e'$ 在 $C$ 为 $C$ 中同一个节点的入边）。那么
+证明：假设 $T\cap C=C\setminus \{e\}$ 。那么 $\overline T=T\setminus (C\setminus \{e\})$ 。令 $e'$ 为 $T$ 中进入 $C$ 的入边（注意 $e$ 和 $e'$ 在 $C$ 为 $C$ 中同一个节点的入边）。那么
 
-$$\begin{aligned}\overline w(\overline T)&=(w(T)-w(C\setminus \\{e\\}))-w(e)\\\\&=w(T)-w(C)\end{aligned}$$
+$$\begin{aligned}\overline w(\overline T)&=(w(T)-w(C\setminus \{e\}))-w(e)\\&=w(T)-w(C)\end{aligned}$$
 
-注意 $w(C\setminus \{e\})$ 被减去是因为 $\overline T$ 是由 $T$ 中移除 $C\setminus \\{e\\}$ 形成的。花销 $w(e)$ 被减去是因为 $w(\overline e')=w(e')-w(e)$ 。对于其余边 $e''\in \overline T$ 我们有 $\overline w(e'')=w(e'')$ 。
+注意 $w(C\setminus \{e\})$ 被减去是因为 $\overline T$ 是由 $T$ 中移除 $C\setminus \{e\}$ 形成的。花销 $w(e)$ 被减去是因为 $w(\overline e')=w(e')-w(e)$ 。对于其余边 $e''\in \overline T$ 我们有 $\overline w(e'')=w(e'')$ 。
 
 我们现在有
 

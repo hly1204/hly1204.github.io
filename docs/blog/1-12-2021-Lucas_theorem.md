@@ -5,15 +5,21 @@
 !!! quote "Lucas 定理"
 
     对于一个素数 $p$ 和非负整数 $n,k$ ，有
+
     $$\binom{n}{k}\equiv\binom{n\bmod{p}}{k\bmod{p}}\binom{\lfloor n/p\rfloor}{\lfloor k/p\rfloor}\pmod{p}$$
+
     其中 $\lfloor \cdot \rfloor$ 表示整数部分， $\binom{n}{k}=\frac{n(n-1)\cdots (n-k+1)}{k!}$ 。
 
 !!! quote "推论"
 
     将 $n,k$ 表示为 $p$ 进制为
+
     $$n=a_{r}p^{r}+\cdots +a_{1}p+a_{0}$$
+
     $$k=b_{r}p^{r}+\cdots +b_{1}p+b_{0}$$
+
     那么
+
     $$\binom{n}{k}\equiv \prod_{i=0}^{r}\binom{a_{i}}{b_{i}}\pmod{p}$$
 
 证明：由 Lucas 定理推导出推论很自然。考虑
@@ -48,12 +54,14 @@ $\square$ 。当 $m$ 远小于 $p$ 时，可以直接通过公式计算组合数
 
 !!! quote "定义 1"
 
-    对于给定一个整数 $n$ 令 $(n!)_{p}$ 表示所有小于等于 $n$ 的不能被 $p$ 整除的整数的乘积。也可以写作 $(n!)\_{p}=n!/(\lfloor n/p\rfloor !p^{\lfloor n/p\rfloor})$ 。
+    对于给定一个整数 $n$ 令 $(n!)_{p}$ 表示所有小于等于 $n$ 的不能被 $p$ 整除的整数的乘积。也可以写作 $(n!)_{p}=n!/(\lfloor n/p\rfloor !p^{\lfloor n/p\rfloor})$ 。
 
 !!! quote "定理 1"
 
     给定素数 $p$ 的幂次 $p^q$ 和正整数 $n=m+r$ 。在 $p$ 进制下记 $n=n_{0}+n_{1}p+\dots +n_{d}p^{d}$ 且对于每个 $j$ 令 $N_{j}=\lfloor n/p^j\rfloor \bmod{p^q}$ （即 $N_{j}=n_{j}+n_{j+1}+\dots +n_{j+q-1}p^{q-1}$ ）。对于 $m_{j},M_{j},r_{j},R_{j}$ 也同样定义。令 $e_{j}$ 为当将 $m$ 和 $r$ 在 $p$ 进制中相加的在第 $j$ 位数字和之后的“进位”次数。有
-    $$\frac{(\pm 1)^{e_{q-1}}}{p^{e_{0}}}\binom{n}{m}\equiv \frac{(N_{0}!)\_{p}}{(M_{0}!)\_{p}(R_{0}!)\_{p}}\frac{(N_{1}!)\_{p}}{(M\_{1}!)\_{p}(R\_{1}!)\_{p}}\cdots \frac{(N\_{d}!)\_{p}}{(M\_{d}!)\_{p}(R\_{d}!)\_{p}}\pmod{p^q}$$
+
+    $$\frac{(\pm 1)^{e_{q-1}}}{p^{e_{0}}}\binom{n}{m}\equiv \frac{(N_{0}!)_{p}}{(M_{0}!)_{p}(R_{0}!)_{p}}\frac{(N_{1}!)_{p}}{(M_{1}!)_{p}(R_{1}!)_{p}}\cdots \frac{(N_{d}!)_{p}}{(M_{d}!)_{p}(R_{d}!)_{p}}\pmod{p^q}$$
+
     其中 $(\pm 1)$ 为 $(-1)$ 除非 $p=2$ 且 $q\geq 3$ 。
 
 下面给出一个需要用到的定理和简单证明
@@ -61,7 +69,9 @@ $\square$ 。当 $m$ 远小于 $p$ 时，可以直接通过公式计算组合数
 !!! quote "Wilson 定理"
 
     对于素数 $p$ 有
+
     $$(p-1)!\equiv -1\pmod{p}$$
+
     成立。
 
 证明：我们知道在模奇素数 $p$ 意义下对于整数 $1,2,\dots ,p-1$ 都存在逆元且唯一。一个整数逆元的逆元为其自身。对于逆元为自身的情况，我们记 $a^2\equiv 1\pmod{p}\implies(a+1)(a-1)\equiv 0\pmod{p}$ 那么 $a\equiv \pm 1\pmod{p}$ 。否则我们记 $b\equiv a^{-1}\pmod{p}$ 有 $ab\equiv 1\pmod{p}$ 可以将 $\\{2,\dots,p-2\\}$ 分为这样的 $\\{a,b\\}$ 对， $\prod_{i=2}^{p-2}i\equiv 1\pmod{p}$ 。那么 $(p-1)!\equiv 1\cdot (-1)\pmod{p}$ 。在 $p=2$ 时另外讨论即可。 $\square$
@@ -71,7 +81,9 @@ Wilson 定理指出 $(p!)_{p}=(p-1)!\equiv -1\pmod{p}$ 且可以被推广到模�
 !!! quote "引理 1"
 
     对于给定一个素数幂次 $p^q$ 有
-    $$(p^q!)\_p\equiv \pm 1\pmod{p^q}$$
+
+    $$(p^q!)_p\equiv \pm 1\pmod{p^q}$$
+
     其中 $(\pm 1)$ 与定理 1 中最后一句描述的相同。
 
 证明：与上述证明类似的，只要我们不停在模 $p^q$ 意义下配对每个 $m$ 和它的逆元，那么 $(p^q!)$ 在模 $p^q$ 意义下同余于那些逆元等于自身的元素的乘积，即关于 $m$ 的方程 $m^2\equiv 1\pmod{p^q}$ 的根的乘积，而这两个根分别为 $1$ 和 $p^q-1$ ，除非 $p^q=2$ 时，仅有一根，或者 $p=2$ 且 $q\geq 3$ 时额外的根为 $2^{q-1}\pm 1$ 。 $\square$
@@ -79,16 +91,18 @@ Wilson 定理指出 $(p!)_{p}=(p-1)!\equiv -1\pmod{p}$ 且可以被推广到模�
 !!! quote "推论 1"
 
     推论 1 ：对于给定素数 $p$ 的幂次 $p^q$ 和 $N_{0}=n\bmod{p^q}$ 有
-    $$(n!)\_p\equiv (\pm 1)^{\lfloor n/p^q\rfloor}(N_0!)\_p\pmod{p^q}$$
+
+    $$(n!)_p\equiv (\pm 1)^{\lfloor n/p^q\rfloor}(N_0!)_p\pmod{p^q}$$
+
     其中 $(\pm 1)$ 与定理 1 中最后一句描述的相同。
 
 证明：将每个下面的 $r$ 记为 $ip^q+j$ 有
 
 $$\begin{aligned}
-(n!)\_p&=\prod_{r\leq n}'r\\\\
+(n!)_p&=\prod_{r\leq n}'r\\
 &=\left(\prod_{i=0}^{\lfloor n/p^q\rfloor -1}\prod_{1\leq j\leq p^q}'(ip^q+j)\right)\left(\prod_{1\leq j\leq
-N_0}'(\lfloor n/p^q\rfloor p^q+j)\right)\\\\
-&\equiv ((p^q!)\_p)^{\lfloor n/p^q\rfloor}(N_0!)_p\\\\
+N_0}'(\lfloor n/p^q\rfloor p^q+j)\right)\\
+&\equiv ((p^q!)_p)^{\lfloor n/p^q\rfloor}(N_0!)_p\\
 &\equiv (\pm 1)^{\lfloor n/p^q\rfloor}(N_0!)_p\pmod{p^q}
 \end{aligned}$$
 
@@ -97,6 +111,7 @@ N_0}'(\lfloor n/p^q\rfloor p^q+j)\right)\\\\
 !!! quote "Legendre"
 
     Legendre 在 1808 年展示了准确的 $p$ 的多少幂次整除 $n!$ 为
+
     $$\nu_p(n!)=\sum_{i\geq 1}\lfloor n/p^i\rfloor$$
 
 也就是说 $n!=p^{\nu(n!)}c$ 其中 $p\nmid c$ 。这很显然，考虑 $n!=1\times 2\times \cdots \times n$ 而其中能被 $p$ 整除的项为 $p,2p,\dots,\lfloor n/p\rfloor p=\lfloor n/p\rfloor !p^{\lfloor n/p\rfloor}$ 那么有 $\nu_p(n!)=\lfloor n/p\rfloor +\nu_p(\lfloor n/p\rfloor !)$ 。
@@ -113,11 +128,11 @@ $$n_0=n-p\lfloor n/p\rfloor =\sigma_p(n)-\sigma_p(\lfloor n/p\rfloor)$$
 
 $$\begin{aligned}
 \nu_p(\lfloor n/p\rfloor !)+\lfloor n/p\rfloor &=(\lfloor n/p\rfloor -\sigma_p(\lfloor
-n/p\rfloor))/(p-1)+\lfloor n/p\rfloor \\\\
-&=(\lfloor n/p\rfloor -(\sigma_p(n)-n_0))/(p-1)+\lfloor n/p\rfloor \\\\
-&=(\lfloor n/p\rfloor +(p-1)\lfloor n/p\rfloor -\sigma_p(n)+n_0)/(p-1) \\\\
-&=((n-n_0)-\sigma_p(n)+n_0)/(p-1) \\\\
-&=(n-\sigma_p(n))/(p-1) \\\\
+n/p\rfloor))/(p-1)+\lfloor n/p\rfloor \\
+&=(\lfloor n/p\rfloor -(\sigma_p(n)-n_0))/(p-1)+\lfloor n/p\rfloor \\
+&=(\lfloor n/p\rfloor +(p-1)\lfloor n/p\rfloor -\sigma_p(n)+n_0)/(p-1) \\
+&=((n-n_0)-\sigma_p(n)+n_0)/(p-1) \\
+&=(n-\sigma_p(n))/(p-1) \\
 &=\nu_p(n!)
 \end{aligned}$$
 
@@ -158,7 +173,9 @@ $$\lfloor n/p^j\rfloor !/(p^{\lfloor n/p^{j+1}\rfloor}\lfloor n/p^{j+1}\rfloor !
 !!! quote "命题 1"
 
     对于任何整数 $n$ 和素数幂次 $p^q$ ，我们有
-    $$n!\Big/p^{\sum_{j\geq 1}\lfloor n/p^j\rfloor}\equiv (\pm 1)^{\sum_{j\geq q}\lfloor n/p^j\rfloor}\prod_{j\geq 0}(N_j!)\_p\pmod{p^q}$$
+
+    $$n!\Big/p^{\sum_{j\geq 1}\lfloor n/p^j\rfloor}\equiv (\pm 1)^{\sum_{j\geq q}\lfloor n/p^j\rfloor}\prod_{j\geq 0}(N_j!)_p\pmod{p^q}$$
+    
     其中 $(\pm 1)$ 与定理 1 中最后一句描述的相同。
 
 至此定理 1 得证。 $\square$
@@ -185,7 +202,7 @@ $$c_k=\sum_{i}\binom{k}{i}a_ib_{k-i}$$
 
 因为合数可以通过中国剩余定理来进行合并，所以只需考虑如何求在模一个素数幂次 $p^q$ 意义下的 $C(x)$ 的系数。这里与上面不同的是 $n,m$ 的范围不大（因为需要考虑卷积的时间），可以预处理出 $n!/p^{\nu_p(n!)}\pmod{p^q}$ 。我们令 $\hat{a}_k=a_k\cdot (k!/p^{\nu_p(k!)})^{-1}\pmod{p^q}$ 那么
 
-$$\hat{c}\_k=\sum\_{i=0}^kp^{\nu_p(k!)-\nu_p((k-i)!)-\nu_p(i!)}\hat{a}_i\hat{b}\_{k-i}\pmod{p^q}$$
+$$\hat{c}_k=\sum_{i=0}^kp^{\nu_p(k!)-\nu_p((k-i)!)-\nu_p(i!)}\hat{a}_i\hat{b}_{k-i}\pmod{p^q}$$
 
 剩下是分析可以进行运算的范围，包括上文内容也是参考[^2]中的。注意需要求出 $\hat{c}_k$ 在模“NTT 模数”的意义下，然后进行合并，此时没有除法。可以解决 [例题 2](https://loj.ac/p/174) 。
 

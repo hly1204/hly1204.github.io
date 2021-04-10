@@ -79,3 +79,5 @@ markdown_extensions:
   - pymdownx.tabbed
   - pymdownx.highlight:
       use_pygments: false # 默认为 true 必须关闭，因为这里用的是自己配置的
+  - pymdownx.arithmatex:
+      smart_dollar: true # 智能识别美元符号，这样就无需在 Markdown 中写多余的转义字符了，代码块会被自动识别出来
