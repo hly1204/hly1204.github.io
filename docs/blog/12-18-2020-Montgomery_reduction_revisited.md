@@ -1,6 +1,6 @@
 我之前已经在 [LOJ](https://loj.ac/d/2719) 写过一篇关于 Montgomery reduction 的基础的博客了，但是内容有所欠缺，于是在这里重新叙述。
 
-# Montgomery reduction 回顾
+## Montgomery reduction 回顾
 
 如果您了解 Montgomery reduction ，那么这一部分基础的就无需浪费时间阅读了。
 
@@ -73,7 +73,7 @@ $$\begin{aligned}x_{n+1}&=x_{n}(2-bx_{n})\\
 
 来快速计算 $N'$ 。
 
-# Hensel 除法
+## Hensel 除法
 
 参考[^2]可以给出一个更广义的解释，一般的除法可以认为是消去高位，而 Hensel 除法消去低位。我们可以将一般的除法描述为 MSB （ most significant bit ）除法，而 Hensel 除法为 LSB （ least significant bit ）除法。对于 $A$ 除以 $B$ ，且 $A$ 为一个 $2n$ 字长的（用 $\beta$ 代表一个字长）， $B$ 为 $n$ 字长的。一般的除法商 $Q$ 和余 $R$ 满足 $A=QB+R$ 。而 Hensel 除法的 LSB-商 $Q'$ 和 LSB-余 $R'$ 则满足 $A=Q'B+R'\beta^{n}$ 。 LSB 除法也需要 $\gcd(B,\beta)=1$ （例如上述的 $\beta=2$ 且 $B$ 为奇数）因为 LSB-商被唯一定义为 $Q'=A/B\bmod{\beta^{n}}$ ，其中 $0\leq Q'\lt \beta^{n}$ 。这也唯一定义了 LSB-余 $R'=(A-Q'B)\beta^{-n}$ 其中 $-B\lt R'\lt \beta^{n}$ 。而当仅想要计算余数时， Hensel 除法 也就是我们理解的 Montgomery reduction 。
 

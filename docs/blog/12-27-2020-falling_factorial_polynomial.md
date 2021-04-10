@@ -2,7 +2,7 @@
 
 一般认为 $\deg(0)=-\infty$ 。这篇文章可能会持续的补充一些内容。
 
-# 下降幂多项式
+## 下降幂多项式
 
 对于 $\exp(x)$ 显然有 $\exp'(x)=\exp(x)$ 也可记作 $\mathrm{e}^{x}$ ，应用麦克劳林公式有
 
@@ -23,7 +23,7 @@ $$\begin{aligned}
 
 可以验证上面的 $m$ 对于整数都是成立的。二项式定理也有下降幂和上升幂的版本。
 
-# 下降幂多项式与连续点值
+## 下降幂多项式与连续点值
 
 考虑上述下降幂多项式 $A(x)$ 从 $0$ 开始的连续整数点值的指数生成函数 $C(x)=\sum_{i\geq 0}\frac{A(i)}{i!}x^{i}$ ，我们发现对于 $x^{\underline{m}}$ 的从 $0$ 开始的连续整数点值的指数生成函数为
 
@@ -33,7 +33,7 @@ $$\sum_{i\geq m}\frac{i!}{(i-m)!i!}x^{i}=\sum_{i\geq m}\frac{x^{i}}{(i-m)!}=\mat
 
 我们可以在一次多项式乘法的时间将下降幂多项式系数与连续点值间转换，如此，便能解决 [洛谷例题 1](https://www.luogu.com.cn/problem/P5383) 和 [洛谷例题 2](https://www.luogu.com.cn/problem/P5393) （结合多点求值与插值算法）。
 
-# 多项式平移
+## 多项式平移
 
 给出多项式 $A(x)=\sum_{i=0}^{n}a_{i}x^{i}$ 且 $\deg(A(x))=n\gt 0$ ，要求 $A(x+c)$ 的系数，我们在 $c$ 处应用泰勒公式，有
 
@@ -49,7 +49,7 @@ $$A^{(t)}(c)=\sum_{i=t}^{n}a_{i}i!\frac{c^{i-t}}{(i-t)!}$$
 
 也能在一次多项式乘法的时间完成。下降幂多项式也可以通过类似的方法平移，能解决 [洛谷例题 3](https://www.luogu.com.cn/problem/P5667) 。
 
-# 斯特林数
+## 斯特林数
 
 斯特林数一般分为两类，我们记 ${n\brace k}$ 为第二类斯特林数， ${n\brack k}$ 为第一类斯特林数。其中，第二类斯特林数的符号有点类似于集合的符号，也叫斯特林子集数，而第一类为斯特林轮换数。下面给出在[^2]中 p215 的一个表格
 
@@ -169,9 +169,9 @@ $$\begin{aligned}
 
     $$\left(\ln\frac{1}{1-x}\right)^{m}=m!\sum_{n\geq 0}{n\brack m}\frac{x^{n}}{n!}$$
 
-# 有符号斯特林数
+## 有符号斯特林数
 
-注意到上面定义的斯特林数都是非负的（因为是在组合意义下的），而在 [Wolfram](https://mathworld.wolfram.com/StirlingNumberoftheFirstKind.html) 上使用的多为有符号斯特林数的定义。在 [Library Checker](https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind) 上也采用了相同的定义，但是互相之间可以转换。今天我在群里提问，非常谢谢 EI 和群友教我这个。
+注意到上面定义的第一类斯特林数是非负的（因为是在组合意义下的），而在 [Wolfram](https://mathworld.wolfram.com/StirlingNumberoftheFirstKind.html) 上使用的为有符号斯特林数的定义。在 [Library Checker](https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind) 上也采用了相同的定义，但是互相之间可以转换。今天我在群里提问，非常谢谢 EI 和群友教我这个。
 
 [^1]: 罗煜翔. 《具体数学》选讲.
 [^2]: 高德纳等. 具体数学.

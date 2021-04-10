@@ -1,6 +1,6 @@
 学习了一下 Lucas 定理。
 
-# Lucas 定理
+## Lucas 定理
 
 !!! quote "Lucas 定理"
 
@@ -48,7 +48,7 @@ $$\binom{n\bmod{p}}{k\bmod{p}}=0$$
 
 $\square$ 。当 $m$ 远小于 $p$ 时，可以直接通过公式计算组合数而非预处理，这时候处理 $p$ 较大的情况成为可能。
 
-# Lucas 定理的推广
+## Lucas 定理的推广
 
 下文为[^1]的翻译。
 
@@ -182,7 +182,7 @@ $$\lfloor n/p^j\rfloor !/(p^{\lfloor n/p^{j+1}\rfloor}\lfloor n/p^{j+1}\rfloor !
 
 可以解决 [例题 1](https://www.luogu.com.cn/problem/P4720) 。
 
-# 任意模数二项卷积
+## 任意模数二项卷积
 
 对于一个数列 $\langle a\rangle =a_{0},a_{1},\dots ,a_{n}$ 和 $\langle b\rangle =b_{0},b_{1},\dots ,b_{m}$ 设多项式 $A(x)=\sum_{i=0}^n\frac{a_i}{i!}x^i$ 和 $B(x)=\sum_{i=0}^m\frac{b_i}{i!}x^i$ 和
 

@@ -1,7 +1,7 @@
 学习了一下怎样求特征多项式，没有额外记号可以认为是 $n\times n$ 的方阵。
 一般认为 $\deg(0)=-\infty$ 。
 
-# 特征多项式的定义
+## 特征多项式的定义
 
 !!! quote "定义"
 
@@ -23,7 +23,7 @@ a_{n1}&a_{n2}&a_{n3}&\cdots & a_{n(n-1)}&\lambda -a_{nn}\\
 
     注意到有的地方定义特征多项式为 $p(\lambda)=\det(\mathbf{A}-\lambda \mathbf{I})$ 没有本质区别，但我们使用上述定义，因为得到的多项式一定为首一的（ monic ）。
 
-# 相似变换
+## 相似变换
 
 设矩阵 $\mathbf{A}\in\mathbb{R}^{n\times n}$ ，我们说 $\mathbf{A}'$ 与 $\mathbf{A}$ 相似当 $\mathbf{A}'$ 可被写作
 
@@ -44,7 +44,7 @@ $$\begin{aligned}
 
 $\square$ 。显然 $\mathbf{A}'=\mathbf{P}^{-1}\mathbf{AP}$ 是一样的。
 
-# 上海森堡矩阵
+## 上海森堡矩阵
 
 !!! quote "定义"
 
@@ -77,7 +77,7 @@ $$p_{i}(\lambda)=(\lambda -\alpha_{i})p_{i-1}(\lambda)-\sum_{m=1}^{i-1}h_{(i-m)i
     被称为 Householder 矩阵。更详细的可以参考 [Wolfram](https://mathworld.wolfram.com/HouseholderMatrix.html) 。
 
 
-# 海森堡分解
+## 海森堡分解
 
 在[^2]中 p378 对于 $\mathbf{A}\in\mathbb{R}^{n\times n}$ ，海森堡分解定义为
 
@@ -108,7 +108,7 @@ $$(\mathbf{P}_{1}\cdots \mathbf{P}_{k})^{\mathrm{T}}\mathbf{A}(\mathbf{P}_{1}\cd
 
 为一个海森堡矩阵，而证明我看不懂，见[^2]原文即可。其中也提到这样的时间为 $O(n^{3})$ ，那么我们得到了整个算法。可以解决 [例题 1](https://acm.nflsoj.com/problem/333) 。
 
-# 高斯消元
+## 高斯消元
 
 只需对于高斯消元稍作修改即可让其变成一个相似变换，我们只对主对角线下方进行选取主元以及交换操作，也就是说只会用主对角线下方的行去消去其他行，这大概是因为在后面“对称”的进行操作时保证不会影响到我们已经变成海森堡矩阵的前几列，对于一次行交换，我们也要交换对应的列，对于一次用 $j$ 行减去 $k$ 倍的 $i$ 行，我们也要加给 $i$ 列 $k$ 倍的 $j$ 列。
 
