@@ -28,7 +28,7 @@ theme:
   language: zh
   direction: ltr # 从左到右
   palette:
-    primary: indigo # 主题颜色
+    primary: white # 主题颜色
     scheme: default # 亮色主题
     accent: indigo # 超链接的颜色
   features:
@@ -36,7 +36,7 @@ theme:
     - header.autohide # 自动收起
     - toc.integrate # 目录整合在左边
   icon:
-    repo: fontawesome/solid/trash # 右上角仓库的标志
+    repo: fontawesome/brands/github-alt # 右上角仓库的标志
     admonition:
       note: fontawesome/solid/sticky-note
       abstract: fontawesome/solid/book
