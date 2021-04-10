@@ -54,6 +54,7 @@ $$\overline w(e)=\begin{cases}w(e)-w(e_C)&\text{if }e\text{ enters }C\\w(e)&\tex
 !!! quote "引理 4.2"
 
     令 $G=(V,E,w)$ 为一个边有权的有向图。令 $r\in V$ 。令 $C$ 为 $G$ 中一个有向环。令 $T$ 为 $G$ 以 $r$ 为根的 DST 满足 $\vert T\cap C\vert =\vert C\vert -1$ 即 $T$ 包含了 $C$ 中除了某条边之外的所有边。且令 $\overline T$ 为 $\overline G=G/C$ 的 DST ，与 $T$ 相关联，那么有
+
     $$\overline w(\overline T)=w(T)-w(C)$$
 
 证明：假设 $T\cap C=C\setminus \{e\}$ 。那么 $\overline T=T\setminus (C\setminus \{e\})$ 。令 $e'$ 为 $T$ 中进入 $C$ 的入边（注意 $e$ 和 $e'$ 在 $C$ 为 $C$ 中同一个节点的入边）。那么
