@@ -34,7 +34,6 @@ theme:
   features:
     - navigation.tabs # 有上方的标签
     - header.autohide # 自动收起
-    - toc.integrate # 目录在左侧，否则会在右侧占用版面
   icon:
     repo: fontawesome/solid/trash # 右上角仓库的标志
     admonition:
@@ -50,6 +49,9 @@ theme:
       bug: fontawesome/solid/robot
       example: fontawesome/solid/flask
       quote: fontawesome/solid/quote-left
+
+hide:
+  - navigation # 隐藏导航
 
 extra_javascript:
   - javascripts/load_MathJax.js # 加载 MathJax
