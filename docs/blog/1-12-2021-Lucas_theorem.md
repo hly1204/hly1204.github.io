@@ -206,11 +206,11 @@ $$c_k=\sum_{i}\binom{k}{i}a_ib_{k-i}$$
 
 $$\hat{c}_k=\sum_{i=0}^kp^{\nu_p(k!)-\nu_p((k-i)!)-\nu_p(i!)}\hat{a}_i\hat{b}_{k-i}\pmod{p^q}$$
 
-剩下是分析可以进行运算的范围，包括上文内容也是参考[^2]中的。注意需要求出 $\hat{c}_k$ 在模“NTT 模数”的意义下，然后进行合并，此时没有除法。可以解决 [例题 2]() 。
+剩下是分析可以进行运算的范围，包括上文内容也是参考[^2]中的。注意需要求出 $\hat{c}_k$ 在模“NTT 模数”的意义下，然后进行合并，此时没有除法。
 
 !!! note "例题 [二项卷积](https://loj.ac/p/174)"
 
-    使用两个大“ NTT 模数”或者四个“ NTT 模数”分别进行卷积，一次可以求出模某个素因子的幂次的答案，后用 CRT 合并。
+    使用两个大“ NTT 模数”或者四个“ NTT 模数”分别进行卷积，合并后可以求出模某个素因子的幂次的答案，后对所有素因子的幂次的解都用 CRT 合并。
 
 [^1]: [Andrew Granville. Arithmetic Properties of Binomial Coefficients I: Binomial Coefficients modulo prime powers.](http://www.cecm.sfu.ca/organics/papers/granville/paper/binomial/html/binomial.html)
 [^2]: <https://blog.csdn.net/EI_Captain/article/details/107456608>

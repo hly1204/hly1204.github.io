@@ -118,6 +118,10 @@ $$\begin{bmatrix}1&0\\k&1\end{bmatrix}\begin{bmatrix}a&b\\c&d\end{bmatrix}=\begi
 
 发现 $\begin{bmatrix}1&0\\k&1\end{bmatrix}^{-1}=\begin{bmatrix}1&0\\-k&1\end{bmatrix}$ 也就是右乘这样一个矩阵，很容易发现这样做的高斯消元即为相似变换。更大的矩阵也是一样的。在 [这里](http://www.phys.uri.edu/nigh/NumRec/bookfpdf/f11-5.pdf) 可以找到一份伪代码及相关的解释，[nflsoj 链接](https://acm.nflsoj.com/submission/37040) 是一份实验性的代码。
 
+!!! note "例题 [矩阵的特征多项式](https://acm.nflsoj.com/problem/333)"
+    
+    上述高斯消元及算法可在 $O(n^3)$ 的时间求出。
+
 [^1]: Rizwana Rehman, Ilse C.F. Ipsen. La Budde's Method for Computing Characteristic Polynomials.
 [^2]: G. H. Golub and C. F. Van Loan, Matrix Computations, The Johns Hopkins University Press, Baltimore, third ed., 1996.
 [^3]: J. H. Wilkinson, The Algebraic Eigenvalue Problem, Clarendon Press, Oxford, 1965. MR 32 #1894.

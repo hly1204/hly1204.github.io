@@ -31,7 +31,15 @@ $$\sum_{i\geq m}\frac{i!}{(i-m)!i!}x^{i}=\sum_{i\geq m}\frac{x^{i}}{(i-m)!}=\mat
 
 设 $A(x)$ 系数的生成函数为 $D(x)=\sum_{i\geq 0}a_{i}x^{i}$ ，那么 $C(x)=\mathrm{e}^{x}D(x)$ 且 $D(x)=\mathrm{e}^{-x}C(x)$ 。
 
-我们可以在一次多项式乘法的时间将下降幂多项式系数与连续点值间转换，如此，便能解决 [洛谷例题 1](https://www.luogu.com.cn/problem/P5383) 和 [洛谷例题 2](https://www.luogu.com.cn/problem/P5393) （结合多点求值与插值算法）。
+我们可以在一次多项式乘法的时间将下降幂多项式系数与连续点值间转换。
+
+!!! note "例题 [P5383 普通多项式转下降幂多项式](https://www.luogu.com.cn/problem/P5383)"
+
+    模板题
+    
+!!! note "例题 [P5393 下降幂多项式转普通多项式](https://www.luogu.com.cn/problem/P5393)"
+
+    模板题，可结合多点求值和插值算法或使用其他分治方法？
 
 ## 多项式平移
 
@@ -135,11 +143,11 @@ $$\begin{aligned}
 &=\sum_{k}{n\brack k}x^{k}
 \end{aligned}$$
 
-!!! note "[第二类斯特林数-行](https://www.luogu.com.cn/problem/P5395)"
+!!! note "例题 [第二类斯特林数-行](https://www.luogu.com.cn/problem/P5395)"
 
     对于多项式 $x^{n}$ 我们只需求得其在 $0,1,\dots ,n$ 的点值的指数生成函数，再乘上 $\mathrm{e}^{-x}$ 就得到了一行（行指上述表格中的一行）的解。在[^1]中指出可以通过筛法在线性的时间求得这 $n+1$ 个点的点值，而我未加思考只使用了快速幂的方法，虽不会成为复杂度的瓶颈，但依然是落了下乘。
 
-!!! note "[第一类斯特林数-行](https://www.luogu.com.cn/problem/P5408)"
+!!! note "例题 [第一类斯特林数-行](https://www.luogu.com.cn/problem/P5408)"
 
     对于多项式 $x^{\overline{n}}$ 我们只需求出其通常幂的表示，显然可以分治。但我们又发现
 
@@ -151,7 +159,7 @@ $$\begin{aligned}
 
     这指导我们只需求出 $x^{\overline{\lfloor n/2\rfloor }}$ 的通常幂表示，可以通过多项式平移得到 $(x+\lfloor n/2\rfloor)^{\overline{\lfloor n/2\rfloor}}$ 的通常幂表示。
 
-!!! note "[第二类斯特林数-列](https://www.luogu.com.cn/problem/P5396)"
+!!! note "例题 [第二类斯特林数-列](https://www.luogu.com.cn/problem/P5396)"
 
     这里我们需要引入生成函数，在[^2]中 p294 表格中有
 
@@ -163,7 +171,7 @@ $$\begin{aligned}
 
     两者可能仅效率不同，都可以得到正确答案。
 
-!!! note "[第一类斯特林数-列](https://www.luogu.com.cn/problem/P5409)"
+!!! note "例题 [第一类斯特林数-列](https://www.luogu.com.cn/problem/P5409)"
 
     与上面同样的，有生成函数
 

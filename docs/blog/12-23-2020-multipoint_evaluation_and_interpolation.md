@@ -52,7 +52,9 @@ $$\sum_{1\leq j\leq k}a_jN_jM_j\equiv a_i+\sum_{1\leq j\leq k,j\neq i}a_jN_jM_j\
 
 这样的中国剩余定理当然也能推广到有限域多项式。但个人以为两两合并更简单快速。
 
-可以解决 [例题 1](https://loj.ac/p/165) 。
+!!! note "例题 [拉格朗日插值](https://loj.ac/p/165)"
+
+    上述方法两两合并同余式即可。
 
 ## 拉格朗日插值
 
@@ -105,6 +107,10 @@ $$M'(x_{i})=\lim_{x\to x_{i}}\frac{M(x)-M(x_{i})}{x-x_{i}}=\lim_{x\to x_{i}}\fra
 
 $$A(x)=A_{0}(x)M_{1}(x)+A_{1}(x)M_{0}(x)$$
 
-叶节点时直接返回 $y_{i}s_{i}$ 分治即可。可以解决 [例题 2](https://www.luogu.com.cn/problem/P5158) 。
+叶节点时直接返回 $y_{i}s_{i}$ 分治即可。
+
+!!! note "例题 [P5158 【模板】多项式快速插值](https://www.luogu.com.cn/problem/P5158)"
+
+    上述分治可以通过，但有常数更优秀的算法，即转置算法。
 
 [^1]: J. von zur Gathen and J. Gerhard. Modern computer algebra. Cambridge University Press, 1999.
