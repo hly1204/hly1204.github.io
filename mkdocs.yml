@@ -77,3 +77,5 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.tabbed
+  - pymdownx.highlight:
+      use_pygments: false # 默认为 true 必须关闭，因为这里用的是自己配置的
