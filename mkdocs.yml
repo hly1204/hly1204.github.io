@@ -59,6 +59,8 @@ extra_javascript:
   - javascripts/highlight.pack.js # 加载代码高亮，目前代码高亮只有 cpp
   - javascripts/load_highlight.js
   - javascripts/MathJax/es5/tex-chtml.js
+  - javascripts/mermaid/dist/mermaid.min.js
+  - javascripts/load_mermaid.js
 
 extra_css:
   - stylesheets/github.css # 代码高亮的样式
@@ -84,3 +86,8 @@ markdown_extensions:
       use_pygments: false # 默认为 true 必须关闭，因为这里用的是自己配置的
   - pymdownx.arithmatex:
       smart_dollar: true # 智能识别美元符号，这样就无需在 Markdown 中写多余的转义字符了，代码块会被自动识别出来
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
