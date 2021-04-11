@@ -22,6 +22,7 @@ nav:
     - 特征多项式: blog/1-6-2021-characteristic_polynomial.md
     - Lucas 定理: blog/1-12-2021-Lucas_theorem.md
     - 最小树形图: blog/2-16-2021-minimum_directed_spanning_tree.md
+    - 快速傅里叶变换: blog/4-10-2021-FFT.md
 
 theme:
   name: material # 主题名，必须，否则为默认
