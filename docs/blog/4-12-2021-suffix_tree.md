@@ -175,7 +175,7 @@ $test\text{-}and\text{-}split$ 测试了一个为最短引用对的状态 $(s,(k
 
     $$\begin{array}{ll}
     \textbf{procedure }test\text{-}and\text{-}split(s,(k,p),t): \\
-    \qquad \textbf{if }k\leq p\text{ then} \\
+    \qquad \textbf{if }k\leq p\textbf{ then} \\
     \qquad \qquad \text{let }g'(s,(k',p'))=s' \text{ be the }t_k\text{-transition from }s\textbf{;} \\
     \qquad \qquad \textbf{if }t=t_{k'+p-k+1}\textbf{ then return }(\textbf{true},s) \\
     \qquad \qquad \textbf{else} \\
