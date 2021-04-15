@@ -53,7 +53,9 @@ Ukkonen 算法是最容易理解且基于后缀 Trie 的，尽管后缀 Trie 是
 
 !!! note "图 1"
 
-    构造 $STrie(\texttt{cacao})$ ：状态转移使用粗体的箭头，而失配转移使用细箭头（因为画图问题这里没图了）。注意：只有最后两层的后缀链接显示的展示了。
+    构造 $STrie(\texttt{cacao})$ ：状态转移使用黑色箭头，而失配转移使用红色箭头。
+
+    ![图 1](assets/suffix_tree_fig1.gif)
 
 我们在线从左往右扫描文本串 $T$ 来构造 $STrie(T)$ 是简单的，过程如下。令 $T^i$ 表示 $T$ 的前缀 $t_1\dots t_i$ 其中 $0\leq i\leq n$ 。根据一般的结果构造过程对于 $i=0,1,\dots, n$ 依次给出了 $STrie(T^i)$ 。在 图 1 中展示了构造 $STrie(\texttt{cacao})$ 的不同阶段。
 
@@ -120,7 +122,9 @@ $$\sigma(T^i)=\sigma(T^{i-1})t_i\cup \{\epsilon\}$$
 
 !!! note "图 2"
     
-    构造 $STree(\texttt{cacao})$ 的过程（因为画图原因没图了）。
+    构造 $STree(\texttt{cacao})$ 的过程，后缀链接用红色箭头表示。
+
+    ![图 2](assets/suffix_tree_fig2.gif)
 
 我们首先更准确的描述 算法 1 做了什么。令 $s_1=\overline{t_1\dots t_{i-1}}$ ， $s_2,s_3,\dots,s_i=root,s_{i+1}=\bot$ 为 $STrie(T^{i-1})$ 在边界路径上的状态。令 $j$ 为最小的索引满足 $s_j$ 不是叶子并令 $j'$ 为最小的索引满足 $s_{j'}$ 有一个 $t_i$-转移。因为 $s_1$ 为一个叶子并且 $\bot$ 不是一个叶子且有 $t_i$-转移， $j$ 和 $j'$ 都是良定义的且 $j\leq j'$ 。现在下面的引理就很显然了。
 
