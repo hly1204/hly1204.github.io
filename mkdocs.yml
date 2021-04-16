@@ -10,7 +10,7 @@ repo_url: https://github.com/hly1204/hly1204.github.io # 仓库 url
 
 repo_name: hly1204/hly1204.github.io # 仓库名
 
-edit_uri: edit/master/docs/
+edit_uri: blob/master/docs/
 
 nav:
   - 首页: index.md
@@ -33,7 +33,7 @@ theme:
     code: Roboto Mono # 代码字体，默认的
   direction: ltr # 从左到右
   palette:
-    primary: white # 主题颜色
+    primary: indigo # 主题颜色
     scheme: default # 亮色主题
     accent: indigo # 超链接的颜色
   features:
@@ -72,12 +72,10 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/hly1204
       name: hly1204 on github
-  pagetime: on
 
 markdown_extensions:
   - toc:
     permalink: "&para;"
-    baselevel: 2
 
 markdown_extensions:
   - admonition
