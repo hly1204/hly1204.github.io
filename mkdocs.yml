@@ -38,7 +38,6 @@ theme:
     accent: indigo # 超链接的颜色
   features:
     - navigation.tabs # 有上方的标签
-    - header.autohide # 自动收起
     - toc.integrate # 目录整合在左边
   icon:
     repo: fontawesome/brands/git-alt # 右上角仓库的标志
