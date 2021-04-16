@@ -41,7 +41,7 @@ theme:
     - header.autohide # 自动收起
     - toc.integrate # 目录整合在左边
   icon:
-    repo: fontawesome/brands/github # 右上角仓库的标志
+    repo: fontawesome/brands/git-alt # 右上角仓库的标志
     admonition:
       note: fontawesome/solid/sticky-note
       abstract: fontawesome/solid/book
@@ -72,6 +72,7 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/hly1204
       name: hly1204 on github
+  pagetime: on
 
 markdown_extensions:
   - toc:
