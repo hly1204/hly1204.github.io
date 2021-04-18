@@ -255,6 +255,133 @@ TODO
 
 ## 实验性的代码
 
-TODO
+=== "仿照伪代码的实现"
+
+    ```cpp
+    template <int ALPHABET_SIZE = 128> struct SuffixTree {
+    public:
+      static constexpr int INF = 0x3f3f3f3f;
+      struct Node {
+        int l, r;
+        // l 和 r 表示字符串的边界 [l,r] 为是该节点的 parent 到该节点的边上的字符串
+        // 根节点默认为 l=-1, r=-2
+        Node **ch, *suffix_link;
+        Node() : ch(new Node *[ALPHABET_SIZE]), suffix_link(nullptr) {
+          for (int i = 0; i != ALPHABET_SIZE; ++i) ch[i] = nullptr;
+        }
+        ~Node() {
+          for (int i = 0; i != ALPHABET_SIZE; ++i) delete ch[i];
+          delete[] ch;
+        }
+      };
+
+      struct State {
+        // 一个三元组表示一个状态，这个状态未必是显式状态
+        // 若有必要，需要用 canonize 函数使其变得最简，也就是将 s 变为当前表示状态的最近的显式状态祖先
+        Node *s;
+        int l, r;
+      };
+
+      State canonize(State now) {
+        int l = now.l, r = now.r;
+        Node *s = now.s;
+        if (l > r) return now; // 若 l>r 说明当前状态已经为显式状态了
+        Node *t =
+            s->ch[str[l]]; // 否则沿着首字母的孩子指针走，并判断这条边的长度是否大于状态表示的边的长度
+        while (t->r - t->l <= r - l) {
+          l += t->r - t->l + 1;
+          s = t;
+          if (l <= r) t = t->ch[str[l]];
+        }
+        return {s, l, r};
+      }
+
+      std::pair<bool, Node *> test_and_split(State now, char c) {
+        // 接收一个最简引用对的状态和需要扩展的字符
+        // 若这个扩展的字符的状态已经存在则返回 true ，表示需要停止
+        // 否则必须保证返回一个显式状态，也就是如果需要，就要分裂一个新的节点
+        int l = now.l, r = now.r;
+        Node *s = now.s;
+        if (l > r) return {s->ch[c] != nullptr, s};
+        Node *t = s->ch[str[l]];
+        if (str[t->l + r - l + 1] == c) return {true, s};
+        Node *k = new Node;
+        k->l = t->l;
+        k->r = t->l + r - l;
+        k->ch[str[t->l + r - l + 1]] = t;
+        s->ch[str[l]] = k;
+        t->l = t->l + r - l + 1;
+        return {false, k};
+      }
+
+      State update(State now) {
+        int l = now.l, r = now.r;
+        Node *s = now.s;
+        Node *oldr = root;
+        bool end_point;
+        Node *k;
+        std::tie(end_point, k) = test_and_split({s, l, r - 1}, str[r]);
+        while (!end_point) {
+          Node *t = new Node;
+          t->l = r;
+          t->r = INF;
+          k->ch[str[r]] = t;
+          if (oldr != root) oldr->suffix_link = k;
+          oldr = k;
+          if (s == root) {
+            ++l;
+            if (l > r) break;
+          } else {
+            s = s->suffix_link;
+          }
+          auto ns = canonize({s, l, r - 1});
+          s = ns.s, l = ns.l;
+          std::tie(end_point, k) = test_and_split({s, l, r - 1}, str[r]);
+        }
+        if (oldr != root) oldr->suffix_link = s;
+        return {s, l, r};
+      }
+
+      void add(char c) {
+        str.push_back(c);
+        active_point = canonize(update({active_point.s, active_point.l, int(str.size()) - 1}));
+      }
+
+      SuffixTree() : root(new Node), active_point{root, 0, -1} {
+        root->l = -1;
+        root->r = -2;
+      }
+      // ~SuffixTree() { delete root; }
+
+      Node *get_root() const { return root; }
+      std::vector<int> get_sa() const {
+        // 需要保证最后一个字符是唯一且最小的才能使用
+        std::vector<int> res;
+        res.reserve(str.size());
+        const int lim = str.size();
+        std::function<void(Node *, int)> dfs = [&dfs, &res, lim](Node *k, int len) {
+          if (k->r == INF) {
+            res.push_back(k->l - len);
+            return;
+          }
+          for (int i = 0; i != ALPHABET_SIZE; ++i)
+            if (k->ch[i] != nullptr) dfs(k->ch[i], len + k->r - k->l + 1);
+        };
+        dfs(root, 0);
+        return res;
+      }
+
+    private:
+      Node *root;
+      State active_point;
+      std::string str;
+    };
+    ```
+
+=== "使用左孩子右兄弟表示法的实现"
+
+    ```cpp
+    // TODO
+    ```
 
 [^1]: E. Ukkonen. On-line Construction of Suffix-Trees. Algorithmica, 14(3), 1995.
