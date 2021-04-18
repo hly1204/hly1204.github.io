@@ -279,7 +279,7 @@ $canonize$ 如下。给出一个引用对 $(s,(k,p))$ 对应某个状态 $r$ ，
 
 ## 实验性的代码
 
-=== "仿照伪代码的实现"
+???+ note "仿照伪代码的实现"
 
     ```cpp
     template <int ALPHABET_SIZE = 128> struct SuffixTree {
@@ -352,7 +352,7 @@ $canonize$ 如下。给出一个引用对 $(s,(k,p))$ 对应某个状态 $r$ ，
           k->ch[str[r]] = t;
           if (oldr != root) oldr->suffix_link = k;
           oldr = k;
-          if (s == root) {
+          if (s == root) { // 不使用辅助状态，那么当前状态为根时需要去掉第一个字符
             ++l;
             if (l > r) break;
           } else {
@@ -375,7 +375,7 @@ $canonize$ 如下。给出一个引用对 $(s,(k,p))$ 对应某个状态 $r$ ，
         root->l = -1;
         root->r = -2;
       }
-      // ~SuffixTree() { delete root; }
+      ~SuffixTree() { delete root; }
 
       Node *get_root() const { return root; }
       std::vector<int> get_sa() const {
@@ -402,25 +402,19 @@ $canonize$ 如下。给出一个引用对 $(s,(k,p))$ 对应某个状态 $r$ ，
     };
     ```
 
-=== "使用左孩子右兄弟表示法的实现"
-
-    ```cpp
-    // TODO
-    ```
-
-!!! note "[P3804 【模板】后缀自动机 (SAM)](https://www.luogu.com.cn/problem/P3804)"
+!!! note "例题 [P3804 【模板】后缀自动机 (SAM)](https://www.luogu.com.cn/problem/P3804)"
 
     题意：给出一个字符串只含有小写英文字母，求其出现多于一次的子串的长度乘以出现次数的最大值。
 
     方法：在后缀树中，到当前显式状态（节点）的路径上的串长度乘以当前节点孩子的数量（这个数量需要包括所有级别的孩子，即孩子的孩子）更新答案，一次 DFS 。
 
-!!! note "[P3809 【模板】后缀排序](https://www.luogu.com.cn/problem/P3809)"
+!!! note "例题 [P3809 【模板】后缀排序](https://www.luogu.com.cn/problem/P3809)"
 
     题意：求后缀数组。
 
     方法：在后缀树中一次 DFS ，在叶子时输出字符串长度减后缀长度的值就是后缀开始的索引。
 
-!!! note "[Number of Substrings](https://judge.yosupo.jp/problem/number_of_substrings)"
+!!! note "例题 [Number of Substrings](https://judge.yosupo.jp/problem/number_of_substrings)"
 
     题意：给出一个字符串只含有小写英文字母，求不同子串数量，不包括空串。
 
