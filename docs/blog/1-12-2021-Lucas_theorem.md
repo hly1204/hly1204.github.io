@@ -166,7 +166,7 @@ $$\lfloor n/p^j\rfloor -\lfloor m/p^j\rfloor -\lfloor r/p^j\rfloor =\epsilon_{j-
 
 通过在定理 1 中的定义，对于 $j\geq 0$ 我们有
 
-$$\lfloor n/p^j\rfloor !/(p^{\lfloor n/p^{j+1}\rfloor}\lfloor n/p^{j+1}\rfloor !)=(\lfloor n/p^j\rfloor !)_p\equiv (\pm 1)^{\lfloor n/p^{j+q}\rfloor}(N_j!)\pmod{p^q}$$
+$$\lfloor n/p^j\rfloor !/(p^{\lfloor n/p^{j+1}\rfloor}\lfloor n/p^{j+1}\rfloor !)=(\lfloor n/p^j\rfloor !)_p\equiv (\pm 1)^{\lfloor n/p^{j+q}\rfloor}(N_j!)_p\pmod{p^q}$$
 
 通过推论 1 ，将所有 $j\geq 0$ 的同余式相乘得到了
 
