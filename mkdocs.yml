@@ -4,6 +4,8 @@ site_description: 个人博客
 
 site_author: hly1204
 
+copyright: Copyright &copy; 2020 - 2021 hly1204
+
 remote_branch: gh-pages # 远程仓库 gh-deploy 会执行的分支
 
 repo_url: https://github.com/hly1204/hly1204.github.io # 仓库 url
@@ -40,7 +42,7 @@ theme:
     - navigation.tabs # 有上方的标签
     - toc.integrate # 目录整合在左边
   icon:
-    repo: fontawesome/brands/git-alt # 右上角仓库的标志
+    repo: fontawesome/brands/github # 右上角仓库的标志
     admonition:
       note: fontawesome/solid/sticky-note
       abstract: fontawesome/solid/book
@@ -91,3 +93,7 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_div_format
+
+plugins:
+  - git-revision-date-localized:
+      type: date
