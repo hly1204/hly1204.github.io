@@ -79,5 +79,16 @@ $$\begin{aligned}x_{n+1}&=x_{n}(2-bx_{n})\\
 
 这里再简要说明一下，例如一般除法可以计算 $A\bmod{B}=QB+R\bmod{B}=R$ ，而 Hensel 除法计算 $A\bmod{B}=Q'B+R'\beta^{n}\bmod{B}=R'\beta^{n}\bmod{B}$ 。那么可以用 $A(\beta^{n}\bmod{B})$ 替代 $A$ 即可。这也是为什么会使用 Montgomery form 保存一个数，直到最后需要时再转换回来。
 
+!!! warning "LSB 与 MSB 的引入"
+
+    这种思想的引入是重要的[^2]，因为一些 MSB 算法存在着对应的 LSB 算法，应用及效率也可能不同，某种程度上是否可以理解为“转置”呢？
+    
+    | classical (MSB) | $p$-adic (LSB) |
+    |:-:|:-:|
+    | Euclidean division | Hensel division, Montgomery reduction |
+    | Svoboda's algorithm | Montgomery-Svoboda |
+    | Euclidean gcd | binary gcd |
+    | Newton's method | Hensel lifting |
+
 [^1]: Peter L. Montgomery. Modular Multiplication Without Trial Division, 1985.
 [^2]: Richard P. Brent and Paul Zimmermann, Modern Computer Arithmetic, Cambridge Monographs on Computational and Applied Mathematics (No. 18), Cambridge University Press, November 2010, 236 pages
