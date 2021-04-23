@@ -29,13 +29,13 @@ theme:
   name: material # 主题名，必须，否则为默认
   language: zh
   font:
-    text: Roboto # 没有中文，会使用默认的字体
-    code: Roboto Mono
+    text: Noto Serif SC # 思源黑体
+    code: Roboto Mono # 默认的代码字体
   direction: ltr # 从左到右
   palette:
-    primary: indigo # 主题颜色
+    primary: green # 主题颜色
     scheme: default # 亮色主题
-    accent: indigo # 超链接的颜色
+    accent: green # 超链接的颜色
   features:
     - navigation.tabs # 有上方的标签
     - toc.integrate # 目录整合在左边
