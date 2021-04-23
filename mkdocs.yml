@@ -95,5 +95,5 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_div_format
 
 plugins:
-  - git-revision-date:
-      enabled_if_env: CI
+  - git-revision-date-localized:
+      type: timeago
