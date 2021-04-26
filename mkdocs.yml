@@ -26,6 +26,9 @@ nav:
     - 最小树形图: blog/2-16-2021-minimum_directed_spanning_tree.md
     - 快速傅里叶变换: blog/4-10-2021-FFT.md
     - 后缀树: blog/4-12-2021-suffix_tree.md
+  - 其他:
+    - 图论:
+      - 最大流的最大标号算法: other/graph/largest_label_preflow_push.md
 
 theme:
   name: material # 主题名，必须，否则为默认
