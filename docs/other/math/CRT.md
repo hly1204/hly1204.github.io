@@ -23,7 +23,7 @@ $$k_2\equiv (a_1-a_2)M_2^{-1}\pmod{M_1}$$
         # m1 与 m2 互素
         # a >= 0 且 b >= 0
         a, b, x = a % m1, b % m2, inv_mod(m1, m2)
-        return (m2 + (b - a % m2)) * x % m2 * m1 + a, m1 * m2
+        return (m2 + b - a % m2) * x % m2 * m1 + a, m1 * m2
     ```
 
 ## 同时合并及 Garner 算法
