@@ -1,0 +1,22 @@
+name: deploy mkdocs to https://hly1204.github.io
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - name: Install dependencies
+        run: |
+          pip install mkdocs-material
+          pip install mkdocs-git-revision-date-localized-plugin
+      - name: Build & deploy
+        run: mkdocs gh-deploy --force
