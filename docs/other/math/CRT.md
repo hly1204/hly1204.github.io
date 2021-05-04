@@ -60,14 +60,14 @@ Garner 算法可以通过给出的一个模意义下的表示 $v(x)=(v_1,v_2,\do
 
     可以发现和上述两两合并一样。
 
-稍作修改可以使其推广至保留精度的同时结果对一个小模数取模，但合并的时间和空间会增加（目前不知道是否有更好的方法），因为为了避免使用“大整数”类不得不计算对于每个前缀积的模每个小模数的情况，并维护后面过程中 $x$ 模 $m_i$ 的值。
+稍作修改可以使其保留精度的同时结果对一个小模数取模，但合并的时间和空间会增加（目前不知道是否有更好的方法），因为为了避免使用“大整数”类不得不计算对于每个前缀积的模每个小模数的情况，并维护后面过程中 $x$ 模 $m_i$ 的值。
 
 !!! note "Garner 算法的修改"
 
     $$\begin{array}{ll}
-    \textbf{INPUT}\text{:a positive integer }p\text{ and a positive integer }M=\prod_{i=1}^tm_i\gt 1\text{, with }\gcd(m_i,m_j)\text{ for all }i\neq j \\
+    \textbf{INPUT}\text{: a positive integer }p\text{ and a positive integer }M=\prod_{i=1}^tm_i\gt 1\text{, with }\gcd(m_i,m_j)\text{ for all }i\neq j \\
     \text{ and modular representation }v(x)=(v_1,v_2,\dots ,v_t)\text{ of }x\text{ for the }m_i\text{.} \\
-    \textbf{OUTPUT}\text{:}(x\bmod{M})\bmod{p}\text{.} \\
+    \textbf{OUTPUT}\text{: }(x\bmod{M})\bmod{p}\text{.} \\
     \qquad \text{For }i\text{ from }2\text{ to }t\text{ do the following:} \\
     \qquad \qquad C_i\gets 1\text{.} \\
     \qquad \qquad \text{For }j\text{ from }1\text{ to }(i-1)\text{ do the following:} \\
