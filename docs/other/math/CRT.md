@@ -26,9 +26,65 @@ $$k_2\equiv (a_1-a_2)M_2^{-1}\pmod{M_1}$$
         return (m2 + b - a % m2) * x % m2 * m1 + a, m1 * m2
     ```
 
-## 同时合并及 Garner 算法
+## 同时合并
 
-见[^1]，其中 Garner 算法更适合预处理后使用中国剩余定理用模若干不同素数的余数来表示一个大整数（值域小于所有素数的乘积）然后快速合并出答案。
+见 [多点求值和插值](../../blog/12-23-2020-multipoint_evaluation_and_interpolation.md) 。
+
+## Garner 算法
+
+Garner 算法可以通过给出的一个模意义下的表示 $v(x)=(v_1,v_2,\dots,v_t)$ 快速确定 $x$ 其中 $0\leq x\lt M$ 且 $v_i=x\bmod m_i$ 其中 $m_1,m_2,\dots ,m_t$ 两两互素。（证明略）
+
+!!! note "Garner 算法实现 CRT"
+
+    $$\begin{array}{ll}
+    \textbf{INPUT}\text{: a positive integer }M=\prod_{i=1}^tm_i\gt 1\text{, with }\gcd(m_i,m_j)\text{ for all }i\neq j \\
+    \text{ and modular representation }v(x)=(v_1,v_2,\dots ,v_t)\text{ of }x\text{ for the }m_i\text{.} \\
+    \textbf{OUTPUT}\text{: the integer }x\text{ in radix }b\text{ representation.} \\
+    \qquad \text{For }i\text{ from }2\text{ to }t\text{ do the following:} \\
+    \qquad \qquad C_i\gets 1\text{.} \\
+    \qquad \qquad \text{For }j\text{ from }1\text{ to }(i-1)\text{ do the following:} \\
+    \qquad \qquad \qquad u\gets m_j^{-1}\bmod{m_i}\text{.} \\
+    \qquad \qquad \qquad C_i\gets u\cdot C_i\bmod{m_i}\text{.} \\
+    \qquad u\gets v_1, x\gets u\text{.} \\
+    \qquad \text{For }i\text{ from }2\text{ to }t\text{ do the following:} \\
+    \qquad \qquad u\gets (v_i-x)C_i\bmod{m_i}\text{.} \\
+    \qquad \qquad x\gets x+u\cdot \prod_{j=1}^{i-1}m_j\text{.} \\
+    \qquad \text{Return}(x)\text{.}
+    \end{array}$$
+
+!!! note "该算法的优势"
+
+    传统的 CRT 算法需要对 $M$ 取模，而这里不需要，若 $M$ 固定，则前半部分可以当做预处理。
+
+!!! note "两个模数时的特殊情况"
+
+    可以发现和上述两两合并一样。
+
+稍作修改可以使其推广至保留精度的同时结果对一个小模数取模，但合并的时间和空间会增加（目前不知道是否有更好的方法），因为为了避免使用“大整数”类不得不计算对于每个前缀积的模每个小模数的情况，并维护后面过程中 $x$ 模 $m_i$ 的值。
+
+!!! note "Garner 算法的修改"
+
+    $$\begin{array}{ll}
+    \textbf{INPUT}\text{:a positive integer }p\text{ and a positive integer }M=\prod_{i=1}^tm_i\gt 1\text{, with }\gcd(m_i,m_j)\text{ for all }i\neq j \\
+    \text{ and modular representation }v(x)=(v_1,v_2,\dots ,v_t)\text{ of }x\text{ for the }m_i\text{.} \\
+    \textbf{OUTPUT}\text{:}(x\bmod{M})\bmod{p}\text{.} \\
+    \qquad \text{For }i\text{ from }2\text{ to }t\text{ do the following:} \\
+    \qquad \qquad C_i\gets 1\text{.} \\
+    \qquad \qquad \text{For }j\text{ from }1\text{ to }(i-1)\text{ do the following:} \\
+    \qquad \qquad \qquad u\gets m_j^{-1}\bmod{m_i}\text{.} \\
+    \qquad \qquad \qquad C_i\gets u\cdot C_i\bmod{m_i}\text{.} \\
+    \qquad u\gets v_1, x\gets u\bmod{p}\text{.} \\
+    \qquad \text{For }i\text{ from }2\text{ to }t\text{ do the following:} \\
+    \qquad \qquad x_i\gets u\bmod{m_i}\text{.} \\
+    \qquad \text{For }i\text{ from }2\text{ to }t\text{ do the following:} \\
+    \qquad \qquad u\gets (v_i-x_i)C_i\bmod{m_i}\text{.} \\
+    \qquad \qquad \text{For }k\text{ from }(i+1)\text{ to }t\text{ do the following:} \\
+    \qquad \qquad \qquad x_k\gets \left(x_k+u\cdot \prod_{j=1}^{i-1}m_j\right)\bmod{m_k}\text{.} \\
+    \qquad \qquad x\gets \left(x+u\cdot \prod_{j=1}^{i-1}m_j\right)\bmod{p}\text{.} \\
+    \qquad \text{Return}(x)\text{.}
+    \end{array}$$
+
+实现后的代码可通过一些测试。
 
 ## 中国剩余定理的推广
 
