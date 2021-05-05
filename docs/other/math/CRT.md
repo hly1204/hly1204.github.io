@@ -32,7 +32,7 @@ $$k_2\equiv (a_1-a_2)M_2^{-1}\pmod{M_1}$$
 
 ## Garner 算法
 
-Garner 算法可以通过给出的一个模意义下的表示 $v(x)=(v_1,v_2,\dots,v_t)$ 快速确定 $x$ 其中 $0\leq x\lt M$ 且 $v_i=x\bmod m_i$ 其中 $m_1,m_2,\dots ,m_t$ 两两互素。（证明略）
+Garner 算法可以通过给出的一个模意义下的表示 $v(x)=(v_1,v_2,\dots,v_t)$ 快速确定 $x$ 其中 $0\leq x\lt M$ 且 $v_i=x\bmod m_i$ 其中 $m_1,m_2,\dots ,m_t$ 两两互素（证明略，稍作分析发现本质就是上述两两合并的方法，若前缀积不溢出可简单维护前缀积而不用第二层迭代）。
 
 !!! note "Garner 算法实现 CRT"
 
