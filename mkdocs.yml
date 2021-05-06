@@ -26,6 +26,7 @@ nav:
     - 最小树形图: blog/2-16-2021-minimum_directed_spanning_tree.md
     - 快速傅里叶变换: blog/4-10-2021-FFT.md
     - 后缀树: blog/4-12-2021-suffix_tree.md
+    - 常系数齐次线性递推: blog/5-5-2021-linearly_recurrent_sequence.md
   - 其他:
     - 数学:
       - 扩展欧几里得算法: other/math/extended_Euclidean_algorithm.md
