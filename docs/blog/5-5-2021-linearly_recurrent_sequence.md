@@ -203,7 +203,7 @@ $$\begin{aligned}\frac{1}{Q(x)}\bmod{x^{2N}}&=Q(-x)\frac{1}{Q(x)Q(-x)}\bmod{x^{2
       idft(n, V.data());
       V.resize(n >> 1);
       auto S = inv_helper_func(V);
-      S.resize(n << 1, 0);
+      S.resize(n, 0);
       dft(n, S.data());
       std::vector<Mint> res(n << 1);
       for (int i = 0; i != n << 1; ++i) res[i] = Q[i ^ 1] * S[i >> 1];
