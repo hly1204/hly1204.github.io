@@ -114,15 +114,13 @@ $$k_1\equiv x(a_2-a_1)/d\pmod{(M_2/d)}$$
     def generalized_crt2(a: int, m1: int, b: int, m2: int) -> (int, int):
         # m1 和 m2 不必互素
         # a >= 0 且 b >= 0
-        a, b = a % m1, b % m1
+        a, b = a % m1, b % m2
         d, x, y = exgcd(m1, m2)
         bma = b - a
         if bma % d != 0:
             return -1, -1
         t, y = m2 // d, bma // d
-        res = x * y % t
-        if res < 0:
-            res += t
+        res = x * y % t # 取模运算导致 res 在 python 中默认为非负的
         return res * m1 + a, m1 * t
     ```
 
