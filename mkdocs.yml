@@ -100,6 +100,8 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_div_format
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 plugins:
   - git-revision-date-localized:
