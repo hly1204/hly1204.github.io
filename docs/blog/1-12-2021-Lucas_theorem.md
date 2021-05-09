@@ -28,7 +28,7 @@ $$\binom{n}{k}=\frac{n(n-1)\cdots (n-k+1)}{k!}=\left(\frac{n}{k}\right)\left(\fr
 
 令 $n=ap+b,k=cp+d$ 且 $b,d\lt p$ ，那么
 
-$$\left(\frac{ap+b}{cp+d}\right)\left(\frac{ap+b-1}{cp+d-1}\right)\cdots \left(\frac{ap+b-d+1}{cp+1}\right)\equiv \left(\frac{b}{d}\right)\left(\frac{b-1}{d-1}\right)\cdots \left(\frac{b-d+1}{1}\right)\equiv \binom{n\bmod{p}}{k\bmod{p}}\pmod{p}$$
+$$\left(\frac{ap+b}{cp+d}\right)\cdots \left(\frac{ap+b-d+1}{cp+1}\right)\equiv \left(\frac{b}{d}\right)\cdots \left(\frac{b-d+1}{1}\right)\equiv \binom{n\bmod{p}}{k\bmod{p}}\pmod{p}$$
 
 注意上式为 $\binom{n}{k}\pmod{p}$ 的前 $k\bmod{p}=d$ 项的乘积，还剩下 $k-d$ 项为
 
@@ -36,7 +36,11 @@ $$\left(\frac{n-d}{cp}\right)\left(\frac{n-d-1}{cp-1}\right)\cdots \left(\frac{n
 
 也就是 $cp$ 项，将这 $cp$ 项分为 $c$ 组，每一组的分子和分母都是连续的 $p$ 项，显然分子和分母中都各有一项是 $p$ 的倍数，而其余项的乘积在模 $p$ 意义下同余于 $(p-1)!$ 可以让剩下的分子分母相互抵消。这指导我们只需关注这 $c$ 项的分子分母，而这几项分别为
 
-$$\left(\frac{\lfloor(n-d)/p\rfloor \cdot p}{cp}\right)\left(\frac{(\lfloor(n-d)/p\rfloor -1) \cdot p}{(c-1)p}\right)\cdots \left(\frac{(\lfloor (n-d)/p\rfloor -c+1)\cdot p}{p}\right)=\binom{\lfloor (n-d)/p\rfloor}{\lfloor k/p\rfloor}$$
+$$\left(\frac{\lfloor(n-d)/p\rfloor \cdot p}{cp}\right)\left(\frac{(\lfloor(n-d)/p\rfloor -1) \cdot p}{(c-1)p}\right)\cdots \left(\frac{(\lfloor (n-d)/p\rfloor -c+1)\cdot p}{p}\right)$$
+
+即
+
+$$\binom{\lfloor (n-d)/p\rfloor}{\lfloor k/p\rfloor}$$
 
 注意当 $d=k\bmod{p}\leq n\bmod{p}$ 时，上式等于
 
