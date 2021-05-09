@@ -34,7 +34,8 @@
       struct InputEdge {
         int from, to;
         CapacityType cap;
-        InputEdge(int from, int to, CapacityType cap) : from(from), to(to), cap(cap) {}
+        InputEdge(int from, int to, CapacityType cap)
+            : from(from), to(to), cap(cap) {}
         ~InputEdge() = default;
       };
 
@@ -46,7 +47,9 @@
       MaximumFlowGraph(int n) : n(n) {}
       ~MaximumFlowGraph() = default;
 
-      void add_directed_edge(int from, int to, CapacityType cap) { ie.emplace_back(from, to, cap); }
+      void add_directed_edge(int from, int to, CapacityType cap) {
+        ie.emplace_back(from, to, cap);
+      }
 
       CapacityType get_max_flow(int s, int t) {
         convert_to_forwardstar();
@@ -65,7 +68,8 @@
         idx.assign(n + 1, 0);
         rev_idx.resize(m);
         for (auto &i : ie) ++idx[i.from], ++idx[i.to];
-        for (int i = 0, sum = 0; i != n + 1; ++i) sum += idx[i], idx[i] = sum - idx[i];
+        for (int i = 0, sum = 0; i != n + 1; ++i)
+          sum += idx[i], idx[i] = sum - idx[i];
         for (auto &i : ie) {
           e[idx[i.from]].to = i.to;
           e[idx[i.from]].cap = i.cap;
@@ -96,20 +100,6 @@
         }
         return level[t] != -1;
       }
-
-      // CapacityType augment(int from, CapacityType bottleneck, int t) {
-      //   if (bottleneck == 0 || from == t) return bottleneck;
-      //   for (int &i = cur_e[from], i_end = idx[from + 1]; i < i_end; ++i) {
-      //     if (level[e[i].to] == level[from] + 1 && e[i].cap > 0) {
-      //       CapacityType flow = augment(e[i].to, std::min(bottleneck, e[i].cap), t);
-      //       if (flow == 0) continue;
-      //       e[i].cap -= flow;
-      //       e[rev_idx[i]].cap += flow;
-      //       return flow;
-      //     }
-      //   }
-      //   return 0;
-      // }
 
       CapacityType augment(int from, CapacityType bottleneck, int t) {
         if (bottleneck == 0 || from == t) return bottleneck;
@@ -203,7 +193,8 @@
       struct InputEdge {
         int from, to;
         CapacityType cap;
-        InputEdge(int from, int to, CapacityType cap) : from(from), to(to), cap(cap) {}
+        InputEdge(int from, int to, CapacityType cap)
+            : from(from), to(to), cap(cap) {}
         ~InputEdge() = default;
       };
 
@@ -218,7 +209,9 @@
 
       struct LinkedList {
         LinkedListNode *head;
-        LinkedList() : head(new LinkedListNode) { head->before = head->after = head; }
+        LinkedList() : head(new LinkedListNode) {
+          head->before = head->after = head;
+        }
         ~LinkedList() { delete head; }
         static void extract(LinkedListNode *x) {
           x->before->after = x->after;
@@ -238,7 +231,9 @@
       MaximumFlowGraph(int n) : n(n) {}
       ~MaximumFlowGraph() = default;
 
-      void add_directed_edge(int from, int to, CapacityType cap) { ie.emplace_back(from, to, cap); }
+      void add_directed_edge(int from, int to, CapacityType cap) {
+        ie.emplace_back(from, to, cap);
+      }
 
       CapacityType get_max_flow(int s, int t) {
         convert_to_forwardstar();
@@ -247,10 +242,13 @@
         excess.assign(n, 0);
         bucket.clear();
         bucket.resize(n << 1);
-        auto is_in_bucket = [&](int from) -> bool { return (first_node + from)->before != nullptr; };
+        auto is_in_bucket = [&](int from) -> bool {
+          return (first_node + from)->before != nullptr;
+        };
         largest_label = -1;
         first_node = new LinkedListNode[n];
-        for (int i = 0; i != n; ++i) (first_node + i)->before = (first_node + i)->after = nullptr;
+        for (int i = 0; i != n; ++i)
+          (first_node + i)->before = (first_node + i)->after = nullptr;
         for (int i = idx[s], i_end = idx[s + 1]; i < i_end; ++i) {
           CapacityType flow = e[i].cap;
           excess[s] -= flow;
@@ -268,7 +266,8 @@
           int v = bucket[largest_label].begin() - first_node;
           LinkedList::extract(first_node + v);
           const int next_label = dist[v] - 1;
-          for (int &i = cur_e[v], i_end = idx[v + 1]; i < i_end && excess[v] > 0; ++i) {
+          for (int &i = cur_e[v], i_end = idx[v + 1]; i < i_end && excess[v] > 0;
+               ++i) {
             if (e[i].cap > 0 && dist[e[i].to] == next_label) {
               CapacityType flow = std::min(excess[v], e[i].cap);
               excess[v] -= flow;
@@ -282,12 +281,14 @@
           if (excess[v] > 0) {
             int min_label = n << 1;
             for (int i = cur_e[v] = idx[v], i_end = idx[v + 1]; i < i_end; ++i) {
-              if (e[i].cap > 0 && dist[e[i].to] < min_label) min_label = dist[e[i].to];
+              if (e[i].cap > 0 && dist[e[i].to] < min_label)
+                min_label = dist[e[i].to];
             }
             largest_label = dist[v] = min_label + 1;
             bucket[largest_label].insert(first_node + v);
           } else {
-            while (largest_label >= 0 && bucket[largest_label].is_empty()) --largest_label;
+            while (largest_label >= 0 && bucket[largest_label].is_empty())
+              --largest_label;
           }
         }
         delete[] first_node;
@@ -300,7 +301,8 @@
         idx.assign(n + 1, 0);
         rev_idx.resize(m);
         for (auto &i : ie) ++idx[i.from], ++idx[i.to];
-        for (int i = 0, sum = 0; i != n + 1; ++i) sum += idx[i], idx[i] = sum - idx[i];
+        for (int i = 0, sum = 0; i != n + 1; ++i)
+          sum += idx[i], idx[i] = sum - idx[i];
         for (auto &i : ie) {
           e[idx[i.from]].to = i.to;
           e[idx[i.from]].cap = i.cap;
