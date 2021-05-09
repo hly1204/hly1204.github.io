@@ -39,9 +39,9 @@ theme:
     code: Roboto Mono # 默认的代码字体
   direction: ltr # 从左到右
   palette:
-    primary: green # 主题颜色
+    primary: indigo # 主题颜色
     scheme: default # 亮色主题
-    accent: green # 超链接的颜色
+    accent: indigo # 超链接的颜色
   features:
     - navigation.sections
     - navigation.tabs # 有上方的标签
