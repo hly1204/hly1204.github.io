@@ -301,7 +301,8 @@ $canonize$ 如下。给出一个引用对 $(s,(k,p))$ 对应某个状态 $r$ ，
 
       struct State {
         // 一个三元组表示一个状态，这个状态未必是显式状态
-        // 若有必要，需要用 canonize 函数使其变得最简，也就是将 s 变为当前表示状态的最近的显式状态祖先
+        // 若有必要，需要用 canonize 函数使其变得最简，也就是将 s
+        // 变为当前表示状态的最近的显式状态祖先
         Node *s;
         int l, r;
       };
@@ -311,7 +312,8 @@ $canonize$ 如下。给出一个引用对 $(s,(k,p))$ 对应某个状态 $r$ ，
         Node *s = now.s;
         if (l > r) return now; // 若 l>r 说明当前状态已经为显式状态了
         Node *t =
-            s->ch[str[l]]; // 否则沿着首字母的孩子指针走，并判断这条边的长度是否大于状态表示的边的长度
+            s->ch
+                [str[l]]; // 否则沿着首字母的孩子指针走，并判断这条边的长度是否大于状态表示的边的长度
         while (t->r - t->l <= r - l) {
           l += t->r - t->l + 1;
           s = t;
@@ -368,7 +370,8 @@ $canonize$ 如下。给出一个引用对 $(s,(k,p))$ 对应某个状态 $r$ ，
 
       void add(char c) {
         str.push_back(c);
-        active_point = canonize(update({active_point.s, active_point.l, int(str.size()) - 1}));
+        active_point =
+            canonize(update({active_point.s, active_point.l, int(str.size()) - 1}));
       }
 
       SuffixTree() : root(new Node), active_point{root, 0, -1} {

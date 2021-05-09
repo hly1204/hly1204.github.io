@@ -9,6 +9,7 @@
 为了方便，这里出现的代码都使用 clang-format 进行格式化，且风格为：
 
 !!! note ".clang-format"
+
     ```
     BasedOnStyle: LLVM
     Standard: Cpp11
@@ -19,7 +20,7 @@
     AllowShortIfStatementsOnASingleLine: true
     AlwaysBreakTemplateDeclarations: false
     AllowShortLoopsOnASingleLine: true
-    ColumnLimit: 100
+    ColumnLimit: 80
     ```
 
 一般文章的格式为，对不同语言及公式之间加空格，无论在哪里。
