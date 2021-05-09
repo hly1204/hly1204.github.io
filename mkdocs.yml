@@ -1,32 +1,29 @@
 site_name: hly1204 的博客
-
 site_description: 个人博客
-
 site_author: hly1204
-
 copyright: Copyright &copy; 2020 - 2021 hly1204
-
 remote_branch: gh-pages # 远程仓库 gh-deploy 会执行的分支
-
 repo_url: https://github.com/hly1204/hly1204.github.io # 仓库 url
-
 repo_name: hly1204/hly1204.github.io # 仓库名
-
 edit_uri: blob/master/docs/
 
 nav:
   - 首页: index.md
   - 文章:
-    - 如何构建这个博客: blog/4-9-2021-how_to_build_this_blog.md
-    - Montgomery 取模优化算法: blog/12-18-2020-Montgomery_reduction_revisited.md
-    - 多点求值和插值: blog/12-23-2020-multipoint_evaluation_and_interpolation.md
-    - 下降幂多项式: blog/12-27-2020-falling_factorial_polynomial.md
-    - 特征多项式: blog/1-6-2021-characteristic_polynomial.md
-    - Lucas 定理: blog/1-12-2021-Lucas_theorem.md
-    - 最小树形图: blog/2-16-2021-minimum_directed_spanning_tree.md
-    - 快速傅里叶变换: blog/4-10-2021-FFT.md
-    - 后缀树: blog/4-12-2021-suffix_tree.md
-    - 常系数齐次线性递推: blog/5-5-2021-linearly_recurrent_sequence.md
+    - 其他:
+      - 如何构建这个博客: blog/4-9-2021-how_to_build_this_blog.md
+    - 数学:
+      - Montgomery 取模优化算法: blog/12-18-2020-Montgomery_reduction_revisited.md
+      - 快速傅里叶变换: blog/4-10-2021-FFT.md
+      - 多点求值和插值: blog/12-23-2020-multipoint_evaluation_and_interpolation.md
+      - 下降幂多项式: blog/12-27-2020-falling_factorial_polynomial.md
+      - 特征多项式: blog/1-6-2021-characteristic_polynomial.md
+      - Lucas 定理: blog/1-12-2021-Lucas_theorem.md
+      - 常系数齐次线性递推: blog/5-5-2021-linearly_recurrent_sequence.md
+    - 图论:
+      - 最小树形图: blog/2-16-2021-minimum_directed_spanning_tree.md
+    - 数据结构:
+      - 后缀树: blog/4-12-2021-suffix_tree.md
   - 其他:
     - 数学:
       - 扩展欧几里得算法: other/math/extended_Euclidean_algorithm.md
@@ -46,8 +43,8 @@ theme:
     scheme: default # 亮色主题
     accent: green # 超链接的颜色
   features:
+    - navigation.sections
     - navigation.tabs # 有上方的标签
-    - toc.integrate # 目录整合在左边
   icon:
     repo: fontawesome/brands/github # 右上角仓库的标志
     admonition:
