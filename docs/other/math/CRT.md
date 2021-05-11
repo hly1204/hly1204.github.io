@@ -32,7 +32,7 @@ $$k_2\equiv (a_1-a_2)M_2^{-1}\pmod{M_1}$$
 
 ## Garner 算法
 
-Garner 算法可以通过给出的一个模意义下的表示 $v(x)=(v_1,v_2,\dots,v_t)$ 快速确定 $x$ 其中 $0\leq x\lt M$ 且 $v_i=x\bmod m_i$ 其中 $m_1,m_2,\dots ,m_t$ 两两互素（证明略，稍作分析发现本质就是上述两两合并的方法，若前缀积不溢出可简单维护前缀积而不用第二层迭代）。
+Garner 算法可以通过给出的一个模意义下的表示 $v(x)=(v_1,v_2,\dots,v_t)$ 快速确定 $x$ 其中 $0\leq x\lt M$ 且 $v_i=x\bmod m_i$ 其中 $m_1,m_2,\dots ,m_t$ 两两互素（证明略，稍作分析发现本质就是上述两两合并的方法，若前缀积不溢出可简单维护前缀积而不用第二层迭代）。下面伪代码为[^1]中第 14 章 p612 的内容，在[^3]中有详细的解释。
 
 !!! note "Garner 算法实现 CRT"
 
@@ -55,10 +55,6 @@ Garner 算法可以通过给出的一个模意义下的表示 $v(x)=(v_1,v_2,\do
 !!! note "该算法的优势"
 
     传统的 CRT 算法需要对 $M$ 取模，而这里不需要，若 $M$ 固定，则前半部分可以当做预处理。
-
-!!! note "两个模数时的特殊情况"
-
-    可以发现和上述两两合并一样。
 
 稍作修改可以使其保留精度的同时结果对一个小模数取模，但合并的时间和空间会增加（目前不知道是否有更好的方法），因为为了避免使用“大整数”类不得不计算对于每个前缀积的模每个小模数的情况，并维护后面过程中 $x$ 模 $m_i$ 的值。
 
@@ -84,11 +80,9 @@ Garner 算法可以通过给出的一个模意义下的表示 $v(x)=(v_1,v_2,\do
     \qquad \text{Return}(x)\text{.}
     \end{array}$$
 
-实现后的代码可通过一些测试。
-
 !!! note "例题 [No.187 中華風 (Hard)](https://yukicoder.me/problems/448)"
 
-    用 cpp 实现且不使用大整数是一个挑战，目前我仅用 python 尝试，因为可以令中间结果保留全部精度，但可以使用 Garner 算法并稍作修改在 $O(t^2\log(\max_{i=1}^t{m_t}))$ 的时间完成。
+    用 cpp 实现且不使用大整数是一个挑战，目前我仅用 python 尝试，因为可以令中间结果保留全部精度，但可以使用 Garner 算法并稍作修改在 $O(t^2\log(\max_{i=1}^t\{m_t\}))$ 的时间完成。
     
     - [ ] 实现 Garner 算法合并模数不互素的同余方程并将结果对一个固定小模数取模
 
@@ -138,3 +132,4 @@ $$k_1\equiv x(a_2-a_1)/d\pmod{(M_2/d)}$$
 
 [^1]: [Alfred J. Menezes, Paul C. van Oorschot and Scott A. Vanstone. Handbook of Applied Cryptography.](http://cacr.uwaterloo.ca/hac/)
 [^2]: [math314のブログ-任意modでの畳み込み演算](https://math314.hateblo.jp/entry/2015/05/07/014908)
+[^3]: [drken-中国剰余定理 (CRT) の解説と、それを用いる問題のまとめ](https://qiita.com/drken/items/ae02240cd1f8edfc86fd)
