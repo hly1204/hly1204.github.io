@@ -118,7 +118,7 @@ N_0}'(\lfloor n/p^q\rfloor p^q+j)\right)\\
 
     $$\nu_p(n!)=\sum_{i\geq 1}\lfloor n/p^i\rfloor$$
 
-也就是说 $n!=p^{\nu(n!)}c$ 其中 $p\nmid c$ 。这很显然，考虑 $n!=1\times 2\times \cdots \times n$ 而其中能被 $p$ 整除的项为 $p\times 2p\times \dots\times \lfloor n/p\rfloor p=\lfloor n/p\rfloor !p^{\lfloor n/p\rfloor}$ 那么有 $\nu_p(n!)=\lfloor n/p\rfloor +\nu_p(\lfloor n/p\rfloor !)$ 。
+也就是说 $n!=p^{\nu(n!)}c$ 其中 $p\nmid c$ 。这很显然，考虑 $n!=1\times 2\times \cdots \times n$ 而其中能被 $p$ 整除的项为 $p\times 2p\times\cdots\times\lfloor n/p\rfloor p=\lfloor n/p\rfloor !p^{\lfloor n/p\rfloor}$ 那么有 $\nu_p(n!)=\lfloor n/p\rfloor +\nu_p(\lfloor n/p\rfloor !)$ 。
 
 将 $n$ 在 $p$ 进制下记为 $n=n_0+n_1p+\cdots +n_dp^d$ 我们定义一个每一位数的和的函数 $\sigma(n)=\sigma_p(n):=n_0+n_1+\cdots +n_d$ 。那么
 
