@@ -86,7 +86,13 @@ Garner 算法可以通过给出的一个模意义下的表示 $v(x)=(v_1,v_2,\do
 
 实现后的代码可通过一些测试。
 
-- [ ] 实现 Garner 算法合并不互素的同余方程并将结果对一个固定小模数取模
+!!! note "例题 [No.187 中華風 (Hard)](https://yukicoder.me/problems/448)"
+
+    用 cpp 实现且不使用大整数是一个挑战，目前我仅用 python 尝试，因为可以令中间结果保留全部精度，但可以使用 Garner 算法并稍作修改在 $O(n^2\log(\max{m}))$ 的时间完成。
+    
+    - [ ] 实现 Garner 算法合并模数不互素的同余方程并将结果对一个固定小模数取模
+
+    该算法在[^2]中有提及，借由此算法我们也可以不使用 `__int128_t` 完成更多模数的 NTT 结果合并且可用作 CRT 算法的预处理。
 
 !!! warning "关联算法"
 
@@ -131,3 +137,4 @@ $$k_1\equiv x(a_2-a_1)/d\pmod{(M_2/d)}$$
     ```
 
 [^1]: [Alfred J. Menezes, Paul C. van Oorschot and Scott A. Vanstone. Handbook of Applied Cryptography.](http://cacr.uwaterloo.ca/hac/)
+[^2]: [math314のブログ-任意modでの畳み込み演算](https://math314.hateblo.jp/entry/2015/05/07/014908)
