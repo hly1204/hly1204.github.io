@@ -31,7 +31,7 @@ $$\mathbf{M}^d\mathbf{v}_n=\sum_{i=0}^{d-1}c_i\mathbf{M}^i\mathbf{v}_n$$
 
 我们可以找到一个多项式 $\Gamma(x)=x^d-\sum_{i=0}^{d-1}c_ix^i$ 满足 $\Gamma(\mathbf{M})=\mathbf{O}$ ，其中 $\mathbf{O}\in\mathbb{R}^{d\times d}$ 为一个零矩阵。
 
-令 $g(x)=g_0+g_1x+\cdots +g_{d-1}x^{d-1}=x^N\bmod{\Gamma(x)}$ 那么 $g(\mathbf{M})=\mathbf{M}^N$ ，也就是我们将 $\mathbf{v}^N$ 描述为了一个线性组合如
+令 $g(x)=g_0+g_1x+\cdots +g_{d-1}x^{d-1}=x^N\bmod{\Gamma(x)}$ 那么 $g(\mathbf{M})=\mathbf{M}^N$ ，也就是我们将 $\mathbf{v}_N$ 描述为了一个线性组合如
 
 $$\mathbf{M}^N\mathbf{v}_0=\sum_{i=0}^{d-1}g_i\mathbf{M}^i\mathbf{v}_0\iff \mathbf{v}_N=\sum_{i=0}^{d-1}g_i\mathbf{v}_i$$
 
