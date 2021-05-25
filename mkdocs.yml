@@ -1,5 +1,5 @@
-site_name: hly1204 的博客
-site_description: 个人博客
+site_name: hly1204 的主页
+site_description: 个人主页 & 博客
 site_author: hly1204
 copyright: Copyright &copy; 2020 - 2021 hly1204
 remote_branch: gh-pages # 远程仓库 gh-deploy 会执行的分支
