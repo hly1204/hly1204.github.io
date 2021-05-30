@@ -10,13 +10,15 @@
 
 定义中您可能已经注意到 Bézout 等式 $RR^{-1}-NN'=1$ 这告诉我们 $N'\equiv -N^{-1}\pmod{R}$ 。这里将[^1]中算法描述如下
 
-$$\begin{array}{ll}
+$$
+\begin{array}{ll}
 \textbf{procedure }\operatorname{REDC}(T) \\
 \qquad m\gets (T\bmod R)N'\bmod{R} \\
 \qquad t\gets (T+mN)/R \\
 \qquad \textbf{if }t\geq N\textbf{ then return }t-N \\
 \qquad \textbf{else return } t
-\end{array}$$
+\end{array}
+$$
 
 证明：观察到 $TN'\bmod R=TN'+kR$ 对于某个整数 $k$ 成立，那么
 
@@ -47,15 +49,20 @@ $$t=(T+T(-1+lR)+kRN)/R=lT+kN$$
 
 而 $N'$ 可以通过 Hensel lifting （可被视为 $p$-adic variant of Newton's method ）计算，因为 $N$ 为奇数，那么 $N^{-1}\bmod 2=1$ ，使用以下迭代
 
-$$x_{n+1}=x_{n}+x_{n}(1-bx_{n})$$
+$$
+x_{n+1}=x_{n}+x_{n}(1-bx_{n})
+$$
 
 假设 $x_{n}\equiv b^{-1}\pmod p$ 对于某个 $p$ 成立，那么 $x_{n}b\equiv 1+kp\pmod{p^{2}}$ 对于某个整数 $k$ 成立，那么
 
-$$\begin{aligned}x_{n+1}&=x_{n}(2-bx_{n})\\
+$$
+\begin{aligned}
+x_{n+1}&=x_{n}(2-bx_{n})\\
 &\equiv x_{n}(2-(1+kp))\pmod{p^{2}}\\
 &\equiv b^{-1}(1+kp)(1-kp)\pmod{p^{2}}\\
 &\equiv b^{-1}(1-k^{2}p^{2})\pmod{p^{2}}\\
-&\equiv b^{-1}\pmod{p^{2}}\end{aligned}$$
+&\equiv b^{-1}\pmod{p^{2}}\end{aligned}
+$$
 
 在这里我们只需将 $p$ 替换为 $2$ 即可。 $\square$
 
@@ -77,7 +84,7 @@ $$\begin{aligned}x_{n+1}&=x_{n}(2-bx_{n})\\
 
 参考[^2]可以给出一个更广义的解释，一般的除法可以认为是消去高位，而 Hensel 除法消去低位。我们可以将一般的除法描述为 MSB （ most significant bit ）除法，而 Hensel 除法为 LSB （ least significant bit ）除法。对于 $A$ 除以 $B$ ，且 $A$ 为一个 $2n$ 字长的（用 $\beta$ 代表一个字长）， $B$ 为 $n$ 字长的。一般的除法商 $Q$ 和余 $R$ 满足 $A=QB+R$ 。而 Hensel 除法的 LSB-商 $Q'$ 和 LSB-余 $R'$ 则满足 $A=Q'B+R'\beta^{n}$ 。 LSB 除法也需要 $\gcd(B,\beta)=1$ （例如上述的 $\beta=2$ 且 $B$ 为奇数）因为 LSB-商被唯一定义为 $Q'=A/B\bmod{\beta^{n}}$ ，其中 $0\leq Q'\lt \beta^{n}$ 。这也唯一定义了 LSB-余 $R'=(A-Q'B)\beta^{-n}$ 其中 $-B\lt R'\lt \beta^{n}$ 。而当仅想要计算余数时， Hensel 除法 也就是我们理解的 Montgomery reduction 。
 
-这里再简要说明一下，例如一般除法可以计算 $A\bmod{B}=QB+R\bmod{B}=R$ ，而 Hensel 除法计算 $A\bmod{B}=Q'B+R'\beta^{n}\bmod{B}=R'\beta^{n}\bmod{B}$ 。那么可以用 $A(\beta^{n}\bmod{B})$ 替代 $A$ 即可。这也是为什么会使用 Montgomery form 保存一个数，直到最后需要时再转换回来。
+这里再简要说明一下，例如一般除法可以计算 $A\bmod{B}=(QB+R)\bmod{B}=R$ ，而 Hensel 除法计算 $A\bmod{B}=(Q'B+R'\beta^{n})\bmod{B}=R'\beta^{n}\bmod{B}$ 。那么可以用 $A(\beta^{n}\bmod{B})$ 替代 $A$ 即可。这也是为什么会使用 Montgomery form 保存一个数，直到最后需要时再转换回来。
 
 !!! warning "LSB 与 MSB 的引入"
 

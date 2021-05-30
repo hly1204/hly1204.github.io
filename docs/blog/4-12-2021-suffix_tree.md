@@ -61,7 +61,9 @@ Ukkonen 算法是最容易理解且基于后缀 Trie 的，尽管后缀 Trie 是
 
 如何从 $STrie(T^{i-1})$ 得到 $STrie(T^i)$ 的关键在于观察到 $T^i$ 的后缀可以由每个 $T^{i-1}$ 的后缀后面拼接一个 $t_i$ 和增加一个空后缀得到。即
 
-$$\sigma(T^i)=\sigma(T^{i-1})t_i\cup \{\epsilon\}$$
+$$
+\sigma(T^i)=\sigma(T^{i-1})t_i\cup \{\epsilon\}
+$$
 
 通过定义， $STrie(T^{i-1})$ 接收所有 $\sigma(T^{i-1})$ 。为了使其接收 $\sigma(T^i)$ 我们必须检查 $STrie(T^{i-1})$ 的终态集合 $F_{i-1}$ 。如果 $r\in F_{i-1}$ 不是一个 $t_i$-转移，那么加入从 $r$ 到一个新状态（成为 Trie 的新叶子）的转移。
 
@@ -79,7 +81,8 @@ $$\sigma(T^i)=\sigma(T^{i-1})t_i\cup \{\epsilon\}$$
 
 !!! note "算法 1"
 
-    $$\begin{array}{ll}
+    $$
+    \begin{array}{ll}
     r\gets top\textbf{;} \\
     \textbf{while } g(r,t_i) \text{ is undefined }\textbf{do} \\
     \qquad \text{create new state }r' \text{ and new transition }g(r,t_i)=r'\textbf{;} \\
@@ -88,7 +91,8 @@ $$\sigma(T^i)=\sigma(T^{i-1})t_i\cup \{\epsilon\}$$
     \qquad r'\gets f(r)\textbf{;} \\
     \text{create new suffix link }f(oldr')=g(r,t_i)\textbf{;} \\
     top\gets g(top, t_i)\textbf{;}
-    \end{array}$$
+    \end{array}
+    $$
 
 从仅包含 $root$ 和 $\bot$ 和一些他们之间的链接的 $STrie(\epsilon)$ 开始，对于 $t_i=t_1,t_2,\dots ,t_n$ 重复 算法 1 ，我们显然可以得到 $STrie(T)$ 。该算法看起来是最优的，因为它花费的时间也就是最后结果 $STrie(T)$ 的大小。在这里对应 $\vert Q\vert$ ，即 $T$ 的不同子串的数量。不幸的是，关于 $\vert T\vert$ 它可能是平方级别的，例如 $T=\texttt{a}^n\texttt{b}^n$ 。
 
@@ -159,7 +163,8 @@ $$\sigma(T^i)=\sigma(T^{i-1})t_i\cup \{\epsilon\}$$
 
 !!! note "$update(s,(k,i))$"
 
-    $$\begin{array}{ll}
+    $$
+    \begin{array}{ll}
     \textbf{procedure }update(s,(k,i)): \\
     \qquad (s,(k,i-1)) \text{ is the canonical reference pair for the active point}\textbf{;} \\
     \qquad oldr\gets root\textbf{;}(end\text{-}point,r)\gets test\text{-}and\text{-}split(s,(k,i-1),t_i)\textbf{;} \\
@@ -171,13 +176,15 @@ $$\sigma(T^i)=\sigma(T^{i-1})t_i\cup \{\epsilon\}$$
     \qquad \qquad (end\text{-}point,r)\gets test\text{-}and\text{-}split(s,(k,i-1),t_i)\textbf{;} \\
     \qquad \textbf{if }oldr\neq root\textbf{ then }\text{create new suffix link }f'(oldr)=s\textbf{;} \\
     \qquad \textbf{return }(s,k)\textbf{.}
-    \end{array}$$
+    \end{array}
+    $$
 
 $test\text{-}and\text{-}split$ 测试了一个为最简引用对的状态 $(s,(k,p))$ 是否为终止点，也就是在 $STrie(T^{i-1})$ 中的状态是否有 $t_i$-转移。而 $t_i$ 由输入的参数 $t$ 给出。测试结果由返回值的第一个参数给出。若 $(s,(k,p))$ 不是终止点，那么状态 $(s,(k,p))$ 将会通过分裂一个转移变为显式的（如果还没有变成显式的）。显式的状态将会由第二个参数返回。
 
 !!! note "$test\text{-}and\text{-}split(s,(k,p),t)$"
 
-    $$\begin{array}{ll}
+    $$
+    \begin{array}{ll}
     \textbf{procedure }test\text{-}and\text{-}split(s,(k,p),t): \\
     \qquad \textbf{if }k\leq p\textbf{ then} \\
     \qquad \qquad \text{let }g'(s,(k',p'))=s' \text{ be the }t_k\text{-transition from }s\textbf{;} \\
@@ -190,7 +197,8 @@ $test\text{-}and\text{-}split$ 测试了一个为最简引用对的状态 $(s,(k
     \qquad \textbf{else} \\
     \qquad \qquad \textbf{if }\text{there is no }t\text{-transition from }s\textbf{ then return }(\textbf{false},s) \\
     \qquad \qquad \textbf{else return }(\textbf{true},s)\textbf{.}
-    \end{array}$$
+    \end{array}
+    $$
 
 上述过程可以从 $(s,(k,p))$ 是最简的中受益：是否为终止点可以在常数时间测试，因为只需要考虑从 $s$ 的一个转移即可。
 
@@ -198,7 +206,8 @@ $canonize$ 如下。给出一个引用对 $(s,(k,p))$ 对应某个状态 $r$ ，
 
 !!! note "$cononize(s,(k,p))$"
 
-    $$\begin{array}{ll}
+    $$
+    \begin{array}{ll}
     \textbf{procedure }cononize(s,(k,p)): \\
     \qquad \textbf{if }p\lt k\text{ then return }(s,k) \\
     \qquad \textbf{else} \\
@@ -208,7 +217,8 @@ $canonize$ 如下。给出一个引用对 $(s,(k,p))$ 对应某个状态 $r$ ，
     \qquad \qquad \qquad s\gets s'\textbf{;} \\
     \qquad \qquad \qquad \textbf{if }k\leq p\textbf{ then }\text{find the }t_k\text{-transition }g'(s,(k',p'))=s'\text{ from }s\textbf{;} \\
     \qquad \qquad \textbf{return }(s,k)\textbf{.}
-    \end{array}$$
+    \end{array}
+    $$
 
 为了能够继续构造下一个字符 $t_{i+1}$ ，我们必须找到 $STree(T^i)$ 的活跃点。注意到首先 $s_j$ 为 $STree(T^{i-1})$ 的活跃点当且仅当 $s_j=\overline{t_j\dots t_{i-1}}$ 其中 $t_j\dots t_{i-1}$ 为 $T^{i-1}$ 在 $T^{i-1}$ 中至少出现两次的最长后缀。其次注意到 $s_{j'}$ 为 $STree(T^{i-1})$ 的终止点当且仅当 $s_{j'}=\overline{t_{j'}\dots t_{i-1}}$ 其中 $t_{j'}\dots t_{i-1}t_i$ 为最长的 $T^{i-1}$ 的子串。但这意味着若 $s_{j'}$ 为 $STree(T^{i-1})$ 的终止点那么 $t_{j'}\dots t_{i-1}t_{i}$ 为 $T^i$ 中至少出现两次的最长后缀，即状态 $g(s_{j'},t_i)$ 就是 $STree(T^i)$ 的活跃点。
 
@@ -222,7 +232,8 @@ $canonize$ 如下。给出一个引用对 $(s,(k,p))$ 对应某个状态 $r$ ，
 
 !!! note "算法 2"
 
-    $$\begin{array}{ll}
+    $$
+    \begin{array}{ll}
     \text{Construction of }STree(T)\text{ for string }T=t_1t_2\dots\# \text{ in alphabet }\Sigma=\{t_{-1},\dots ,t_{-m}\}; \\
     \# \text{ is the end marker not appearing elsewhere in }T. \\
     \text{create states }root\text{ and }\bot \textbf{;} \\
@@ -233,7 +244,8 @@ $canonize$ 如下。给出一个引用对 $(s,(k,p))$ 对应某个状态 $r$ ，
     \qquad i\gets i+1\textbf{;} \\
     \qquad (s,k)\gets update(s,(k,i)) \textbf{;} \\
     \qquad (s,k)\gets canonize(s,(k,i)) \textbf{;} \\
-    \end{array}$$
+    \end{array}
+    $$
 
 其中倒数两步基于 引理 2：在倒数第二步之后 $(s,(k,i-1))$ 为 $STree(T^{i-1})$ 的终止点，因此也是 $STree(T^i)$ 的活跃点。
 
@@ -436,6 +448,6 @@ $canonize$ 如下。给出一个引用对 $(s,(k,p))$ 对应某个状态 $r$ ，
 
 !!! warning ""
 
-    这里未必正确，且这里对笛卡尔树需要进行修改，因为笛卡尔树是二叉的，而后缀树显然可以更多分支。
+    这里未必正确，且这里对笛卡尔树需要进行修改，因为笛卡尔树是二叉的，而后缀树显然可以更多分支，细节我们忽略。
 
 [^1]: E. Ukkonen. On-line Construction of Suffix-Trees. Algorithmica, 14(3), 1995.

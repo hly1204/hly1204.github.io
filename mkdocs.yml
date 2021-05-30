@@ -26,10 +26,10 @@ nav:
       - 后缀树: blog/4-12-2021-suffix_tree.md
   - 其他:
     - 数学:
-      - 扩展欧几里得算法: other/math/extended_Euclidean_algorithm.md
-      - 中国剩余定理: other/math/CRT.md
+      - 扩展欧几里得算法: misc/math/extended_Euclidean_algorithm.md
+      - 中国剩余定理: misc/math/CRT.md
     - 图论:
-      - 最大流的最大标号算法: other/graph/largest_label_preflow_push.md
+      - 最大流的最大标号算法: misc/graph/largest_label_preflow_push.md
   - 库: https://hly1204.github.io/library/
 
 theme:

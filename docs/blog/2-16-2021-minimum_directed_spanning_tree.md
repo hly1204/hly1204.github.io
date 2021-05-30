@@ -43,23 +43,31 @@
 
 在图 $G$ 的以 $r$ 为根的 DSTs 包含了 $C$ 中除了某条边之外的所有边和 $\overline G$ 的以 $r$ 为根的 DSTs 之间有一个很自然的一对一的联系。如果 $T$ 为以 $r$ 为根的 DST 且 $T\cap C=C\setminus \{e\}$ ，那么 $\overline T=T\setminus (C\setminus \{e\})$ 为 $\overline G$ 以 $r$ 为根的 DST 。相反的，如果 $\overline T$ 是 $\overline G$ 以 $r$ 为根的 DST ，我们可以“展开”它为 DST ，记为 $G$ 的 $\exp(\overline T)$ 。令 $e\in \overline E$ 为 $\overline T$ 中 $c$ 的入边。如果 $e=(u,v)$ 其中 $v\in C$ ，令 $e'=(u',v)$ 为 $C$ 中 $v$ 的入边。我们令
 
-$$\exp(\overline T)=\overline T\cup (C\setminus \{e'\})$$
+$$
+\exp(\overline T)=\overline T\cup (C\setminus \{e'\})
+$$
 
 即 $\exp(\overline T)$ 为将 $C$ 上除了 $e'$ 的所有边加入 $\overline T$ 形成的。那么容易检验 $\exp(\overline T)$ 为 $G$ 以 $r$ 为根的 DST 且包含了 $C$ 中除了某一条边的所有边。也容易检验 $\overline T$ 为 $\overline G$ 的以 $r$ 为根的 DST 且关联 $G$ 的 DST $T$ 那么 $\exp(\overline T)=T$ 。
 
 若 $e=(u,v)\in E$ 为超级节点 $c$ 的入边，我们令 $e_C=(u',v)$ 为 $C$ 中 $v$ 的入边。接下来我们定义一个新的花销函数 $\overline w:E\to \mathbb{R}$ 为
 
-$$\overline w(e)=\begin{cases}w(e)-w(e_C)&\text{if }e\text{ enters }C\\w(e)&\text{otherwise}\end{cases}$$
+$$
+\overline w(e)=\begin{cases}w(e)-w(e_C)&\text{if }e\text{ enters }C\\w(e)&\text{otherwise}\end{cases}
+$$
 
 !!! quote "引理 4.2"
 
     令 $G=(V,E,w)$ 为一个边有权的有向图。令 $r\in V$ 。令 $C$ 为 $G$ 中一个有向环。令 $T$ 为 $G$ 以 $r$ 为根的 DST 满足 $\vert T\cap C\vert =\vert C\vert -1$ 即 $T$ 包含了 $C$ 中除了某条边之外的所有边。且令 $\overline T$ 为 $\overline G=G/C$ 的 DST ，与 $T$ 相关联，那么有
 
-    $$\overline w(\overline T)=w(T)-w(C)$$
+    $$
+    \overline w(\overline T)=w(T)-w(C)
+    $$
 
 证明：假设 $T\cap C=C\setminus \{e\}$ 。那么 $\overline T=T\setminus (C\setminus \{e\})$ 。令 $e'$ 为 $T$ 中进入 $C$ 的入边（注意 $e$ 和 $e'$ 在 $C$ 为 $C$ 中同一个节点的入边）。那么
 
-$$\begin{aligned}\overline w(\overline T)&=(w(T)-w(C\setminus \{e\}))-w(e)\\&=w(T)-w(C)\end{aligned}$$
+$$
+\begin{aligned}\overline w(\overline T)&=(w(T)-w(C\setminus \{e\}))-w(e)\\&=w(T)-w(C)\end{aligned}
+$$
 
 注意 $w(C\setminus \{e\})$ 被减去是因为 $\overline T$ 是由 $T$ 中移除 $C\setminus \{e\}$ 形成的。花销 $w(e)$ 被减去是因为 $w(\overline e')=w(e')-w(e)$ 。对于其余边 $e''\in \overline T$ 我们有 $\overline w(e'')=w(e'')$ 。
 
@@ -73,4 +81,4 @@ $$\begin{aligned}\overline w(\overline T)&=(w(T)-w(C\setminus \{e\}))-w(e)\\&=w(
 
 这引出了下面这种寻找 MDST 的算法。除了根节点，选择花销最便宜的入边直到形成 DST 那么这也是 MDST ，或者直到形成了一个环 $C$ 。如果环 $C$ 形成了，那么我们收缩这个环并适当调整相关的边权。然后在收缩后的图中找到 MDST 再展开为原图的 MDST 即可。
 
-[^1]: Uri Zwick. Lecture notes on "Analysis of Algorithms": Direcetd Minimum Spanning Tree.
+[^1]: Uri Zwick. Lecture notes on "Analysis of Algorithms": [Direcetd Minimum Spanning Tree](http://www.cs.tau.ac.il/~zwick/grad-algo-13/directed-mst.pdf).
