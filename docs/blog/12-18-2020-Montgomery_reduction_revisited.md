@@ -97,5 +97,5 @@ $$
     | Euclidean gcd | binary gcd |
     | Newton's method | Hensel lifting |
 
-[^1]: Peter L. Montgomery. Modular Multiplication Without Trial Division, 1985.
+[^1]: Peter L. Montgomery. [Modular Multiplication Without Trial Division](http://www.ams.org/journals/mcom/1985-44-170/S0025-5718-1985-0777282-X/S0025-5718-1985-0777282-X.pdf), 1985.
 [^2]: Richard P. Brent and Paul Zimmermann, Modern Computer Arithmetic, Cambridge Monographs on Computational and Applied Mathematics (No. 18), Cambridge University Press, November 2010, 236 pages

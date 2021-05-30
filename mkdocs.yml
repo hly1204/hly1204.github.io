@@ -13,7 +13,7 @@ nav:
     - 其他:
       - 如何构建这个博客: blog/4-9-2021-how_to_build_this_blog.md
     - 数学:
-      - Montgomery 取模优化算法: blog/12-18-2020-Montgomery_reduction_revisited.md
+      - Montgomery 算法: blog/12-18-2020-Montgomery_reduction_revisited.md
       - 快速傅里叶变换: blog/4-10-2021-FFT.md
       - 多点求值和插值: blog/12-23-2020-multipoint_evaluation_and_interpolation.md
       - 下降幂多项式: blog/12-27-2020-falling_factorial_polynomial.md

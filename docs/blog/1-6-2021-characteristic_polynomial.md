@@ -160,7 +160,7 @@ $$
     
     上述高斯消元及算法可在 $O(n^3)$ 的时间求出。
 
-[^1]: Rizwana Rehman, Ilse C.F. Ipsen. La Budde's Method for Computing Characteristic Polynomials.
+[^1]: Rizwana Rehman, Ilse C.F. Ipsen. [La Budde's Method for Computing Characteristic Polynomials](https://ipsen.math.ncsu.edu/ps/charpoly3.pdf).
 [^2]: G. H. Golub and C. F. Van Loan, Matrix Computations, The Johns Hopkins University Press, Baltimore, third ed., 1996.
 [^3]: J. H. Wilkinson, The Algebraic Eigenvalue Problem, Clarendon Press, Oxford, 1965. MR 32 #1894.
 [^4]: <https://www.cnblogs.com/ywwyww/p/8522541.html>
