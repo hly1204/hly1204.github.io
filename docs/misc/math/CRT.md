@@ -2,7 +2,7 @@
 
 ## 两两合并
 
-在 [这里](../../blog/12-23-2020-multipoint_evaluation_and_interpolation.md) 稍微讲了一些，对于整数也是一样的。考虑已知关于 $A$ 的同余方程组
+在 [这里](../../blog/12-23-2020-multipoint_evaluation_and_interpolation.md) 粗略讲了一些，对于整数也是一样的。考虑已知关于 $A$ 的同余方程组
 
 $$
 \begin{cases}
@@ -47,7 +47,7 @@ Garner 算法可以通过给出的一个模意义下的表示 $v(x)=(v_1,v_2,\do
     $$
     \begin{array}{ll}
     \textbf{INPUT}\text{: a positive integer }M=\prod_{i=1}^tm_i\gt 1\text{, with }\gcd(m_i,m_j)\text{ for all }i\neq j \\
-    \text{ and modular representation }v(x)=(v_1,v_2,\dots ,v_t)\text{ of }x\text{ for the }m_i\text{.} \\
+    \quad \text{and modular representation }v(x)=(v_1,v_2,\dots ,v_t)\text{ of }x\text{ for the }m_i\text{.} \\
     \textbf{OUTPUT}\text{: the integer }x\text{ in radix }b\text{ representation.} \\
     \qquad \text{For }i\text{ from }2\text{ to }t\text{ do the following:} \\
     \qquad \qquad C_i\gets 1\text{.} \\
@@ -72,8 +72,9 @@ Garner 算法可以通过给出的一个模意义下的表示 $v(x)=(v_1,v_2,\do
 
     $$
     \begin{array}{ll}
-    \textbf{INPUT}\text{: a positive integer }p\text{ and a positive integer }M=\prod_{i=1}^tm_i\gt 1\text{, with }\gcd(m_i,m_j)\text{ for all }i\neq j \\
-    \text{ and modular representation }v(x)=(v_1,v_2,\dots ,v_t)\text{ of }x\text{ for the }m_i\text{.} \\
+    \textbf{INPUT}\text{: a positive integer }p\text{ and a positive integer }M=\prod_{i=1}^tm_i\gt 1\text{,}\\
+    \quad \text{with }\gcd(m_i,m_j)\text{ for all }i\neq j \\
+    \quad \text{and modular representation }v(x)=(v_1,v_2,\dots ,v_t)\text{ of }x\text{ for the }m_i\text{.} \\
     \textbf{OUTPUT}\text{: }(x\bmod{M})\bmod{p}\text{.} \\
     \qquad \text{For }i\text{ from }2\text{ to }t\text{ do the following:} \\
     \qquad \qquad C_i\gets 1\text{.} \\
@@ -92,12 +93,16 @@ Garner 算法可以通过给出的一个模意义下的表示 $v(x)=(v_1,v_2,\do
     \end{array}
     $$
 
+!!! note ""
+
+    不必按照上述伪代码中进行重复的求逆元，我们只需维护前缀积模当前模数的值，最后求一次即可。
+
 !!! note "例题 [No.187 中華風 (Hard)](https://yukicoder.me/problems/448)"
 
-    用 cpp 实现且不使用大整数是一个挑战，目前我仅用 python 尝试，因为可以令中间结果保留全部精度，但可以使用 Garner 算法并稍作修改在 $O(t^2\log(\max_{i=1}^t\{m_t\}))$ 的时间完成。
+    用 cpp 实现且不使用大整数是一个挑战，目前我仅用 python 尝试，因为可以令中间结果保留全部精度，但可以使用 Garner 算法并稍作修改在 $O(t^2\log(\max_{i=1}^t\{m_t\}))$ 的时间（这个时间真的正确吗）完成。
     
     - [ ] 实现 Garner 算法合并模数不互素的同余方程并将结果对一个固定小模数取模
-
+    
     该算法在[^2]中有提及，借由此算法我们也可以不使用 `__int128_t` 完成更多模数的 NTT 结果合并且可用作 CRT 算法的预处理。
 
 !!! warning "关联算法"
