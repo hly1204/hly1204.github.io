@@ -6,7 +6,7 @@
 =============================
 hly1204 的主页
 =============================
-`这里 <https://hly1204.github.io/library/>`_ 是我的 library 。
+在 `GitHub <https://github.com/hly1204/hly1204.github.io>`_ 访问仓库和我的 `library <https://hly1204.github.io/library/>`_ 。
 
 .. toctree::
    :maxdepth: 2
@@ -17,10 +17,8 @@ hly1204 的主页
 
 .. note::
    
-   如果愿意在 `GitHub issues`_ 中提出这里存在的问题，我会非常感谢！
+   如果愿意在 `GitHub issues <https://github.com/hly1204/hly1204.github.io/issues>`_ 中提出这里存在的问题，我会非常感谢！
 
 .. warning::
    
-   这里的文章仅代表个人观点，不保证正确。
-
-.. _GitHub issues: https://github.com/hly1204/hly1204.github.io/issues
+   这里的文章仅代表个人观点，不保证正确。 

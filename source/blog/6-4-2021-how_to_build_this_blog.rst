@@ -11,6 +11,8 @@
 
 使用 ``pip install -U sphinx`` 安装 Sphinx 后使用编译命令 ``sphinx-build -b html source build`` 即可。
 
+对于行内代码块，我使用 ````test()```` 前后各两个包裹，对于加粗字体我使用 ``**加粗**`` 表示。
+
 代码块
 ----------------
 
@@ -42,6 +44,21 @@
    \frac{-b\pm \sqrt{b^2-4ac}}{2a}
 
 :eq:`1` 是正确的。
+
+表格
+----------------
++------------------------+------------+----------+----------+
+| Header row, column 1   | Header 2   | Header 3 | Header 4 |
+| (header rows optional) |            |          |          |
++========================+============+==========+==========+
+| body row 1, column 1   | column 2   | column 3 | column 4 |
++------------------------+------------+----------+----------+
+| body row 2             | Cells may span columns.          |
++------------------------+------------+---------------------+
+| body row 3             | Cells may  | - Table cells       |
++------------------------+ span rows. | - contain           |
+| body row 4             |            | - body elements.    |
++------------------------+------------+---------------------+
 
 .. _reStructuredText: https://docutils.sourceforge.io/rst.html
 .. _Sphinx: https://www.sphinx-doc.org/en/master/

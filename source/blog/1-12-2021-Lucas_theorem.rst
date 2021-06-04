@@ -5,8 +5,7 @@ Lucas 定理及其推广
 Lucas 定理
 --------------------
 
-:strong:`Lucas 定理`
-
+**Lucas 定理**
    对于一个素数 :math:`p` 和非负整数 :math:`n,k` ，有
 
    .. math::
@@ -16,8 +15,7 @@ Lucas 定理
 
    其中 :math:`\lfloor \cdot \rfloor` 表示整数部分， :math:`\binom{n}{k}=\frac{n(n-1)\cdots (n-k+1)}{k!}` 。
 
-:strong:`推论`
-
+**推论**
    将 :math:`n,k` 表示为 :math:`p` 进制为
 
    .. math::
@@ -29,7 +27,7 @@ Lucas 定理
 
    .. math:: \binom{n}{k}\equiv \prod_{i=0}^{r}\binom{a_{i}}{b_{i}}\pmod{p}
 
-:strong:`证明`
+**证明**
 
    考虑
 
@@ -77,12 +75,10 @@ Lucas 定理的推广
 
 Lucas 定理的推广
 ~~~~~~~~~~~~~~~~~~~~
-:strong:`定义 1`
-
+**定义 1**
    对于给定一个整数 :math:`n` 令 :math:`(n!)_{p}` 表示所有小于等于 :math:`n` 的不能被 :math:`p` 整除的整数的乘积。也可以写作 :math:`(n!)_{p}=n!/(\lfloor n/p\rfloor !p^{\lfloor n/p\rfloor})` 。
 
-:strong:`定理 1`
-
+**定理 1**
    给定素数 :math:`p` 的幂次 :math:`p^q` 和正整数 :math:`n=m+r` 。在 :math:`p` 进制下记 :math:`n=n_{0}+n_{1}p+\dots +n_{d}p^{d}` 且对于每个 :math:`j` 令 :math:`N_{j}=\lfloor n/p^j\rfloor \bmod{p^q}` （即 :math:`N_{j}=n_{j}+n_{j+1}+\dots +n_{j+q-1}p^{q-1}` ）。对于 :math:`m_{j},M_{j},r_{j},R_{j}` 也同样定义。令 :math:`e_{j}` 为当将 :math:`m` 和 :math:`r` 在 :math:`p` 进制中相加的在第 :math:`j` 位数字和之后的“进位”次数。有
 
    .. math::
@@ -102,8 +98,7 @@ Wilson 定理
 
 成立。
 
-:strong:`证明`
-
+**证明**
    我们知道在模奇素数 :math:`p` 意义下对于整数 :math:`n\nmid p` 都存在逆元且唯一。一个整数逆元的逆元为其自身。
 
    对于逆元为自身的情况，我们记 :math:`a^2\equiv 1\pmod{p}\implies(a+1)(a-1)\equiv 0\pmod{p}` 那么 :math:`a\equiv \pm 1\pmod{p}` 。
@@ -122,14 +117,12 @@ Wilson 定理的推广
 
 其中 :math:`(\pm 1)` 与 :eq:`theorem 1` 中最后一句描述的相同。
 
-:strong:`证明`
-
+**证明**
    与上述证明类似的，只要我们不停在模 :math:`p^q` 意义下配对每个 :math:`m` 和它的逆元，那么 :math:`(p^q!)` 在模 :math:`p^q` 意义下同余于那些逆元等于自身的元素的乘积。
 
    即关于 :math:`m` 的方程 :math:`m^2\equiv 1\pmod{p^q}` 的根的乘积，而这两个根分别为 :math:`1` 和 :math:`p^q-1` ，除非 :math:`p^q=2` 时，仅有一根，或者 :math:`p=2` 且 :math:`q\geq 3` 时额外的根为 :math:`2^{q-1}\pm 1` 。
 
-:strong:`推论 1`
-
+**推论 1**
    对于给定素数 :math:`p` 的幂次 :math:`p^q` 和 :math:`N_{0}=n\bmod{p^q}` 有
 
    .. math::
@@ -139,8 +132,7 @@ Wilson 定理的推广
 
    其中 :math:`(\pm 1)` 与 :eq:`theorem 1` 中最后一句描述的相同。
 
-:strong:`推论 1 的证明`
-
+**推论 1 的证明**
    将每个下面的 :math:`r` 记为 :math:`ip^q+j` 有
 
    .. math::
@@ -155,14 +147,12 @@ Wilson 定理的推广
 
 -------------------
 
-:strong:`Legendre 定理`
-
+**Legendre 定理**
    Legendre 在 1808 年展示了准确的 :math:`p` 的多少幂次整除 :math:`n!` 为
 
    .. math:: \nu_p(n!)=\sum_{i\geq 1}\lfloor n/p^i\rfloor
 
-:strong:`Legendre 定理的证明`
-
+**Legendre 定理的证明**
    :math:`n!=p^{\nu(n!)}c` 其中 :math:`p\nmid c` 。这很显然，考虑 :math:`n!=1\times 2\times \cdots \times n` 而其中能被 :math:`p` 整除的项为 :math:`p\times 2p\times\cdots\times\lfloor n/p\rfloor p=\lfloor n/p\rfloor !p^{\lfloor n/p\rfloor}` 那么有 :math:`\nu_p(n!)=\lfloor n/p\rfloor +\nu_p(\lfloor n/p\rfloor !)` 。
 
 将 :math:`n` 在 :math:`p` 进制下记为 :math:`n=n_0+n_1p+\cdots +n_dp^d` 我们定义一个每一位数的和的函数 :math:`\sigma(n)=\sigma_p(n):=n_0+n_1+\cdots +n_d` 。那么
@@ -195,7 +185,7 @@ Kummer 定理
 ~~~~~~~~~~~~~~~~~~~~
 :math:`p` 的多少次幂整除二项式系数 :math:`\binom{n}{m}` 为 :math:`m` 与 :math:`n-m` 在 :math:`p` 进制下相加所需要的“进位”次数。
 
-:strong:`证明`
+**证明**
    对于每个 :math:`j\geq 0` 我们可以简单的发现
 
    .. math:: n_j=m_j+r_j+\epsilon_{j-1}-p\epsilon_j
@@ -228,8 +218,7 @@ Kummer 定理
 
 通过 :eq:`corollary 1` ，将所有 :math:`j\geq 0` 的同余式相乘得到了
 
-:strong:`命题 1`
-
+**命题 1**
     对于任何整数 :math:`n` 和素数幂次 :math:`p^q` ，我们有
 
     .. math::
