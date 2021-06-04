@@ -5,7 +5,41 @@
 
 而构造文档的交给 Sphinx_ 来完成，其中有一些扩展也是 reStructuredText_ 没有的。
 
-这篇文章很多一部分是参考了 `reStructuredText 简介`_ 中的。
+很大一部分用法是参考了 `reStructuredText 简介`_ 中的。
+
+我在这里统一采用 3 个空格的缩进。
+
+代码块
+----------------
+
+.. code-block:: py
+   :linenos:
+   :caption: test
+   :name: 示例
+
+   def gcd(a, b):
+       if a % b == 0:
+           return b
+       else:
+           return gcd(b, a % b)
+
+导入代码文件
+----------------
+
+.. literalinclude:: ../conf.py
+   :linenos:
+   :language: py
+
+数学公式
+----------------
+对于关于 :math:`x` 的多项式 :math:`ax^2+bx+c` 其根为
+
+.. math::
+   :label: 1
+
+   \frac{-b\pm \sqrt{b^2-4ac}}{2a}
+
+:eq:`1` 是正确的。
 
 .. _reStructuredText: https://docutils.sourceforge.io/rst.html
 .. _Sphinx: https://www.sphinx-doc.org/en/master/
