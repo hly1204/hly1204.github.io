@@ -2,6 +2,10 @@
 Lucas 定理及其推广
 ====================
 
+:Date: 2021-1-12
+:Author: hly1204
+:Status: 完成
+
 Lucas 定理
 --------------------
 
@@ -228,13 +232,17 @@ Kummer 定理
 
 至此 :eq:`theorem 1` 得证。
 
+.. rubric:: 参考文献
+
+.. [#a] Andrew Granville. `Arithmetic Properties of Binomial Coefficients I: Binomial Coefficients modulo prime powers <http://www.cecm.sfu.ca/organics/papers/granville/paper/binomial/html/binomial.html>`_.
+
 任意模数二项卷积
 --------------------
 对于一个数列 :math:`\langle a\rangle =a_{0},a_{1},\dots ,a_{n}` 和 :math:`\langle b\rangle =b_{0},b_{1},\dots ,b_{m}` 设多项式 :math:`A(x)=\sum_{i=0}^n\frac{a_i}{i!}x^i` 和 :math:`B(x)=\sum_{i=0}^m\frac{b_i}{i!}x^i` 和
 
 .. math:: C(x)=A(x)B(x)=\sum_{i=0}^{n+m}\frac{c_i}{i!}x^i
 
-为了保证边界情况，我们认为对于 :math:`\forall i\gt n` 有 :math:`a_{i}=0` ， :math:`b_{i}` 同理。显然，根据一般的多项式乘法我们有
+为了保证边界情况，我们认为对于 :math:`\forall i\gt n` 有 :math:`a_{i}=0` ， :math:`B(x)` 同理。根据多项式乘法我们有
 
 .. math:: \frac{c_k}{k!}=\sum_{i=0}^k\frac{a_i}{i!}\frac{b_{k-i}}{(k-i)!}
 
@@ -246,14 +254,14 @@ Kummer 定理
 
 .. math:: c_k=\sum_{i}\binom{k}{i}a_ib_{k-i}
 
-因为合数可以通过中国剩余定理来进行合并，所以只需考虑如何求在模一个素数幂次 :math:`p^q` 意义下的 :math:`C(x)` 的系数。这里与上面不同的是 :math:`n,m` 的范围不大（因为需要考虑卷积的时间），可以预处理出 :math:`n!/p^{\nu_p(n!)}\pmod{p^q}` 。我们令 :math:`\hat{a}_k=a_k\cdot (k!/p^{\nu_p(k!)})^{-1}\pmod{p^q}` 那么
+因为合数可以通过中国剩余定理来进行合并，所以只需考虑如何求在模一个素数幂次 :math:`p^q` 意义下的 :math:`C(x)` 的系数。这里与上面不同的是 :math:`n,m` 的范围不大（因为需要考虑卷积的时间），可以预处理出 :math:`n!/p^{\nu_p(n!)}\pmod{p^q}` 。
+
+我们令 :math:`\hat{a}_k=a_k\cdot (k!/p^{\nu_p(k!)})^{-1}\pmod{p^q}` 那么
 
 .. math:: \hat{c}_k=\sum_{i=0}^kp^{\nu_p(k!)-\nu_p((k-i)!)-\nu_p(i!)}\hat{a}_i\hat{b}_{k-i}\pmod{p^q}
 
-剩下是分析可以进行运算的范围，包括上文内容也是参考 [#b]_ 中的。注意需要求出 :math:`\hat{c}_k` 在模“NTT 模数”的意义下，然后进行合并，此时没有除法。
+剩下是分析可以进行运算的范围，参考 [#b]_ 中使用 Kummer 定理进行分析，可以使用 NTT 算法选取适量模数用 CRT 进行合并。注意需要在模“NTT 模数”的意义下求出 :math:`\hat{c}_k` ，此时没有除法。
 
-参考文献
---------------------
+.. rubric:: 参考文献
 
-.. [#a] Andrew Granville. `Arithmetic Properties of Binomial Coefficients I: Binomial Coefficients modulo prime powers <http://www.cecm.sfu.ca/organics/papers/granville/paper/binomial/html/binomial.html>`_.
 .. [#b] Entropy Increaser. `任意模数二项卷积 <https://blog.csdn.net/EI_Captain/article/details/107456608>`_.
