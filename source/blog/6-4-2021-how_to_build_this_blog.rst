@@ -9,6 +9,8 @@
 
 我在这里统一采用 3 个空格的缩进。
 
+使用 ``pip install -U sphinx`` 安装 Sphinx 后使用编译命令 ``sphinx-build -b html source build`` 即可。
+
 代码块
 ----------------
 
