@@ -6,12 +6,13 @@
 =============================
 hly1204 的主页
 =============================
-在 `GitHub <https://github.com/hly1204/hly1204.github.io>`_ 访问仓库和我的 `library <https://hly1204.github.io/library/>`_ 。
 
 .. toctree::
    :maxdepth: 2
-   :caption: 目录:
+   :caption: 目录
 
+   This repo on GitHub <https://github.com/hly1204/hly1204.github.io>
+   Library <https://hly1204.github.io/library/>
    misc
    math
 
