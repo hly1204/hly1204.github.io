@@ -211,12 +211,12 @@ La Budde 方法 [#ref1]_ 可用来在 :math:`O(n^3)` 计算矩阵 :math:`\mathbf
 
 一般的高斯消元并不是直接的相似变换，我们在这里假设只作行变换，也就是
 
-1. 将 :math:`i` 行的 :math:`k` 倍加到 :math:`j` 行，其中 :math:`i\neq j` 且 :math:`k\neq 0` 。
+1. 将第 :math:`i` 行的 :math:`k` 倍加到第 :math:`j` 行，其中 :math:`i\neq j` 且 :math:`k\neq 0` 。
 2. 交换两行。
 
 其中第二个操作作用于矩阵 :math:`\mathbf{A}` 等价于使其左乘一个排列矩阵，而排列矩阵的逆为其转置，我们右乘他即交换对应的两列，这个操作也用来选主元。
 
-令矩阵 :math:`\mathbf{M}_{ab}` 表示第 :math:`a` 行，第 :math:`b` 列的元素。
+令 :math:`\mathbf{M}_{ab}` 表示矩阵 :math:`\mathbf{M}` 第 :math:`a` 行，第 :math:`b` 列的元素。
 
 对于第一个操作，其等价于左乘了一个形如 :math:`\mathbf{I}_n+\mathbf{M}` 的矩阵，其中 :math:`\mathbf{M}_{ij}=k` 其余都为零，我们右乘他的逆即 :math:`\mathbf{I}_n-\mathbf{M}` 即可。
 
@@ -291,5 +291,7 @@ La Budde 方法 [#ref1]_ 可用来在 :math:`O(n^3)` 计算矩阵 :math:`\mathbf
 上述 :math:`\Gamma(\lambda)=\det(\lambda \mathbf{I}_d-\mathbf{M})` 也就是其特征多项式。
 
 我们不难将矩阵的特征多项式与线性递推联系起来 [#mori]_ 以及得到更快求矩阵幂次的算法，而求出矩阵的最小多项式我们可以采用随机化的 Berlekamp-Massey 算法。
+
+.. rubric:: 脚注
 
 .. [#mori] Alin Bostan, Ryuhei Mori. `A Simple and Fast Algorithm for Computing the N-th Term of a Linearly Recurrent Sequence <https://arxiv.org/abs/2008.08822>`_.
