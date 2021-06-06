@@ -10,5 +10,6 @@
   "editor.snippetSuggestions": "top",
   "editor.wordWrap": "on",
   "editor.codeLensFontFamily": "Cascadia Code, 'Courier New', 微软雅黑",
-  "editor.minimap.enabled": false
+  "editor.minimap.enabled": false,
+  "editor.defaultFormatter": "ms-python.python"
 }
