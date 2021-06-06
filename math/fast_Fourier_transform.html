@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
 
   
   
@@ -35,7 +36,10 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
         <script src="../_static/translations.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -96,7 +100,16 @@
 <li class="toctree-l1"><a class="reference internal" href="Chinese_remainder_theorem.html">中国剩余定理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Lucas_theorem.html">Lucas 定理及其推广</a></li>
 <li class="toctree-l1"><a class="reference internal" href="characteristic_polynomial.html">特征多项式</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">快速 Fourier 变换</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">快速 Fourier 变换</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#classical-radix-2-fft">Classical radix-2 FFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#twisted-radix-2-fft">Twisted radix-2 FFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#split-radix-fft">Split-radix FFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#classical-radix-3-fft">Classical radix-3 FFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#twisted-radix-3-fft">Twisted radix-3 FFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#classical-radix-4-fft">Classical radix-4 FFT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#twisted-radix-4-fft">Twisted radix-4 FFT</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">GitHub 项目</span></p>
 <ul>
@@ -171,6 +184,47 @@
             
   <div class="section" id="fourier">
 <h1>快速 Fourier 变换<a class="headerlink" href="#fourier" title="永久链接至标题">¶</a></h1>
+<div class="section" id="classical-radix-2-fft">
+<h2>Classical radix-2 FFT<a class="headerlink" href="#classical-radix-2-fft" title="永久链接至标题">¶</a></h2>
+<p>在 Bernstein 的论文中也称为 original radix-2 FFT ，这里使用标题的称呼。该算法最早由 Gauss 提出后由 Cooley 和 Tukey 重新发表。</p>
+<p>最早由 Fiduccia 发现 classical radix-2 FFT 实际上可以用下式表示</p>
+<div class="math notranslate nohighlight" id="equation-classical2fft">
+<span class="eqno">(1)<a class="headerlink" href="#equation-classical2fft" title="公式的永久链接">¶</a></span>\[ \begin{align}\begin{aligned}R[x]/(x^{2m}-b^2)&amp;\to R[x]/(x^m-b)\\&amp;\times R[x]/(x^m+b)\end{aligned}\end{align} \]</div>
+<p>输入为 <span class="math notranslate nohighlight">\(f\bmod(x^{2m}-b^2)\)</span> 计算 <span class="math notranslate nohighlight">\(f_Y=f\bmod{(x^m-b)}\)</span> 和 <span class="math notranslate nohighlight">\(f_Z=f\bmod{(x^m+b)}\)</span> 。在这里这样的取模运算是很简单的。我们将输入分为大小为 <span class="math notranslate nohighlight">\(m\)</span> 的两部分</p>
+<p>即 <span class="math notranslate nohighlight">\(f\bmod{(x^{2m}-b^2)}=f_B+f_A\cdot x^m\)</span> ，其中 <span class="math notranslate nohighlight">\(f_B=(f\bmod{(x^{2m}-b^2)})\bmod{x^m}\)</span> 。</p>
+<p>那么 <span class="math notranslate nohighlight">\(f_Y=b\cdot f_A+f_B\)</span> 且 <span class="math notranslate nohighlight">\(f_Z=-b\cdot f_A+f_B\)</span> 。我们可以使用矩阵表示这一过程如</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{bmatrix}
+f_Y\\f_Z
+\end{bmatrix}
+=
+\begin{bmatrix}
+b&amp;1\\-b&amp;1
+\end{bmatrix}
+\begin{bmatrix}
+f_A\\f_B
+\end{bmatrix}\end{aligned}\end{align} \]</div>
+<p>一些工程师经常把这个变换画成一个图然后称为“蝶形操作”。而 classical radix-2 FFT 就是不停应用直到最后模一个线性的多项式，也就等价于求得点值。</p>
+<p>注意到只需要 <span class="math notranslate nohighlight">\(2b\)</span> 是可逆的那么上述算法就是可逆的，把上面的过程倒过来，也就是做一个求和和差分再乘以 <span class="math notranslate nohighlight">\((2b)^{-1}\)</span> 也可以得到答案（大多数时候我们会将这里每一步的 <span class="math notranslate nohighlight">\(2\)</span> 累积到最后处理）。</p>
+</div>
+<div class="section" id="twisted-radix-2-fft">
+<h2>Twisted radix-2 FFT<a class="headerlink" href="#twisted-radix-2-fft" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="split-radix-fft">
+<h2>Split-radix FFT<a class="headerlink" href="#split-radix-fft" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="classical-radix-3-fft">
+<h2>Classical radix-3 FFT<a class="headerlink" href="#classical-radix-3-fft" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="twisted-radix-3-fft">
+<h2>Twisted radix-3 FFT<a class="headerlink" href="#twisted-radix-3-fft" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="classical-radix-4-fft">
+<h2>Classical radix-4 FFT<a class="headerlink" href="#classical-radix-4-fft" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="twisted-radix-4-fft">
+<h2>Twisted radix-4 FFT<a class="headerlink" href="#twisted-radix-4-fft" title="永久链接至标题">¶</a></h2>
+</div>
 </div>
 
 
@@ -187,6 +241,9 @@
   <div role="contentinfo">
     <p>
         &#169; 版权所有 2021, hly1204.
+      <span class="lastupdated">
+        最后更新于 2021 年 06 月 06 日.
+      </span>
 
     </p>
   </div>

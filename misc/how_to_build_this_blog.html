@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
 
   
   
@@ -35,6 +36,8 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
         <script src="../_static/translations.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
@@ -235,7 +238,7 @@
 <span class="linenos">27</span><span class="c1"># Add any Sphinx extension module names here, as strings. They can be</span>
 <span class="linenos">28</span><span class="c1"># extensions coming with Sphinx (named &#39;sphinx.ext.*&#39;) or your custom</span>
 <span class="linenos">29</span><span class="c1"># ones.</span>
-<span class="linenos">30</span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sphinx.ext.mathjax&#39;</span><span class="p">]</span>
+<span class="linenos">30</span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sphinx.ext.mathjax&#39;</span><span class="p">,</span> <span class="s1">&#39;sphinx_copybutton&#39;</span><span class="p">]</span>
 <span class="linenos">31</span>
 <span class="linenos">32</span><span class="c1"># Add any paths that contain templates here, relative to this directory.</span>
 <span class="linenos">33</span><span class="n">templates_path</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_templates&#39;</span><span class="p">]</span>
@@ -271,7 +274,7 @@
 <span class="linenos">63</span><span class="p">}</span>
 <span class="linenos">64</span><span class="n">root_doc</span> <span class="o">=</span> <span class="s1">&#39;index&#39;</span>  <span class="c1"># 包含了根目录树</span>
 <span class="linenos">65</span><span class="n">keep_warnings</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># 总是显示警告</span>
-<span class="linenos">66</span><span class="n">today_fmt</span> <span class="o">=</span> <span class="s1">&#39;%Y-%b-</span><span class="si">%d</span><span class="s1">&#39;</span>
+<span class="linenos">66</span><span class="n">today_fmt</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 <span class="linenos">67</span><span class="n">trim_footnote_reference_space</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="linenos">68</span><span class="n">html_permalinks</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="linenos">69</span>
@@ -280,6 +283,7 @@
 <span class="linenos">72</span><span class="n">html_sidebars</span> <span class="o">=</span> <span class="p">{</span>
 <span class="linenos">73</span>    <span class="s1">&#39;**&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;localtoc.html&#39;</span><span class="p">,</span> <span class="s1">&#39;searchbox.html&#39;</span><span class="p">]</span>
 <span class="linenos">74</span><span class="p">}</span>
+<span class="linenos">75</span><span class="n">html_last_updated_fmt</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -348,6 +352,9 @@ span rows.</p></td>
   <div role="contentinfo">
     <p>
         &#169; 版权所有 2021, hly1204.
+      <span class="lastupdated">
+        最后更新于 2021 年 06 月 06 日.
+      </span>
 
     </p>
   </div>
