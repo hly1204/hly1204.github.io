@@ -27,7 +27,7 @@ author = 'hly1204'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.mathjax']
+extensions = ['sphinx.ext.mathjax', 'sphinx_copybutton']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -63,7 +63,7 @@ source_suffix = {
 }
 root_doc = 'index'  # 包含了根目录树
 keep_warnings = True  # 总是显示警告
-today_fmt = '%Y-%b-%d'
+today_fmt = ''
 trim_footnote_reference_space = True
 html_permalinks = True
 
@@ -72,3 +72,4 @@ nosidebar = False
 html_sidebars = {
     '**': ['localtoc.html', 'searchbox.html']
 }
+html_last_updated_fmt = ''
