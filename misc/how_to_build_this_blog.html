@@ -1,0 +1,384 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>如何构造这个博客 &mdash; hly1204.github.io  文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="中国剩余定理" href="../math/Chinese_remainder_theorem.html" />
+    <link rel="prev" title="hly1204 的主页" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> hly1204.github.io
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">其他</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">如何构造这个博客</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">代码块示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">导入代码文件示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">数学公式示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">表格示例</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">数学</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../math/Chinese_remainder_theorem.html">中国剩余定理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/Lucas_theorem.html">Lucas 定理及其推广</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/characteristic_polynomial.html">特征多项式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/fast_Fourier_transform.html">快速 Fourier 变换</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GitHub 项目</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/hly1204/hly1204.github.io">This repo on GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://hly1204.github.io/library/">Library</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hly1204.github.io</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>如何构造这个博客</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/misc/how_to_build_this_blog.rst.txt" rel="nofollow"> 查看页面源码</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>如何构造这个博客<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id2">
+<h2>简介<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>说实话这个东西我也是第一次接触，与 Markdown 语法的简单不同，这里使用 <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> 来构造，语法稍复杂但功能却非常丰富。</p>
+<p>而构造文档的交给 <a class="reference external" href="https://www.sphinx-doc.org/en/master/">Sphinx</a> 来完成，其中有一些扩展也是 <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> 没有的。</p>
+<p>很大一部分用法是参考了 <a class="reference external" href="https://self-contained.github.io/reStructuredText/index.html">reStructuredText 简介</a> 中的。</p>
+<p>我在这里统一采用 3 个空格的缩进。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-U</span> <span class="pre">sphinx</span></code> 安装 Sphinx 后使用编译命令 <code class="docutils literal notranslate"><span class="pre">sphinx-build</span> <span class="pre">-b</span> <span class="pre">html</span> <span class="pre">source</span> <span class="pre">build</span></code> 即可。</p>
+<p>对于行内代码块，我使用 <code class="docutils literal notranslate"><span class="pre">``test()``</span></code> 前后各两个包裹，对于加粗字体我使用 <code class="docutils literal notranslate"><span class="pre">**加粗**</span></code> 表示。</p>
+<p>对于术语的英文和参考文献我使用脚注的形式来标注，用 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">rubric::</span> <span class="pre">脚注</span></code> 作为标题，后跟 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">[#b]</span> <span class="pre">内容</span></code> 来表示 <code class="docutils literal notranslate"><span class="pre">[#b]_</span></code> 的内容，注意前后空格。</p>
+<p>这种标注作为一个类似于“标题”的存在但不会被包含到目录中。</p>
+</div>
+<div class="section" id="id3">
+<h2>代码块示例<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">test</span><a class="headerlink" href="#id4" title="永久链接至代码">¶</a></div>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="k">if</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">3</span>        <span class="k">return</span> <span class="n">b</span>
+<span class="linenos">4</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos">5</span>        <span class="k">return</span> <span class="n">gcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>导入代码文件示例<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># Configuration file for the Sphinx documentation builder.</span>
+<span class="linenos"> 2</span><span class="c1">#</span>
+<span class="linenos"> 3</span><span class="c1"># This file only contains a selection of the most common options. For a full</span>
+<span class="linenos"> 4</span><span class="c1"># list see the documentation:</span>
+<span class="linenos"> 5</span><span class="c1"># https://www.sphinx-doc.org/en/master/usage/configuration.html</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="c1"># -- Path setup --------------------------------------------------------------</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="c1"># If extensions (or modules to document with autodoc) are in another directory,</span>
+<span class="linenos">10</span><span class="c1"># add these directories to sys.path here. If the directory is relative to the</span>
+<span class="linenos">11</span><span class="c1"># documentation root, use os.path.abspath to make it absolute, like shown here.</span>
+<span class="linenos">12</span><span class="c1">#</span>
+<span class="linenos">13</span><span class="c1"># import os</span>
+<span class="linenos">14</span><span class="c1"># import sys</span>
+<span class="linenos">15</span><span class="c1"># sys.path.insert(0, os.path.abspath(&#39;.&#39;))</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="c1"># -- Project information -----------------------------------------------------</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="n">project</span> <span class="o">=</span> <span class="s1">&#39;hly1204.github.io&#39;</span>
+<span class="linenos">21</span><span class="n">copyright</span> <span class="o">=</span> <span class="s1">&#39;2021, hly1204&#39;</span>
+<span class="linenos">22</span><span class="n">author</span> <span class="o">=</span> <span class="s1">&#39;hly1204&#39;</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span><span class="c1"># -- General configuration ---------------------------------------------------</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="c1"># Add any Sphinx extension module names here, as strings. They can be</span>
+<span class="linenos">28</span><span class="c1"># extensions coming with Sphinx (named &#39;sphinx.ext.*&#39;) or your custom</span>
+<span class="linenos">29</span><span class="c1"># ones.</span>
+<span class="linenos">30</span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sphinx.ext.mathjax&#39;</span><span class="p">]</span>
+<span class="linenos">31</span>
+<span class="linenos">32</span><span class="c1"># Add any paths that contain templates here, relative to this directory.</span>
+<span class="linenos">33</span><span class="n">templates_path</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_templates&#39;</span><span class="p">]</span>
+<span class="linenos">34</span>
+<span class="linenos">35</span><span class="c1"># The language for content autogenerated by Sphinx. Refer to documentation</span>
+<span class="linenos">36</span><span class="c1"># for a list of supported languages.</span>
+<span class="linenos">37</span><span class="c1">#</span>
+<span class="linenos">38</span><span class="c1"># This is also used if you do content translation via gettext catalogs.</span>
+<span class="linenos">39</span><span class="c1"># Usually you set &quot;language&quot; from the command line for these cases.</span>
+<span class="linenos">40</span><span class="n">language</span> <span class="o">=</span> <span class="s1">&#39;zh_CN&#39;</span>
+<span class="linenos">41</span>
+<span class="linenos">42</span><span class="c1"># List of patterns, relative to source directory, that match files and</span>
+<span class="linenos">43</span><span class="c1"># directories to ignore when looking for source files.</span>
+<span class="linenos">44</span><span class="c1"># This pattern also affects html_static_path and html_extra_path.</span>
+<span class="linenos">45</span><span class="n">exclude_patterns</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos">46</span>
+<span class="linenos">47</span>
+<span class="linenos">48</span><span class="c1"># -- Options for HTML output -------------------------------------------------</span>
+<span class="linenos">49</span>
+<span class="linenos">50</span><span class="c1"># The theme to use for HTML and HTML Help pages.  See the documentation for</span>
+<span class="linenos">51</span><span class="c1"># a list of builtin themes.</span>
+<span class="linenos">52</span><span class="c1">#</span>
+<span class="linenos">53</span><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;sphinx_rtd_theme&#39;</span>
+<span class="linenos">54</span>
+<span class="linenos">55</span><span class="c1"># Add any paths that contain custom static files (such as style sheets) here,</span>
+<span class="linenos">56</span><span class="c1"># relative to this directory. They are copied after the builtin static files,</span>
+<span class="linenos">57</span><span class="c1"># so a file named &quot;default.css&quot; will overwrite the builtin &quot;default.css&quot;.</span>
+<span class="linenos">58</span><span class="n">html_static_path</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_static&#39;</span><span class="p">]</span>
+<span class="linenos">59</span>
+<span class="linenos">60</span><span class="c1"># -- added by hly1204</span>
+<span class="linenos">61</span><span class="n">source_suffix</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos">62</span>    <span class="s1">&#39;.rst&#39;</span><span class="p">:</span> <span class="s1">&#39;restructuredtext&#39;</span>
+<span class="linenos">63</span><span class="p">}</span>
+<span class="linenos">64</span><span class="n">root_doc</span> <span class="o">=</span> <span class="s1">&#39;index&#39;</span>  <span class="c1"># 包含了根目录树</span>
+<span class="linenos">65</span><span class="n">keep_warnings</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># 总是显示警告</span>
+<span class="linenos">66</span><span class="n">today_fmt</span> <span class="o">=</span> <span class="s1">&#39;%Y-%b-</span><span class="si">%d</span><span class="s1">&#39;</span>
+<span class="linenos">67</span><span class="n">trim_footnote_reference_space</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos">68</span><span class="n">html_permalinks</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos">69</span>
+<span class="linenos">70</span><span class="c1"># -- 主题设置</span>
+<span class="linenos">71</span><span class="n">nosidebar</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos">72</span><span class="n">html_sidebars</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos">73</span>    <span class="s1">&#39;**&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;localtoc.html&#39;</span><span class="p">,</span> <span class="s1">&#39;searchbox.html&#39;</span><span class="p">]</span>
+<span class="linenos">74</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>数学公式示例<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>对于关于 <span class="math notranslate nohighlight">\(x\)</span> 的多项式 <span class="math notranslate nohighlight">\(ax^2+bx+c\)</span> 其根为</p>
+<div class="math notranslate nohighlight" id="equation-1">
+<span class="eqno">(1)<a class="headerlink" href="#equation-1" title="公式的永久链接">¶</a></span>\[\frac{-b\pm \sqrt{b^2-4ac}}{2a}\]</div>
+<p><a class="reference internal" href="#equation-1">(1)</a> 是正确的。</p>
+</div>
+<div class="section" id="id7">
+<h2>表格示例<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 21%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Header row, column 1
+(header rows optional)</p></th>
+<th class="head"><p>Header 2</p></th>
+<th class="head"><p>Header 3</p></th>
+<th class="head"><p>Header 4</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>body row 1, column 1</p></td>
+<td><p>column 2</p></td>
+<td><p>column 3</p></td>
+<td><p>column 4</p></td>
+</tr>
+<tr class="row-odd"><td><p>body row 2</p></td>
+<td colspan="3"><p>Cells may span columns.</p></td>
+</tr>
+<tr class="row-even"><td><p>body row 3</p></td>
+<td rowspan="2"><p>Cells may
+span rows.</p></td>
+<td colspan="2" rowspan="2"><ul class="simple">
+<li><p>Table cells</p></li>
+<li><p>contain</p></li>
+<li><p>body elements.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>body row 4</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../math/Chinese_remainder_theorem.html" class="btn btn-neutral float-right" title="中国剩余定理" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../index.html" class="btn btn-neutral float-left" title="hly1204 的主页" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2021, hly1204.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,455 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>特征多项式 &mdash; hly1204.github.io  文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="快速 Fourier 变换" href="fast_Fourier_transform.html" />
+    <link rel="prev" title="Lucas 定理及其推广" href="Lucas_theorem.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> hly1204.github.io
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">其他</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/how_to_build_this_blog.html">如何构造这个博客</a></li>
+</ul>
+<p class="caption"><span class="caption-text">数学</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Chinese_remainder_theorem.html">中国剩余定理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Lucas_theorem.html">Lucas 定理及其推广</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">特征多项式</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">特征多项式的定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cayley-hamilton">Cayley-Hamilton 定理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#leverrier">LeVerrier 方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">相似变换</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#la-budde">La Budde 方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hessenberg">上 Hessenberg 矩阵</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#gauss">用 Gauss 消元作相似变换</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id18">常系数齐次线性递推</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fast_Fourier_transform.html">快速 Fourier 变换</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GitHub 项目</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/hly1204/hly1204.github.io">This repo on GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://hly1204.github.io/library/">Library</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hly1204.github.io</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>特征多项式</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/math/characteristic_polynomial.rst.txt" rel="nofollow"> 查看页面源码</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>特征多项式<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id2">
+<h2>特征多项式的定义<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>对于矩阵 <span class="math notranslate nohighlight">\(\mathbf{A}\in\mathbb{C}^{n\times n}\)</span> ，我们说 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> 的特征多项式<a class="footnote-reference brackets" href="#char" id="id3">2</a> 为</p>
+<div class="math notranslate nohighlight">
+\[p(\lambda)=\det(\lambda \mathbf{I}-\mathbf{A})=\lambda ^{n}+c_{1}\lambda ^{n-1}+\cdots +c_{n-1}\lambda +c_{n}\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\mathbf{I}\in\mathbb{C}^{n\times n}\)</span> 为一个单位矩阵， <span class="math notranslate nohighlight">\(c_{1}=-\operatorname{trace}(\mathbf{A})\)</span> 且 <span class="math notranslate nohighlight">\(c_{n}=(-1)^n\det(\mathbf{A})\)</span> 写成行列式形式即</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}p(\lambda)=
+\begin{vmatrix}
+\lambda -a_{11}&amp;a_{12}&amp;a_{13}&amp;\cdots &amp; a_{1(n-1)}&amp;a_{1n}\\a_{21}&amp;\lambda -a_{22}&amp;a_{23}&amp;\cdots &amp; a_{2(n-1)}&amp;a_{2n}\\a_{31}&amp;a_{32}&amp;\lambda -a_{33}&amp;\cdots &amp; a_{3(n-1)}&amp;a_{3n}\\\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots\\a_{(n-1)1}&amp;a_{(n-1)2}&amp;a_{(n-1)3}&amp;\cdots &amp; \lambda -a_{(n-1)(n-1)}&amp;a_{(n-1)n}\\a_{n1}&amp;a_{n2}&amp;a_{n3}&amp;\cdots &amp; a_{n(n-1)}&amp;\lambda -a_{nn}
+\end{vmatrix}\end{aligned}\end{align} \]</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>注意到有的地方定义特征多项式为 <span class="math notranslate nohighlight">\(p(\lambda)=\det(\mathbf{A}-\lambda \mathbf{I})\)</span> 没有本质区别，但我们使用上述定义，因为得到的多项式一定为首一的<a class="footnote-reference brackets" href="#mon" id="id4">1</a> 。</p>
+</div>
+<p class="rubric">脚注</p>
+<dl class="footnote brackets">
+<dt class="label" id="mon"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
+<dd><p>monic</p>
+</dd>
+<dt class="label" id="char"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
+<dd><p>characteristic polynomial</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="cayley-hamilton">
+<h2>Cayley-Hamilton 定理<a class="headerlink" href="#cayley-hamilton" title="永久链接至标题">¶</a></h2>
+<p>对于上述定义中的 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> 和其特征多项式 <span class="math notranslate nohighlight">\(p(\lambda )\)</span> 有</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}p(\mathbf{A})&amp;=\mathbf{A}^n+c_1\mathbf{A}^{n-1}+\cdots +c_{n-1}\mathbf{A}+c_n\mathbf{I}\\&amp;=\mathbf{O}\end{aligned}\end{align} \]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\mathbf{O}\in\mathbb{C}^{n\times n}\)</span> 为零矩阵，可简写为 <span class="math notranslate nohighlight">\(0\)</span> 。</p>
+<p>所以特征多项式也是零化多项式。而零化多项式中次数最小的首一多项式为其最小多项式。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>特征多项式不是唯一的零化多项式<a class="footnote-reference brackets" href="#zero" id="id5">3</a> ，最小多项式<a class="footnote-reference brackets" href="#min" id="id6">4</a> 一定是特征多项式的因式。</p>
+</div>
+<p class="rubric">脚注</p>
+<dl class="footnote brackets">
+<dt class="label" id="zero"><span class="brackets"><a class="fn-backref" href="#id5">3</a></span></dt>
+<dd><p>annihilating polynomial</p>
+</dd>
+<dt class="label" id="min"><span class="brackets"><a class="fn-backref" href="#id6">4</a></span></dt>
+<dd><p>minimal polynomial</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="leverrier">
+<h2>LeVerrier 方法<a class="headerlink" href="#leverrier" title="永久链接至标题">¶</a></h2>
+<p>第一个实用的计算特征多项式的方法是由 LeVerrier 在 1840 年提出的，基于 Newton 恒等式<a class="footnote-reference brackets" href="#newton" id="id7">5</a> 。</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}c_1&amp;=-\operatorname{trace}(\mathbf{A}),\\c_k&amp;=-\frac{1}{k}\operatorname{trace}(\mathbf{A}^k+c_1\mathbf{A}^{k-1}+\cdots +c_{k-1}\mathbf{A}),\quad 2\leq k\leq n\end{aligned}\end{align} \]</div>
+<p>其中 Newton 恒等式可以用递归的方式表示如</p>
+<div class="math notranslate nohighlight">
+\[c_k=-\frac{1}{k}\operatorname{trace}(\mathbf{A}\mathbf{B}_{k-1}),
+\quad \text{where}\quad \mathbf{B}_1=\mathbf{A}+c_1\mathbf{I},
+\quad \mathbf{B}_k=\mathbf{A}\mathbf{B}_{k-1}+c_k\mathbf{I}\]</div>
+<p>其证明可以参考 <a class="reference external" href="https://en.wikipedia.org/wiki/Faddeev%E2%80%93LeVerrier_algorithm">wiki</a> ，我们直接实现该算法的时间是 <span class="math notranslate nohighlight">\(O(n^4)\)</span> 。</p>
+<p class="rubric">脚注</p>
+<dl class="footnote brackets">
+<dt class="label" id="newton"><span class="brackets"><a class="fn-backref" href="#id7">5</a></span></dt>
+<dd><p>Newton’s identities</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id8">
+<h2>相似变换<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>设矩阵 <span class="math notranslate nohighlight">\(\mathbf{A}\in\mathbb{C}^{n\times n}\)</span> ，我们说 <span class="math notranslate nohighlight">\(\mathbf{A}'\)</span> 与 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> 相似当 <span class="math notranslate nohighlight">\(\mathbf{A}'\)</span> 可被写作</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{A}'=\mathbf{PA}\mathbf{P}^{-1}\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\mathbf{A}',\mathbf{P},\mathbf{P}^{-1}\in\mathbb{C}^{n\times n}\)</span> ，此时 <span class="math notranslate nohighlight">\(\mathbf{A'}\)</span> 与 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>
+有相同的特征多项式和行列式，行列式的证明只需考虑 <span class="math notranslate nohighlight">\(\begin{cases}\vert \mathbf{AB}\vert =\vert \mathbf{A} \vert \vert \mathbf{B} \vert \\\vert \mathbf{B}^{-1}\vert=\vert \mathbf{B}\vert ^{-1}\end{cases}\)</span> ，而对于特征多项式，有</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\vert \lambda \mathbf{I}-\mathbf{A}'\vert &amp;=\vert \lambda \mathbf{I}-\mathbf{PA}\mathbf{P}^{-1}\vert\\&amp;=\vert \mathbf{P}\lambda\mathbf{I}\mathbf{P}^{-1}-\mathbf{PA}\mathbf{P}^{-1}\vert\\&amp;=\vert \mathbf{P}(\lambda\mathbf{I}\mathbf{P}^{-1}-\mathbf{A}\mathbf{P}^{-1})\vert\\&amp;=\vert \mathbf{P}\vert \vert \lambda\mathbf{I}-\mathbf{A}\vert \vert \mathbf{P}^{-1} \vert\\&amp;=\vert \lambda \mathbf{I}-\mathbf{A}\vert\end{aligned}\end{align} \]</div>
+<p>虽然矩阵乘法没有交换律，但是其行列式有，另外 <span class="math notranslate nohighlight">\(\mathbf{A}'=\mathbf{P}^{-1}\mathbf{AP}\)</span> 是一样的。</p>
+<p>像这样由 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> 到 <span class="math notranslate nohighlight">\(\mathbf{A}'\)</span> 的变换我们称为相似变换<a class="footnote-reference brackets" href="#sim" id="id9">6</a> 。</p>
+<p class="rubric">脚注</p>
+<dl class="footnote brackets">
+<dt class="label" id="sim"><span class="brackets"><a class="fn-backref" href="#id9">6</a></span></dt>
+<dd><p>similarity transformation</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="la-budde">
+<h2>La Budde 方法<a class="headerlink" href="#la-budde" title="永久链接至标题">¶</a></h2>
+<div class="section" id="hessenberg">
+<h3>上 Hessenberg 矩阵<a class="headerlink" href="#hessenberg" title="永久链接至标题">¶</a></h3>
+<p>上 Hessenberg 矩阵 <span class="math notranslate nohighlight">\(\mathbf{H}\in\mathbb{C}^{n\times n},n\gt 2\)</span> 是形如</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\mathbf{H}=
+\begin{bmatrix}
+\alpha_{1}&amp;h_{12}&amp;\dots&amp;\dots&amp;h_{1n}\\\beta_{2}&amp;\alpha_{2}&amp;h_{23}&amp;&amp;\vdots\\&amp;\ddots &amp;\ddots &amp; \ddots &amp;\vdots\\&amp; &amp;\ddots &amp;\ddots &amp; h_{(n-1)n}\\&amp;&amp;&amp; \beta_{n}&amp; \alpha_{n}
+\end{bmatrix}\end{aligned}\end{align} \]</div>
+<p>的矩阵。其中 <span class="math notranslate nohighlight">\(\beta\)</span> 形成的对角线我们称为次对角线<a class="footnote-reference brackets" href="#subdiag" id="id10">7</a> 。</p>
+<p class="rubric">脚注</p>
+<dl class="footnote brackets">
+<dt class="label" id="subdiag"><span class="brackets"><a class="fn-backref" href="#id10">7</a></span></dt>
+<dd><p>subdiagonal</p>
+</dd>
+</dl>
+<hr class="docutils" />
+<p>La Budde 方法<a class="footnote-reference brackets" href="#ref1" id="id11">8</a> 可用来在 <span class="math notranslate nohighlight">\(O(n^3)\)</span> 计算矩阵 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> 的特征多项式，其分为两个步骤。</p>
+<ol class="arabic simple">
+<li><p>将 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> 进行（正交）相似变换为上 Hessenberg 矩阵 <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> 。</p></li>
+<li><p>计算连续主子矩阵 <span class="math notranslate nohighlight">\(\mathbf{H}_i\)</span><a class="footnote-reference brackets" href="#leadprin" id="id12">9</a> 的特征多项式。</p></li>
+</ol>
+<p>我们令 <span class="math notranslate nohighlight">\(p_0(\lambda)=1\)</span> 且 <span class="math notranslate nohighlight">\(\mathbf{I}_k\)</span> 表示 <span class="math notranslate nohighlight">\(k\times k\)</span> 的单位矩阵，有</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{H}_1=
+\begin{bmatrix}
+\alpha_1
+\end{bmatrix},\quad
+p_1(\lambda)=\det(\lambda \mathbf{I_1}-\mathbf{H}_1)=\lambda -\alpha_1\]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\mathbf{H}_2=
+\begin{bmatrix}
+\alpha_1&amp;h_{12}\\\beta_2&amp;\alpha_2
+\end{bmatrix},\quad
+p_2(\lambda)=\det(\lambda\mathbf{I}-\mathbf{H}_2)=(\lambda-\alpha_2)p_1(\lambda)-\beta_2h_{12}p_0(\lambda)\end{aligned}\end{align} \]</div>
+<p>在计算行列式时我们一般选择按零最多的行或列余子式展开<a class="footnote-reference brackets" href="#cofacexp" id="id13">10</a> ，所谓余子式即删除了当前选择的元素所在行和列之后的矩阵，在这里我们选择按最后一行进行展开，有</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}p_3(\lambda)&amp;=
+\det(\lambda\mathbf{I}_3-\mathbf{H}_3)\\&amp;=\begin{vmatrix}
+\lambda-\alpha_1&amp;-h_{12}&amp;-h_{13}\\-\beta_2&amp;\lambda-\alpha_2&amp;-h_{23}\\&amp;-\beta_3&amp;\lambda-\alpha_3
+\end{vmatrix}\\&amp;=(\lambda-\alpha_3)\cdot (-1)^{3+3}p_2(\lambda)-\beta_3\cdot (-1)^{3+2}
+\begin{vmatrix}
+\lambda-\alpha_1&amp;-h_{13}\\-\beta_2&amp;-h_{23}
+\end{vmatrix}\\&amp;=(\lambda-\alpha_3)p_2(\lambda)-\beta_3(h_{23}p_1(\lambda)+\beta_2h_{13}p_0(\lambda))\end{aligned}\end{align} \]</div>
+<p>观察后发现，对于 <span class="math notranslate nohighlight">\(2\leq i\leq n\)</span> 有</p>
+<div class="math notranslate nohighlight">
+\[p_i(\lambda)=(\lambda-\alpha_i)p_{i-1}(\lambda)-
+\sum_{m=1}^{i-1}h_{i-m,i}
+\left(
+\prod_{j=i-m+1}^{i}\beta_j
+\right)
+p_{i-m-1}(\lambda)\]</div>
+<p>直接计算上式消耗 <span class="math notranslate nohighlight">\(O(n^3)\)</span> 的时间。若该上 Hessenberg 矩阵还是三对角矩阵<a class="footnote-reference brackets" href="#tri" id="id14">11</a> ，我们有更快的算法<a class="footnote-reference brackets" href="#ref1" id="id15">8</a> 。</p>
+<p class="rubric">脚注</p>
+<dl class="footnote brackets">
+<dt class="label" id="ref1"><span class="brackets">8</span><span class="fn-backref">(<a href="#id11">1</a>,<a href="#id15">2</a>)</span></dt>
+<dd><p>Rizwana Rehman, Ilse C.F. Ipsen. <a class="reference external" href="https://ipsen.math.ncsu.edu/ps/charpoly3.pdf">La Budde’s Method for Computing Characteristic Polynomials</a>.</p>
+</dd>
+<dt class="label" id="leadprin"><span class="brackets"><a class="fn-backref" href="#id12">9</a></span></dt>
+<dd><p>leading principal submatrix <span class="math notranslate nohighlight">\(\mathbf{H}_i\)</span> 指只保留前 <span class="math notranslate nohighlight">\(i\)</span> 行和列的子矩阵</p>
+</dd>
+<dt class="label" id="cofacexp"><span class="brackets"><a class="fn-backref" href="#id13">10</a></span></dt>
+<dd><p>cofactor expansion</p>
+</dd>
+<dt class="label" id="tri"><span class="brackets"><a class="fn-backref" href="#id14">11</a></span></dt>
+<dd><p>tridiagonal matrix</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="gauss">
+<h2>用 Gauss 消元作相似变换<a class="headerlink" href="#gauss" title="永久链接至标题">¶</a></h2>
+<p>一般 La Budde 方法使用 Hessenberg 分解，即 Householder 矩阵来进行正交相似变换<a class="footnote-reference brackets" href="#ref2" id="id16">12</a> ，其具有数值稳定性，但为了简便我们使用 Gauss 消元法<a class="footnote-reference brackets" href="#ref3" id="id17">13</a> 。</p>
+<p>一般的高斯消元并不是直接的相似变换，我们在这里假设只作行变换，也就是</p>
+<ol class="arabic simple">
+<li><p>将第 <span class="math notranslate nohighlight">\(i\)</span> 行的 <span class="math notranslate nohighlight">\(k\)</span> 倍加到第 <span class="math notranslate nohighlight">\(j\)</span> 行，其中 <span class="math notranslate nohighlight">\(i\neq j\)</span> 且 <span class="math notranslate nohighlight">\(k\neq 0\)</span> 。</p></li>
+<li><p>交换两行。</p></li>
+</ol>
+<p>其中第二个操作作用于矩阵 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> 等价于使其左乘一个排列矩阵，而排列矩阵的逆为其转置，我们右乘他即交换对应的两列，这个操作也用来选主元。</p>
+<p>令 <span class="math notranslate nohighlight">\(\mathbf{M}_{ab}\)</span> 表示矩阵 <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> 第 <span class="math notranslate nohighlight">\(a\)</span> 行，第 <span class="math notranslate nohighlight">\(b\)</span> 列的元素。</p>
+<p>对于第一个操作，其等价于左乘了一个形如 <span class="math notranslate nohighlight">\(\mathbf{I}_n+\mathbf{M}\)</span> 的矩阵，其中 <span class="math notranslate nohighlight">\(\mathbf{M}_{ij}=k\)</span> 其余都为零，我们右乘他的逆即 <span class="math notranslate nohighlight">\(\mathbf{I}_n-\mathbf{M}\)</span> 即可。</p>
+<p class="rubric">脚注</p>
+<dl class="footnote brackets">
+<dt class="label" id="ref2"><span class="brackets"><a class="fn-backref" href="#id16">12</a></span></dt>
+<dd><p>G. H. Golub and C. F. Van Loan, Matrix Computations, The Johns Hopkins University Press, Baltimore, third ed., 1996.</p>
+</dd>
+<dt class="label" id="ref3"><span class="brackets"><a class="fn-backref" href="#id17">13</a></span></dt>
+<dd><p><a class="reference external" href="http://www.phys.uri.edu/nigh/NumRec/bookfpdf/f11-5.pdf">Reduction of a General Matrix to Hessenberg Form</a></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id18">
+<h2>常系数齐次线性递推<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h2>
+<p>我们关注这样一个常系数齐次线性递推序列（简称递推序列）如</p>
+<div class="math notranslate nohighlight">
+\[u_{n+d}=c_{d-1}u_{n+d-1}+\cdots +c_0u_n,\quad n\geq 0\]</div>
+<p>我们说这样一个递推是 <span class="math notranslate nohighlight">\(d\)</span> 阶的。对于 <span class="math notranslate nohighlight">\(N\geq 0\)</span> ，求 <span class="math notranslate nohighlight">\(u_N\)</span> 最简单的处理方式是将其转换为矩阵的形式如：</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\underbrace{
+\begin{bmatrix}
+u_{n}\\u_{n+1}\\\vdots\\u_{n+d-1}
+\end{bmatrix}
+}_{\mathbf{v}_{n}}=
+\underbrace{
+\begin{bmatrix}
+&amp;1&amp;&amp;\\&amp;&amp;\ddots&amp;\\&amp;&amp;&amp;1\\c_{0}&amp;c_{1}&amp;\cdots&amp;c_{d-1}
+\end{bmatrix}
+}_{\mathbf{M}}\times
+\underbrace{
+\begin{bmatrix}
+u_{n-1}\\u_{n}\\\vdots\\u_{n+d-2}
+\end{bmatrix}
+}_{\mathbf{v}_{n-1}},\quad n\geq 1\end{aligned}\end{align} \]</div>
+<p>若这个递推序列是在 <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> 上，不难发现在 <span class="math notranslate nohighlight">\(\mathbb{R}^{d\times d}\)</span> 上关于 <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> 这个向量的递推阶为一，通常采用的方法是矩阵快速幂。</p>
+<p>发现 <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> 可以描述成一个线性组合为</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{v}_{n+d}=\sum_{i=0}^{d-1}c_i\mathbf{v}_{n+i}\]</div>
+<p>进一步的可以写成</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{M}^d\mathbf{v}_n=\sum_{i=0}^{d-1}c_i\mathbf{M}^i\mathbf{v}_n\]</div>
+<p>我们可以找到一个多项式 <span class="math notranslate nohighlight">\(\Gamma(x)=x^d-\sum_{i=0}^{d-1}c_ix^i\)</span> 满足 <span class="math notranslate nohighlight">\(\Gamma(\mathbf{M})=0\)</span> 。</p>
+<p>令 <span class="math notranslate nohighlight">\(g(x)=g_0+g_1x+\cdots +g_{d-1}x^{d-1}=x^N\bmod{\Gamma(x)}\)</span> 那么 <span class="math notranslate nohighlight">\(g(\mathbf{M})=\mathbf{M}^N\)</span> ，也就是我们将 <span class="math notranslate nohighlight">\(\mathbf{v}_N\)</span> 描述为了一个线性组合如</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{M}^N\mathbf{v}_0=\sum_{i=0}^{d-1}g_i\mathbf{M}^i\mathbf{v}_0\iff \mathbf{v}_N=\sum_{i=0}^{d-1}g_i\mathbf{v}_i\]</div>
+<p>观察 <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span> 的第一行我们不难得出答案。这被称为 Fiduccia 算法。</p>
+<p>上述 <span class="math notranslate nohighlight">\(\Gamma(\lambda)=\det(\lambda \mathbf{I}_d-\mathbf{M})\)</span> 也就是其特征多项式。</p>
+<p>我们不难将矩阵的特征多项式与线性递推联系起来<a class="footnote-reference brackets" href="#mori" id="id19">14</a> 以及得到更快求矩阵幂次的算法，而求出矩阵的最小多项式我们可以采用随机化的 Berlekamp-Massey 算法。</p>
+<p class="rubric">脚注</p>
+<dl class="footnote brackets">
+<dt class="label" id="mori"><span class="brackets"><a class="fn-backref" href="#id19">14</a></span></dt>
+<dd><p>Alin Bostan, Ryuhei Mori. <a class="reference external" href="https://arxiv.org/abs/2008.08822">A Simple and Fast Algorithm for Computing the N-th Term of a Linearly Recurrent Sequence</a>.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="fast_Fourier_transform.html" class="btn btn-neutral float-right" title="快速 Fourier 变换" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Lucas_theorem.html" class="btn btn-neutral float-left" title="Lucas 定理及其推广" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2021, hly1204.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

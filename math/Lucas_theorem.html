@@ -1,0 +1,397 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Lucas 定理及其推广 &mdash; hly1204.github.io  文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="特征多项式" href="characteristic_polynomial.html" />
+    <link rel="prev" title="中国剩余定理" href="Chinese_remainder_theorem.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> hly1204.github.io
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">其他</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/how_to_build_this_blog.html">如何构造这个博客</a></li>
+</ul>
+<p class="caption"><span class="caption-text">数学</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Chinese_remainder_theorem.html">中国剩余定理</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Lucas 定理及其推广</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Lucas 定理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Lucas 定理的推广</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Lucas 定理的推广</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wilson">Wilson 定理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Wilson 定理的推广</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kummer">Kummer 定理</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">任意模数二项卷积</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="characteristic_polynomial.html">特征多项式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fast_Fourier_transform.html">快速 Fourier 变换</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GitHub 项目</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/hly1204/hly1204.github.io">This repo on GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://hly1204.github.io/library/">Library</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">hly1204.github.io</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Lucas 定理及其推广</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/math/Lucas_theorem.rst.txt" rel="nofollow"> 查看页面源码</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="lucas">
+<h1>Lucas 定理及其推广<a class="headerlink" href="#lucas" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>Lucas 定理<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p><strong>Lucas 定理</strong>：对于一个素数 <span class="math notranslate nohighlight">\(p\)</span> 和非负整数 <span class="math notranslate nohighlight">\(n,k\)</span> ，有</p>
+<div class="math notranslate nohighlight" id="equation-lucas-theorem">
+<span class="eqno">(1)<a class="headerlink" href="#equation-lucas-theorem" title="公式的永久链接">¶</a></span>\[\binom{n}{k}\equiv\binom{n\bmod{p}}{k\bmod{p}}\binom{\lfloor n/p\rfloor}{\lfloor k/p\rfloor}\pmod{p}\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\lfloor \cdot \rfloor\)</span> 表示整数部分， <span class="math notranslate nohighlight">\(\binom{n}{k}=\frac{n(n-1)\cdots (n-k+1)}{k!}\)</span> 。</p>
+<p><strong>推论</strong>：将 <span class="math notranslate nohighlight">\(n,k\)</span> 表示为 <span class="math notranslate nohighlight">\(p\)</span> 进制为</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}n&amp;=a_{r}p^{r}+\cdots +a_{1}p+a_{0}\\k&amp;=b_{r}p^{r}+\cdots +b_{1}p+b_{0}\end{aligned}\end{align} \]</div>
+<p>那么</p>
+<div class="math notranslate nohighlight">
+\[\binom{n}{k}\equiv \prod_{i=0}^{r}\binom{a_{i}}{b_{i}}\pmod{p}\]</div>
+<p><em>证明</em>：考虑</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\binom{n}{k}&amp;=\frac{n(n-1)\cdots (n-k+1)}{k!}\\&amp;=\left(\frac{n}{k}\right)\left(\frac{n-1}{k-1}\right)\cdots \left(\frac{n-k+1}{1}\right)\end{aligned}\end{align} \]</div>
+<p>令 <span class="math notranslate nohighlight">\(n=ap+b,k=cp+d\)</span> 且 <span class="math notranslate nohighlight">\(b,d\lt p\)</span> ，那么</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\left(\frac{ap+b}{cp+d}\right)\cdots \left(\frac{ap+b-d+1}{cp+1}\right)\equiv
+\left(\frac{b}{d}\right)\cdots \left(\frac{b-d+1}{1}\right)\\\equiv\binom{n\bmod{p}}{k\bmod{p}}\pmod{p}\end{aligned}\end{align} \]</div>
+<p>注意上式为 <span class="math notranslate nohighlight">\(\binom{n}{k}\pmod{p}\)</span> 的前 <span class="math notranslate nohighlight">\(k\bmod{p}=d\)</span> 项的乘积，还剩下 <span class="math notranslate nohighlight">\(k-d\)</span> 项为</p>
+<div class="math notranslate nohighlight">
+\[\left(\frac{n-d}{cp}\right)\left(\frac{n-d-1}{cp-1}\right)\cdots \left(\frac{n-k+1}{1}\right)=\binom{n-d}{cp}\]</div>
+<p>也就是 <span class="math notranslate nohighlight">\(cp\)</span> 项，将这 <span class="math notranslate nohighlight">\(cp\)</span> 项分为 <span class="math notranslate nohighlight">\(c\)</span> 组，每一组的分子和分母都是连续的 <span class="math notranslate nohighlight">\(p\)</span> 项，显然分子和分母中都各有一项是 <span class="math notranslate nohighlight">\(p\)</span> 的倍数，而其余项的乘积在模 <span class="math notranslate nohighlight">\(p\)</span> 意义下同余于 <span class="math notranslate nohighlight">\((p-1)!\)</span> 可以让剩下的分子分母相互抵消。这指导我们只需关注这 <span class="math notranslate nohighlight">\(c\)</span> 项的分子分母，而这几项分别为</p>
+<div class="math notranslate nohighlight">
+\[\left(\frac{\lfloor(n-d)/p\rfloor \cdot p}{cp}\right)\left(\frac{(\lfloor(n-d)/p\rfloor -1) \cdot p}{(c-1)p}\right)\cdots \left(\frac{(\lfloor (n-d)/p\rfloor -c+1)\cdot p}{p}\right)\]</div>
+<p>即</p>
+<div class="math notranslate nohighlight">
+\[\binom{\lfloor (n-d)/p\rfloor}{\lfloor k/p\rfloor}\]</div>
+<p>注意当 <span class="math notranslate nohighlight">\(d=k\bmod{p}\leq n\bmod{p}\)</span> 时，上式等于</p>
+<div class="math notranslate nohighlight">
+\[\binom{\lfloor n/p\rfloor}{\lfloor k/p\rfloor}\]</div>
+<p>而当 <span class="math notranslate nohighlight">\(k\bmod{p}\gt n\bmod{p}\)</span> 时，我们知道从组合意义上 <span class="math notranslate nohighlight">\(n\)</span> 个物品中不可能选取多于 <span class="math notranslate nohighlight">\(n\)</span> 个物品</p>
+<div class="math notranslate nohighlight">
+\[\binom{n\bmod{p}}{k\bmod{p}}=0\]</div>
+<p><a class="reference internal" href="#equation-lucas-theorem">(1)</a> 得证。当 <span class="math notranslate nohighlight">\(m\)</span> 远小于 <span class="math notranslate nohighlight">\(p\)</span> 时，可以直接通过公式计算而非预处理，这时候处理 <span class="math notranslate nohighlight">\(p\)</span> 较大的情况成为可能。</p>
+</div>
+<div class="section" id="id2">
+<h2>Lucas 定理的推广<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>这篇文章是<a class="footnote-reference brackets" href="#ref1" id="id3">1</a> 的翻译。</p>
+<div class="section" id="id4">
+<h3>Lucas 定理的推广<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p><strong>定义 1</strong>：对于给定一个整数 <span class="math notranslate nohighlight">\(n\)</span> 令 <span class="math notranslate nohighlight">\((n!)_{p}\)</span> 表示所有小于等于 <span class="math notranslate nohighlight">\(n\)</span> 的不能被 <span class="math notranslate nohighlight">\(p\)</span> 整除的整数的乘积。也可以写作 <span class="math notranslate nohighlight">\((n!)_{p}=n!/(\lfloor n/p\rfloor !p^{\lfloor n/p\rfloor})\)</span> 。</p>
+<p><strong>定理 1</strong>：给定素数 <span class="math notranslate nohighlight">\(p\)</span> 的幂次 <span class="math notranslate nohighlight">\(p^q\)</span> 和正整数 <span class="math notranslate nohighlight">\(n=m+r\)</span> 。在 <span class="math notranslate nohighlight">\(p\)</span> 进制下记 <span class="math notranslate nohighlight">\(n=n_{0}+n_{1}p+\dots +n_{d}p^{d}\)</span> 且对于每个 <span class="math notranslate nohighlight">\(j\)</span> 令 <span class="math notranslate nohighlight">\(N_{j}=\lfloor n/p^j\rfloor \bmod{p^q}\)</span> （即 <span class="math notranslate nohighlight">\(N_{j}=n_{j}+n_{j+1}+\dots +n_{j+q-1}p^{q-1}\)</span> ）。对于 <span class="math notranslate nohighlight">\(m_{j},M_{j},r_{j},R_{j}\)</span> 也同样定义。令 <span class="math notranslate nohighlight">\(e_{j}\)</span> 为当将 <span class="math notranslate nohighlight">\(m\)</span> 和 <span class="math notranslate nohighlight">\(r\)</span> 在 <span class="math notranslate nohighlight">\(p\)</span> 进制中相加的在第 <span class="math notranslate nohighlight">\(j\)</span> 位数字和之后的“进位”次数。有</p>
+<div class="math notranslate nohighlight" id="equation-theorem-1">
+<span class="eqno">(2)<a class="headerlink" href="#equation-theorem-1" title="公式的永久链接">¶</a></span>\[\frac{(\pm 1)^{e_{q-1}}}{p^{e_{0}}}\binom{n}{m}\equiv \frac{(N_{0}!)_{p}}{(M_{0}!)_{p}(R_{0}!)_{p}}\frac{(N_{1}!)_{p}}{(M_{1}!)_{p}(R_{1}!)_{p}}\cdots \frac{(N_{d}!)_{p}}{(M_{d}!)_{p}(R_{d}!)_{p}}\pmod{p^q}\]</div>
+<p>其中 <span class="math notranslate nohighlight">\((\pm 1)\)</span> 为 <span class="math notranslate nohighlight">\((-1)\)</span> 除非 <span class="math notranslate nohighlight">\(p=2\)</span> 且 <span class="math notranslate nohighlight">\(q\geq 3\)</span> 。</p>
+<p>为了证明 <a class="reference internal" href="#equation-theorem-1">(2)</a> ，我们给出一个需要用到的定理和简单证明</p>
+</div>
+<div class="section" id="wilson">
+<h3>Wilson 定理<a class="headerlink" href="#wilson" title="永久链接至标题">¶</a></h3>
+<p>对于素数 <span class="math notranslate nohighlight">\(p\)</span> 有</p>
+<div class="math notranslate nohighlight">
+\[(p-1)!\equiv -1\pmod{p}\]</div>
+<p>成立。</p>
+<p><em>证明</em>：我们知道在模奇素数 <span class="math notranslate nohighlight">\(p\)</span> 意义下对于整数 <span class="math notranslate nohighlight">\(n\nmid p\)</span> 都存在逆元且唯一。一个整数逆元的逆元为其自身。</p>
+<p>对于逆元为自身的情况，我们记 <span class="math notranslate nohighlight">\(a^2\equiv 1\pmod{p}\implies(a+1)(a-1)\equiv 0\pmod{p}\)</span> 那么 <span class="math notranslate nohighlight">\(a\equiv \pm 1\pmod{p}\)</span> 。</p>
+<p>否则我们记 <span class="math notranslate nohighlight">\(b\equiv a^{-1}\pmod{p}\)</span> 有 <span class="math notranslate nohighlight">\(ab\equiv 1\pmod{p}\)</span> 可以将 <span class="math notranslate nohighlight">\(\mathbb{F}_p\setminus\{0,1,p-1\}\)</span> 分为这样的 <span class="math notranslate nohighlight">\((a,b)\)</span> 对， <span class="math notranslate nohighlight">\(\prod_{i=2}^{p-2}i\equiv 1\pmod{p}\)</span> 。那么 <span class="math notranslate nohighlight">\((p-1)!\equiv 1\cdot (-1)\pmod{p}\)</span> 。</p>
+<p>在 <span class="math notranslate nohighlight">\(p=2\)</span> 时另外讨论即可。</p>
+<p>Wilson 定理指出 <span class="math notranslate nohighlight">\((p!)_{p}=(p-1)!\equiv -1\pmod{p}\)</span> 且可以被推广到模素数 <span class="math notranslate nohighlight">\(p\)</span> 的幂次。</p>
+</div>
+<div class="section" id="id5">
+<h3>Wilson 定理的推广<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>对于给定一个素数幂次 <span class="math notranslate nohighlight">\(p^q\)</span> 有</p>
+<div class="math notranslate nohighlight">
+\[(p^q!)_p\equiv \pm 1\pmod{p^q}\]</div>
+<p>其中 <span class="math notranslate nohighlight">\((\pm 1)\)</span> 与 <a class="reference internal" href="#equation-theorem-1">(2)</a> 中最后一句描述的相同。</p>
+<p><em>证明</em>：与上述证明类似的，只要我们不停在模 <span class="math notranslate nohighlight">\(p^q\)</span> 意义下配对每个 <span class="math notranslate nohighlight">\(m\)</span> 和它的逆元，那么 <span class="math notranslate nohighlight">\((p^q!)\)</span> 在模 <span class="math notranslate nohighlight">\(p^q\)</span> 意义下同余于那些逆元等于自身的元素的乘积。</p>
+<p>即关于 <span class="math notranslate nohighlight">\(m\)</span> 的方程 <span class="math notranslate nohighlight">\(m^2\equiv 1\pmod{p^q}\)</span> 的根的乘积，而这两个根分别为 <span class="math notranslate nohighlight">\(1\)</span> 和 <span class="math notranslate nohighlight">\(p^q-1\)</span> ，除非 <span class="math notranslate nohighlight">\(p^q=2\)</span> 时，仅有一根，或者 <span class="math notranslate nohighlight">\(p=2\)</span> 且 <span class="math notranslate nohighlight">\(q\geq 3\)</span> 时额外的根为 <span class="math notranslate nohighlight">\(2^{q-1}\pm 1\)</span> 。</p>
+<p><strong>推论 1</strong>：对于给定素数 <span class="math notranslate nohighlight">\(p\)</span> 的幂次 <span class="math notranslate nohighlight">\(p^q\)</span> 和 <span class="math notranslate nohighlight">\(N_{0}=n\bmod{p^q}\)</span> 有</p>
+<div class="math notranslate nohighlight" id="equation-corollary-1">
+<span class="eqno">(3)<a class="headerlink" href="#equation-corollary-1" title="公式的永久链接">¶</a></span>\[(n!)_p\equiv (\pm 1)^{\lfloor n/p^q\rfloor}(N_0!)_p\pmod{p^q}\]</div>
+<p>其中 <span class="math notranslate nohighlight">\((\pm 1)\)</span> 与 <a class="reference internal" href="#equation-theorem-1">(2)</a> 中最后一句描述的相同。</p>
+<p><em>证明</em>：将每个下面的 <span class="math notranslate nohighlight">\(r\)</span> 记为 <span class="math notranslate nohighlight">\(ip^q+j\)</span> 有</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}(n!)_p&amp;=\prod_{r\leq n\land r\nmid p}r\\&amp;=\left(\prod_{i=0}^{\lfloor n/p^q\rfloor -1}\prod_{1\leq j\leq p^q\land j\nmid p}(ip^q+j)\right)\left(\prod_{1\leq j\leq
+N_0\land j\nmid p}(\lfloor n/p^q\rfloor p^q+j)\right)\\&amp;\equiv ((p^q!)_p)^{\lfloor n/p^q\rfloor}(N_0!)_p\\&amp;\equiv (\pm 1)^{\lfloor n/p^q\rfloor}(N_0!)_p\pmod{p^q}\end{aligned}\end{align} \]</div>
+<hr class="docutils" />
+<p><strong>Legendre 定理</strong>：Legendre 在 1808 年展示了准确的 <span class="math notranslate nohighlight">\(p\)</span> 的多少幂次整除 <span class="math notranslate nohighlight">\(n!\)</span> 为</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\nu_p(n!)=\sum_{i\geq 1}\lfloor n/p^i\rfloor\]</div>
+</div></blockquote>
+<p><em>证明</em>： <span class="math notranslate nohighlight">\(n!=p^{\nu(n!)}c\)</span> 其中 <span class="math notranslate nohighlight">\(p\nmid c\)</span> 。这很显然，考虑 <span class="math notranslate nohighlight">\(n!=1\times 2\times \cdots \times n\)</span> 而其中能被 <span class="math notranslate nohighlight">\(p\)</span> 整除的项为 <span class="math notranslate nohighlight">\(p\times 2p\times\cdots\times\lfloor n/p\rfloor p=\lfloor n/p\rfloor !p^{\lfloor n/p\rfloor}\)</span> 那么有 <span class="math notranslate nohighlight">\(\nu_p(n!)=\lfloor n/p\rfloor +\nu_p(\lfloor n/p\rfloor !)\)</span> 。</p>
+<p>将 <span class="math notranslate nohighlight">\(n\)</span> 在 <span class="math notranslate nohighlight">\(p\)</span> 进制下记为 <span class="math notranslate nohighlight">\(n=n_0+n_1p+\cdots +n_dp^d\)</span> 我们定义一个每一位数的和的函数 <span class="math notranslate nohighlight">\(\sigma(n)=\sigma_p(n):=n_0+n_1+\cdots +n_d\)</span> 。那么</p>
+<div class="math notranslate nohighlight">
+\[\nu_p(n!)=(n-\sigma_p(n))/(p-1)\]</div>
+<p>考虑证明 <span class="math notranslate nohighlight">\(\nu_p(n!)=(n-\sigma_p(n))/(p-1)\)</span> ，当 <span class="math notranslate nohighlight">\(n\lt p\)</span> 时该式为零显然成立。而</p>
+<div class="math notranslate nohighlight">
+\[n_0=n-p\lfloor n/p\rfloor =\sigma_p(n)-\sigma_p(\lfloor n/p\rfloor)\]</div>
+<p>代入上面得到的递归式中有</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\nu_p(\lfloor n/p\rfloor !)+\lfloor n/p\rfloor &amp;=(\lfloor n/p\rfloor -\sigma_p(\lfloor
+n/p\rfloor))/(p-1)+\lfloor n/p\rfloor\\&amp;=(\lfloor n/p\rfloor -(\sigma_p(n)-n_0))/(p-1)+\lfloor n/p\rfloor\\&amp;=(\lfloor n/p\rfloor +(p-1)\lfloor n/p\rfloor -\sigma_p(n)+n_0)/(p-1)\\&amp;=((n-n_0)-\sigma_p(n)+n_0)/(p-1)\\&amp;=(n-\sigma_p(n))/(p-1)\\&amp;=\nu_p(n!)\end{aligned}\end{align} \]</div>
+<p>令 <span class="math notranslate nohighlight">\(r=n-m\)</span> 且将 <span class="math notranslate nohighlight">\(n,m\)</span> 和 <span class="math notranslate nohighlight">\(r\)</span> 转换为 <span class="math notranslate nohighlight">\(p\)</span> 进制表示（即 <span class="math notranslate nohighlight">\(n=\sum_{i=0}^dn_ip^i\)</span> 且 <span class="math notranslate nohighlight">\(m\)</span> 和 <span class="math notranslate nohighlight">\(r\)</span> 也一样如此表示）。如果在 <span class="math notranslate nohighlight">\(p\)</span> 进制下将 <span class="math notranslate nohighlight">\(m\)</span> 与 <span class="math notranslate nohighlight">\(r\)</span> 相加在第 <span class="math notranslate nohighlight">\(j\)</span> 位产生了“进位”，令 <span class="math notranslate nohighlight">\(\epsilon_j=1\)</span> 否则 <span class="math notranslate nohighlight">\(\epsilon_j=0\)</span> （包括 <span class="math notranslate nohighlight">\(\epsilon_{-1}=0\)</span> ）。我们借由上式推导出下面的</p>
+</div>
+<div class="section" id="kummer">
+<h3>Kummer 定理<a class="headerlink" href="#kummer" title="永久链接至标题">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(p\)</span> 的多少次幂整除二项式系数 <span class="math notranslate nohighlight">\(\binom{n}{m}\)</span> 为 <span class="math notranslate nohighlight">\(m\)</span> 与 <span class="math notranslate nohighlight">\(n-m\)</span> 在 <span class="math notranslate nohighlight">\(p\)</span> 进制下相加所需要的“进位”次数。</p>
+<p><em>证明</em>：对于每个 <span class="math notranslate nohighlight">\(j\geq 0\)</span> 我们可以简单的发现</p>
+<div class="math notranslate nohighlight">
+\[n_j=m_j+r_j+\epsilon_{j-1}-p\epsilon_j\]</div>
+<p>而</p>
+<div class="math notranslate nohighlight">
+\[\nu_p\left(\frac{n!}{m!r!}\right)=\nu_p(n!)-\nu_p(m!)-\nu_p(r!)=\frac{\sigma_p(m)+\sigma_p(r)-\sigma_p(n)}{p-1}\]</div>
+<p>通过定义我们知道</p>
+<div class="math notranslate nohighlight">
+\[\nu_p\left(\frac{n!}{m!r!}\right)=\sum_{j=0}^d\frac{m_j+r_j-n_j}{p-1}=\frac{p\epsilon_0+\sum_{j=0}^d(p\epsilon_j-\epsilon_{j-1})}{p-1}=\sum_{j=0}^{d-1}\epsilon_j\]</div>
+<p>即“进位”的次数。</p>
+<p>类似的我们有对于 <span class="math notranslate nohighlight">\(j\geq 1\)</span></p>
+<div class="math notranslate nohighlight">
+\[\lfloor n/p^j\rfloor -\lfloor m/p^j\rfloor -\lfloor r/p^j\rfloor =\epsilon_{j-1}\]</div>
+<p>很显然。</p>
+<hr class="docutils" />
+<p>通过在 <a class="reference internal" href="#equation-theorem-1">(2)</a> 中的定义，对于 <span class="math notranslate nohighlight">\(j\geq 0\)</span> 我们有</p>
+<div class="math notranslate nohighlight">
+\[\lfloor n/p^j\rfloor !/(p^{\lfloor n/p^{j+1}\rfloor}\lfloor n/p^{j+1}\rfloor !)=(\lfloor n/p^j\rfloor !)_p\equiv (\pm 1)^{\lfloor n/p^{j+q}\rfloor}(N_j!)_p\pmod{p^q}\]</div>
+<p>通过 <a class="reference internal" href="#equation-corollary-1">(3)</a> ，将所有 <span class="math notranslate nohighlight">\(j\geq 0\)</span> 的同余式相乘得到了</p>
+<p><strong>命题 1</strong>：对于任何整数 <span class="math notranslate nohighlight">\(n\)</span> 和素数幂次 <span class="math notranslate nohighlight">\(p^q\)</span> ，我们有</p>
+<div class="math notranslate nohighlight">
+\[n!\Big/p^{\sum_{j\geq 1}\lfloor n/p^j\rfloor}\equiv (\pm 1)^{\sum_{j\geq q}\lfloor n/p^j\rfloor}\prod_{j\geq 0}(N_j!)_p\pmod{p^q}\]</div>
+<p>其中 <span class="math notranslate nohighlight">\((\pm 1)\)</span> 与 <a class="reference internal" href="#equation-theorem-1">(2)</a> 中最后一句描述的相同。</p>
+<p>至此 <a class="reference internal" href="#equation-theorem-1">(2)</a> 得证。</p>
+<p class="rubric">脚注</p>
+<dl class="footnote brackets">
+<dt class="label" id="ref1"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
+<dd><p>Andrew Granville. <a class="reference external" href="http://www.cecm.sfu.ca/organics/papers/granville/paper/binomial/html/binomial.html">Arithmetic Properties of Binomial Coefficients I: Binomial Coefficients modulo prime powers</a>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>任意模数二项卷积<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>在这一章中我们假设多项式的系数属于 <span class="math notranslate nohighlight">\(\mathbb{Z}/m\mathbb{Z}\)</span> 其中 <span class="math notranslate nohighlight">\(m\)</span> 为合数，因为我们要求的二项卷积可以由中国剩余定理求解，于是在这里观察其在有限域 <span class="math notranslate nohighlight">\(\mathbb{F}_{p^q}\)</span> 中的解，其中 <span class="math notranslate nohighlight">\(p\)</span> 为素数而整数 <span class="math notranslate nohighlight">\(q\geq 1\)</span> 。</p>
+<p>对于一个数列 <span class="math notranslate nohighlight">\(\langle a\rangle =a_{0},a_{1},\dots ,a_{n}\)</span> 和 <span class="math notranslate nohighlight">\(\langle b\rangle =b_{0},b_{1},\dots ,b_{m}\)</span> 设多项式 <span class="math notranslate nohighlight">\(A(x)=\sum_{i=0}^n\frac{a_i}{i!}x^i\)</span> 和 <span class="math notranslate nohighlight">\(B(x)=\sum_{i=0}^m\frac{b_i}{i!}x^i\)</span> 和</p>
+<div class="math notranslate nohighlight">
+\[C(x)=A(x)B(x)=\sum_{i=0}^{n+m}\frac{c_i}{i!}x^i\]</div>
+<p>为了保证边界情况，我们认为对于 <span class="math notranslate nohighlight">\(\forall i\gt n\)</span> 有 <span class="math notranslate nohighlight">\(a_{i}=0\)</span> ， <span class="math notranslate nohighlight">\(B(x)\)</span> 同理。根据多项式乘法我们有</p>
+<div class="math notranslate nohighlight">
+\[\frac{c_k}{k!}=\sum_{i=0}^k\frac{a_i}{i!}\frac{b_{k-i}}{(k-i)!}\]</div>
+<p>那么</p>
+<div class="math notranslate nohighlight">
+\[c_k=\sum_{i=0}^k\frac{k!}{i!(k-i)!}a_ib_{k-i}=\sum_{i=0}^k\binom{k}{i}a_ib_{k-i}\]</div>
+<p>这也是二项卷积<a class="footnote-reference brackets" href="#binconv" id="id7">2</a> 名称的由来。而我们知道当 <span class="math notranslate nohighlight">\(i\gt k\)</span> 和 <span class="math notranslate nohighlight">\(i\lt 0\)</span> 时二项式系数 <span class="math notranslate nohighlight">\(\binom{k}{i}=0\)</span> 所以可以直接写作</p>
+<div class="math notranslate nohighlight">
+\[c_k=\sum_{i}\binom{k}{i}a_ib_{k-i}\]</div>
+<p>考虑如何求在模一个素数幂次 <span class="math notranslate nohighlight">\(p^q\)</span> 意义下的 <span class="math notranslate nohighlight">\(C(x)\)</span> 的系数。这里与上面不同的是 <span class="math notranslate nohighlight">\(n,m\)</span> 的范围不大（因为需要考虑卷积的时间），可以预处理出 <span class="math notranslate nohighlight">\(n!/p^{\nu_p(n!)}\pmod{p^q}\)</span> 。</p>
+<p>我们令 <span class="math notranslate nohighlight">\(\hat{a}_k=a_k\cdot (k!/p^{\nu_p(k!)})^{-1}\pmod{p^q}\)</span> 那么</p>
+<div class="math notranslate nohighlight">
+\[\hat{c}_k=\sum_{i=0}^kp^{\nu_p(k!)-\nu_p((k-i)!)-\nu_p(i!)}\hat{a}_i\hat{b}_{k-i}\pmod{p^q}\]</div>
+<p>剩下是分析可以进行运算的范围，参考<a class="footnote-reference brackets" href="#ref2" id="id8">3</a> 中使用 Kummer 定理进行分析，可以使用 NTT 算法选取适量模数用 CRT 进行合并。注意需要在模“NTT 模数”的意义下求出 <span class="math notranslate nohighlight">\(\hat{c}_k\)</span> ，此时没有除法。</p>
+<p class="rubric">脚注</p>
+<dl class="footnote brackets">
+<dt class="label" id="binconv"><span class="brackets"><a class="fn-backref" href="#id7">2</a></span></dt>
+<dd><p>binomial convolution</p>
+</dd>
+<dt class="label" id="ref2"><span class="brackets"><a class="fn-backref" href="#id8">3</a></span></dt>
+<dd><p>Entropy Increaser. <a class="reference external" href="https://blog.csdn.net/EI_Captain/article/details/107456608">任意模数二项卷积</a>.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="characteristic_polynomial.html" class="btn btn-neutral float-right" title="特征多项式" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Chinese_remainder_theorem.html" class="btn btn-neutral float-left" title="中国剩余定理" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2021, hly1204.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
