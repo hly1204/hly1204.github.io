@@ -50,7 +50,7 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinxdoc'
+html_theme = 'sphinx_rtd_theme'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -64,3 +64,11 @@ source_suffix = {
 root_doc = 'index'  # 包含了根目录树
 keep_warnings = True  # 总是显示警告
 today_fmt = '%Y-%b-%d'
+trim_footnote_reference_space = True
+html_permalinks = True
+
+# -- 主题设置
+nosidebar = False
+html_sidebars = {
+    '**': ['localtoc.html', 'searchbox.html']
+}
