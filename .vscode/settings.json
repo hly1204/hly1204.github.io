@@ -1,6 +1,6 @@
 {
   "restructuredtext.confPath": "${workspaceFolder}\\source",
-  "editor.tabSize": 3,
+  "editor.tabSize": 2,
   "editor.fontFamily": "Cascadia Code, 'Courier New', 微软雅黑",
   "editor.fontSize": 15,
   "editor.smoothScrolling": true,
@@ -11,5 +11,20 @@
   "editor.wordWrap": "on",
   "editor.codeLensFontFamily": "Cascadia Code, 'Courier New', 微软雅黑",
   "editor.minimap.enabled": false,
-  "editor.defaultFormatter": "ms-python.python"
+  "editor.defaultFormatter": "ms-python.python",
+  "[python]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "editor.autoIndent": "advanced"
+  },
+  "[cpp]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced"
+  },
+  "[restructuredtext]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 3,
+    "editor.autoIndent": "advanced"
+  }
 }
