@@ -62,9 +62,9 @@ Cayley-Hamilton 定理
 
 矩阵的逆元
 ------------------------
-一般我们用 Gauss-Jordan 消元法对分块矩阵 :math:`\begin{bmatrix}\mathbf{A}&\mathbf{I}\end{bmatrix}` 进行初等变换。
+对于上述定义中的矩阵，一般我们用 Gauss-Jordan 消元法对分块矩阵 :math:`\begin{bmatrix}\mathbf{A}&\mathbf{I}\end{bmatrix}` 进行初等变换，细节在后面的章节描述。
 
-最后得到 :math:`\begin{bmatrix}\mathbf{I}&\mathbf{A}^{-1}\end{bmatrix}` 则得到了一个解，但是注意若我们在中间过程中进行过交换行的操作，则最后得到的相当于 :math:`(\mathbf{PA})^{-1}` 其中 :math:`\mathbf{P}` 为一个排列矩阵，而排列矩阵的逆元是其自身，我们有 :math:`(\mathbf{PA})^{-1}(\mathbf{PA})=\mathbf{I}` 于是 :math:`(\mathbf{PA})\mathbf{P}` 即为所求逆矩阵，也就是在消元过程中若交换两行，那么结果的矩阵需要交换对应两列。
+最后得到 :math:`\begin{bmatrix}\mathbf{I}&\mathbf{A}^{-1}\end{bmatrix}` 则得到了一个解，但是注意若我们在中间过程中进行过交换行的操作，则最后得到的相当于 :math:`(\mathbf{PA})^{-1}` 其中 :math:`\mathbf{P}` 为一个排列矩阵，而排列矩阵的逆元是其自身，我们有 :math:`(\mathbf{PA})^{-1}(\mathbf{PA})=\mathbf{I}` 于是 :math:`(\mathbf{PA})^{-1}\mathbf{P}` 即为所求逆矩阵，也就是在消元过程中若交换两行，那么结果的矩阵需要交换对应两列。
 
 上述 Cayley-Hamilton 定理也提示我们一种额外的方法。对于上述矩阵 :math:`\mathbf{A}` 有
 
