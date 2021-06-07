@@ -39,6 +39,7 @@
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
         <script src="../_static/translations.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -184,6 +185,29 @@
 <h1>中国剩余定理<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id2">
 <h2>简介<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>在 <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> 中我们关注这样一个关于 <span class="math notranslate nohighlight">\(x\)</span> 的线性同余方程组</p>
+<div class="math notranslate nohighlight" id="equation-lineq">
+<span class="eqno">(1)<a class="headerlink" href="#equation-lineq" title="公式的永久链接">¶</a></span>\[ \begin{align}\begin{aligned}\begin{cases}
+x\equiv x_1\pmod{m_1}\\x\equiv x_2\pmod{m_2}\\\vdots\\x\equiv x_n\pmod{m_n}
+\end{cases}\end{aligned}\end{align} \]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\forall i\neq j\)</span> 有 <span class="math notranslate nohighlight">\(\gcd(m_i,m_j)=1\)</span> 即两两互素，我们要求满足方程组的最小非负 <span class="math notranslate nohighlight">\(x\)</span> 。</p>
+<p>令 <span class="math notranslate nohighlight">\(M=\prod_{1\leq i\leq n}m_i\)</span> 。</p>
+<p>在抽象代数中我们经常将这个描述成一个映射如</p>
+<div class="math notranslate nohighlight">
+\[x\bmod{M}\mapsto (x\bmod{m_1},x\bmod{m_2},\dots ,x\bmod{m_n})\]</div>
+<p>也导出了环的同构即</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{Z}/M\mathbb{Z}
+\cong
+\mathbb{Z}/m_1\mathbb{Z}
+\times
+\mathbb{Z}/m_2\mathbb{Z}
+\times
+\cdots
+\times
+\mathbb{Z}/m_n\mathbb{Z}\]</div>
+<p>这里的 <span class="math notranslate nohighlight">\(\times\)</span> 符号为直积（或笛卡尔积）。</p>
+<p>例如有集合 <span class="math notranslate nohighlight">\(A\)</span> 和集合 <span class="math notranslate nohighlight">\(B\)</span> 那么集合 <span class="math notranslate nohighlight">\(A\times B=\{(a,b)\mid a\in A,b\in B\}\)</span> 。</p>
 </div>
 <div class="section" id="euclid">
 <h2>Euclid 算法<a class="headerlink" href="#euclid" title="永久链接至标题">¶</a></h2>
@@ -215,7 +239,7 @@
     <p>
         &#169; 版权所有 2021, hly1204.
       <span class="lastupdated">
-        最后更新于 2021 年 06 月 06 日.
+        最后更新于 2021 年 06 月 07 日.
       </span>
 
     </p>

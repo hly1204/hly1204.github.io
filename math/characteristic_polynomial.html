@@ -103,14 +103,15 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">特征多项式</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">特征多项式的定义</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cayley-hamilton">Cayley-Hamilton 定理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">矩阵的逆元</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#leverrier">LeVerrier 方法</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">相似变换</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">相似变换</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#la-budde">La Budde 方法</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#hessenberg">上 Hessenberg 矩阵</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#gauss">用 Gauss 消元作相似变换</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id18">常系数齐次线性递推</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id19">常系数齐次线性递推</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="fast_Fourier_transform.html">快速 Fourier 变换</a></li>
@@ -234,9 +235,20 @@
 </dd>
 </dl>
 </div>
+<div class="section" id="id7">
+<h2>矩阵的逆元<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>一般我们用 Gauss-Jordan 消元法对分块矩阵 <span class="math notranslate nohighlight">\(\begin{bmatrix}\mathbf{A}&amp;\mathbf{I}\end{bmatrix}\)</span> 进行初等变换。</p>
+<p>最后得到 <span class="math notranslate nohighlight">\(\begin{bmatrix}\mathbf{I}&amp;\mathbf{A}^{-1}\end{bmatrix}\)</span> 则得到了一个解，但是注意若我们在中间过程中进行过交换行的操作，则最后得到的相当于 <span class="math notranslate nohighlight">\((\mathbf{PA})^{-1}\)</span> 其中 <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> 为一个排列矩阵，而排列矩阵的逆元是其自身，我们有 <span class="math notranslate nohighlight">\((\mathbf{PA})^{-1}(\mathbf{PA})=\mathbf{I}\)</span> 于是 <span class="math notranslate nohighlight">\((\mathbf{PA})\mathbf{P}\)</span> 即为所求逆矩阵，也就是在消元过程中若交换两行，那么结果的矩阵需要交换对应两列。</p>
+<p>上述 Cayley-Hamilton 定理也提示我们一种额外的方法。对于上述矩阵 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> 有</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\mathbf{A}^n+c_1\mathbf{A}^{n-1}+\cdots +c_{n-1}\mathbf{A}+c_n\mathbf{I}=0\\\implies
+-c_n\mathbf{I}=\mathbf{A}^n+c_1\mathbf{A}^{n-1}+\cdots +c_{n-1}\mathbf{A}\\\implies
+-c_n\mathbf{A}^{-1}=\mathbf{A}^{n-1}+c_1\mathbf{A}^{n-2}+\cdots +c_{n-1}\mathbf{I}\end{aligned}\end{align} \]</div>
+<p>而矩阵的逆存在 iff 其行列式不为零，这里 <span class="math notranslate nohighlight">\(c_n\)</span> 的绝对值恰为其行列式的值。</p>
+</div>
 <div class="section" id="leverrier">
 <h2>LeVerrier 方法<a class="headerlink" href="#leverrier" title="永久链接至标题">¶</a></h2>
-<p>第一个实用的计算特征多项式的方法是由 LeVerrier 在 1840 年提出的，基于 Newton 恒等式<a class="footnote-reference brackets" href="#newton" id="id7">5</a> 。</p>
+<p>第一个实用的计算特征多项式的方法是由 LeVerrier 在 1840 年提出的，基于 Newton 恒等式<a class="footnote-reference brackets" href="#newton" id="id8">5</a> 。</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}c_1&amp;=-\operatorname{trace}(\mathbf{A}),\\c_k&amp;=-\frac{1}{k}\operatorname{trace}(\mathbf{A}^k+c_1\mathbf{A}^{k-1}+\cdots +c_{k-1}\mathbf{A}),\quad 2\leq k\leq n\end{aligned}\end{align} \]</div>
 <p>其中 Newton 恒等式可以用递归的方式表示如</p>
@@ -247,13 +259,13 @@
 <p>其证明可以参考 <a class="reference external" href="https://en.wikipedia.org/wiki/Faddeev%E2%80%93LeVerrier_algorithm">wiki</a> ，我们直接实现该算法的时间是 <span class="math notranslate nohighlight">\(O(n^4)\)</span> 。</p>
 <p class="rubric">脚注</p>
 <dl class="footnote brackets">
-<dt class="label" id="newton"><span class="brackets"><a class="fn-backref" href="#id7">5</a></span></dt>
+<dt class="label" id="newton"><span class="brackets"><a class="fn-backref" href="#id8">5</a></span></dt>
 <dd><p>Newton’s identities</p>
 </dd>
 </dl>
 </div>
-<div class="section" id="id8">
-<h2>相似变换<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id9">
+<h2>相似变换<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
 <p>设矩阵 <span class="math notranslate nohighlight">\(\mathbf{A}\in\mathbb{C}^{n\times n}\)</span> ，我们说 <span class="math notranslate nohighlight">\(\mathbf{A}'\)</span> 与 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> 相似当 <span class="math notranslate nohighlight">\(\mathbf{A}'\)</span> 可被写作</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{A}'=\mathbf{PA}\mathbf{P}^{-1}\]</div>
@@ -262,10 +274,10 @@
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}\vert \lambda \mathbf{I}-\mathbf{A}'\vert &amp;=\vert \lambda \mathbf{I}-\mathbf{PA}\mathbf{P}^{-1}\vert\\&amp;=\vert \mathbf{P}\lambda\mathbf{I}\mathbf{P}^{-1}-\mathbf{PA}\mathbf{P}^{-1}\vert\\&amp;=\vert \mathbf{P}(\lambda\mathbf{I}\mathbf{P}^{-1}-\mathbf{A}\mathbf{P}^{-1})\vert\\&amp;=\vert \mathbf{P}\vert \vert \lambda\mathbf{I}-\mathbf{A}\vert \vert \mathbf{P}^{-1} \vert\\&amp;=\vert \lambda \mathbf{I}-\mathbf{A}\vert\end{aligned}\end{align} \]</div>
 <p>虽然矩阵乘法没有交换律，但是其行列式有，另外 <span class="math notranslate nohighlight">\(\mathbf{A}'=\mathbf{P}^{-1}\mathbf{AP}\)</span> 是一样的。</p>
-<p>像这样由 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> 到 <span class="math notranslate nohighlight">\(\mathbf{A}'\)</span> 的变换我们称为相似变换<a class="footnote-reference brackets" href="#sim" id="id9">6</a> 。</p>
+<p>像这样由 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> 到 <span class="math notranslate nohighlight">\(\mathbf{A}'\)</span> 的变换我们称为相似变换<a class="footnote-reference brackets" href="#sim" id="id10">6</a> 。</p>
 <p class="rubric">脚注</p>
 <dl class="footnote brackets">
-<dt class="label" id="sim"><span class="brackets"><a class="fn-backref" href="#id9">6</a></span></dt>
+<dt class="label" id="sim"><span class="brackets"><a class="fn-backref" href="#id10">6</a></span></dt>
 <dd><p>similarity transformation</p>
 </dd>
 </dl>
@@ -280,18 +292,18 @@
 \begin{bmatrix}
 \alpha_{1}&amp;h_{12}&amp;\dots&amp;\dots&amp;h_{1n}\\\beta_{2}&amp;\alpha_{2}&amp;h_{23}&amp;&amp;\vdots\\&amp;\ddots &amp;\ddots &amp; \ddots &amp;\vdots\\&amp; &amp;\ddots &amp;\ddots &amp; h_{(n-1)n}\\&amp;&amp;&amp; \beta_{n}&amp; \alpha_{n}
 \end{bmatrix}\end{aligned}\end{align} \]</div>
-<p>的矩阵。其中 <span class="math notranslate nohighlight">\(\beta\)</span> 形成的对角线我们称为次对角线<a class="footnote-reference brackets" href="#subdiag" id="id10">7</a> 。</p>
+<p>的矩阵。其中 <span class="math notranslate nohighlight">\(\beta\)</span> 形成的对角线我们称为次对角线<a class="footnote-reference brackets" href="#subdiag" id="id11">7</a> 。</p>
 <p class="rubric">脚注</p>
 <dl class="footnote brackets">
-<dt class="label" id="subdiag"><span class="brackets"><a class="fn-backref" href="#id10">7</a></span></dt>
+<dt class="label" id="subdiag"><span class="brackets"><a class="fn-backref" href="#id11">7</a></span></dt>
 <dd><p>subdiagonal</p>
 </dd>
 </dl>
 <hr class="docutils" />
-<p>La Budde 方法<a class="footnote-reference brackets" href="#ref1" id="id11">8</a> 可用来在 <span class="math notranslate nohighlight">\(O(n^3)\)</span> 计算矩阵 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> 的特征多项式，其分为两个步骤。</p>
+<p>La Budde 方法<a class="footnote-reference brackets" href="#ref1" id="id12">8</a> 可用来在 <span class="math notranslate nohighlight">\(O(n^3)\)</span> 计算矩阵 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> 的特征多项式，其分为两个步骤。</p>
 <ol class="arabic simple">
 <li><p>将 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> 进行（正交）相似变换为上 Hessenberg 矩阵 <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> 。</p></li>
-<li><p>计算连续主子矩阵 <span class="math notranslate nohighlight">\(\mathbf{H}_i\)</span><a class="footnote-reference brackets" href="#leadprin" id="id12">9</a> 的特征多项式。</p></li>
+<li><p>计算连续主子矩阵 <span class="math notranslate nohighlight">\(\mathbf{H}_i\)</span><a class="footnote-reference brackets" href="#leadprin" id="id13">9</a> 的特征多项式。</p></li>
 </ol>
 <p>我们令 <span class="math notranslate nohighlight">\(p_0(\lambda)=1\)</span> 且 <span class="math notranslate nohighlight">\(\mathbf{I}_k\)</span> 表示 <span class="math notranslate nohighlight">\(k\times k\)</span> 的单位矩阵，有</p>
 <div class="math notranslate nohighlight">
@@ -306,7 +318,7 @@ p_1(\lambda)=\det(\lambda \mathbf{I_1}-\mathbf{H}_1)=\lambda -\alpha_1\]</div>
 \alpha_1&amp;h_{12}\\\beta_2&amp;\alpha_2
 \end{bmatrix},\quad
 p_2(\lambda)=\det(\lambda\mathbf{I}-\mathbf{H}_2)=(\lambda-\alpha_2)p_1(\lambda)-\beta_2h_{12}p_0(\lambda)\end{aligned}\end{align} \]</div>
-<p>在计算行列式时我们一般选择按零最多的行或列余子式展开<a class="footnote-reference brackets" href="#cofacexp" id="id13">10</a> ，所谓余子式即删除了当前选择的元素所在行和列之后的矩阵，在这里我们选择按最后一行进行展开，有</p>
+<p>在计算行列式时我们一般选择按零最多的行或列余子式展开<a class="footnote-reference brackets" href="#cofacexp" id="id14">10</a> ，所谓余子式即删除了当前选择的元素所在行和列之后的矩阵，在这里我们选择按最后一行进行展开，有</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}p_3(\lambda)&amp;=
 \det(\lambda\mathbf{I}_3-\mathbf{H}_3)\\&amp;=\begin{vmatrix}
@@ -323,19 +335,19 @@ p_2(\lambda)=\det(\lambda\mathbf{I}-\mathbf{H}_2)=(\lambda-\alpha_2)p_1(\lambda)
 \prod_{j=i-m+1}^{i}\beta_j
 \right)
 p_{i-m-1}(\lambda)\]</div>
-<p>直接计算上式消耗 <span class="math notranslate nohighlight">\(O(n^3)\)</span> 的时间。若该上 Hessenberg 矩阵还是三对角矩阵<a class="footnote-reference brackets" href="#tri" id="id14">11</a> ，我们有更快的算法<a class="footnote-reference brackets" href="#ref1" id="id15">8</a> 。</p>
+<p>直接计算上式消耗 <span class="math notranslate nohighlight">\(O(n^3)\)</span> 的时间。若该上 Hessenberg 矩阵还是三对角矩阵<a class="footnote-reference brackets" href="#tri" id="id15">11</a> ，我们有更快的算法<a class="footnote-reference brackets" href="#ref1" id="id16">8</a> 。</p>
 <p class="rubric">脚注</p>
 <dl class="footnote brackets">
-<dt class="label" id="ref1"><span class="brackets">8</span><span class="fn-backref">(<a href="#id11">1</a>,<a href="#id15">2</a>)</span></dt>
+<dt class="label" id="ref1"><span class="brackets">8</span><span class="fn-backref">(<a href="#id12">1</a>,<a href="#id16">2</a>)</span></dt>
 <dd><p>Rizwana Rehman, Ilse C.F. Ipsen. <a class="reference external" href="https://ipsen.math.ncsu.edu/ps/charpoly3.pdf">La Budde’s Method for Computing Characteristic Polynomials</a>.</p>
 </dd>
-<dt class="label" id="leadprin"><span class="brackets"><a class="fn-backref" href="#id12">9</a></span></dt>
+<dt class="label" id="leadprin"><span class="brackets"><a class="fn-backref" href="#id13">9</a></span></dt>
 <dd><p>leading principal submatrix <span class="math notranslate nohighlight">\(\mathbf{H}_i\)</span> 指只保留前 <span class="math notranslate nohighlight">\(i\)</span> 行和列的子矩阵</p>
 </dd>
-<dt class="label" id="cofacexp"><span class="brackets"><a class="fn-backref" href="#id13">10</a></span></dt>
+<dt class="label" id="cofacexp"><span class="brackets"><a class="fn-backref" href="#id14">10</a></span></dt>
 <dd><p>cofactor expansion</p>
 </dd>
-<dt class="label" id="tri"><span class="brackets"><a class="fn-backref" href="#id14">11</a></span></dt>
+<dt class="label" id="tri"><span class="brackets"><a class="fn-backref" href="#id15">11</a></span></dt>
 <dd><p>tridiagonal matrix</p>
 </dd>
 </dl>
@@ -343,27 +355,32 @@ p_{i-m-1}(\lambda)\]</div>
 </div>
 <div class="section" id="gauss">
 <h2>用 Gauss 消元作相似变换<a class="headerlink" href="#gauss" title="永久链接至标题">¶</a></h2>
-<p>一般 La Budde 方法使用 Hessenberg 分解，即 Householder 矩阵来进行正交相似变换<a class="footnote-reference brackets" href="#ref2" id="id16">12</a> ，其具有数值稳定性，但为了简便我们使用 Gauss 消元法<a class="footnote-reference brackets" href="#ref3" id="id17">13</a> 。</p>
+<p>一般 La Budde 方法使用 Hessenberg 分解，即 Householder 矩阵来进行正交相似变换<a class="footnote-reference brackets" href="#ref2" id="id17">12</a> ，其具有数值稳定性，但为了简便我们使用 Gauss 消元法<a class="footnote-reference brackets" href="#ref3" id="id18">13</a> 。</p>
 <p>一般的高斯消元并不是直接的相似变换，我们在这里假设只作行变换，也就是</p>
 <ol class="arabic simple">
 <li><p>将第 <span class="math notranslate nohighlight">\(i\)</span> 行的 <span class="math notranslate nohighlight">\(k\)</span> 倍加到第 <span class="math notranslate nohighlight">\(j\)</span> 行，其中 <span class="math notranslate nohighlight">\(i\neq j\)</span> 且 <span class="math notranslate nohighlight">\(k\neq 0\)</span> 。</p></li>
 <li><p>交换两行。</p></li>
+<li><p>将第 <span class="math notranslate nohighlight">\(i\)</span> 行乘以 <span class="math notranslate nohighlight">\(k\)</span> 倍。</p></li>
 </ol>
-<p>其中第二个操作作用于矩阵 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> 等价于使其左乘一个排列矩阵，而排列矩阵的逆为其转置，我们右乘他即交换对应的两列，这个操作也用来选主元。</p>
 <p>令 <span class="math notranslate nohighlight">\(\mathbf{M}_{ab}\)</span> 表示矩阵 <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> 第 <span class="math notranslate nohighlight">\(a\)</span> 行，第 <span class="math notranslate nohighlight">\(b\)</span> 列的元素。</p>
-<p>对于第一个操作，其等价于左乘了一个形如 <span class="math notranslate nohighlight">\(\mathbf{I}_n+\mathbf{M}\)</span> 的矩阵，其中 <span class="math notranslate nohighlight">\(\mathbf{M}_{ij}=k\)</span> 其余都为零，我们右乘他的逆即 <span class="math notranslate nohighlight">\(\mathbf{I}_n-\mathbf{M}\)</span> 即可。</p>
+<p>第一个操作其等价于左乘了一个形如 <span class="math notranslate nohighlight">\(\mathbf{I}_n+\mathbf{M}\)</span> 的矩阵，其中 <span class="math notranslate nohighlight">\(\mathbf{M}_{ij}=k\)</span> 其余都为零，我们右乘他的逆即 <span class="math notranslate nohighlight">\(\mathbf{I}_n-\mathbf{M}\)</span> 即可。</p>
+<p>第二个操作作用于矩阵 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> 等价于使其左乘一个排列矩阵（即单位矩阵交换了对应两行），而排列矩阵的逆为其自身，我们右乘他即交换对应的两列，这个操作也用来选主元。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>我们只对次对角线以下的部分作上述变换。</p>
+</div>
 <p class="rubric">脚注</p>
 <dl class="footnote brackets">
-<dt class="label" id="ref2"><span class="brackets"><a class="fn-backref" href="#id16">12</a></span></dt>
+<dt class="label" id="ref2"><span class="brackets"><a class="fn-backref" href="#id17">12</a></span></dt>
 <dd><p>G. H. Golub and C. F. Van Loan, Matrix Computations, The Johns Hopkins University Press, Baltimore, third ed., 1996.</p>
 </dd>
-<dt class="label" id="ref3"><span class="brackets"><a class="fn-backref" href="#id17">13</a></span></dt>
+<dt class="label" id="ref3"><span class="brackets"><a class="fn-backref" href="#id18">13</a></span></dt>
 <dd><p><a class="reference external" href="http://www.phys.uri.edu/nigh/NumRec/bookfpdf/f11-5.pdf">Reduction of a General Matrix to Hessenberg Form</a></p>
 </dd>
 </dl>
 </div>
-<div class="section" id="id18">
-<h2>常系数齐次线性递推<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id19">
+<h2>常系数齐次线性递推<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h2>
 <p>我们关注这样一个常系数齐次线性递推序列（简称递推序列）如</p>
 <div class="math notranslate nohighlight">
 \[u_{n+d}=c_{d-1}u_{n+d-1}+\cdots +c_0u_n,\quad n\geq 0\]</div>
@@ -397,10 +414,10 @@ u_{n-1}\\u_{n}\\\vdots\\u_{n+d-2}
 \[\mathbf{M}^N\mathbf{v}_0=\sum_{i=0}^{d-1}g_i\mathbf{M}^i\mathbf{v}_0\iff \mathbf{v}_N=\sum_{i=0}^{d-1}g_i\mathbf{v}_i\]</div>
 <p>观察 <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span> 的第一行我们不难得出答案。这被称为 Fiduccia 算法。</p>
 <p>上述 <span class="math notranslate nohighlight">\(\Gamma(\lambda)=\det(\lambda \mathbf{I}_d-\mathbf{M})\)</span> 也就是其特征多项式。</p>
-<p>我们不难将矩阵的特征多项式与线性递推联系起来<a class="footnote-reference brackets" href="#mori" id="id19">14</a> 以及得到更快求矩阵幂次的算法，而求出矩阵的最小多项式我们可以采用随机化的 Berlekamp-Massey 算法。</p>
+<p>我们不难将矩阵的特征多项式与线性递推联系起来<a class="footnote-reference brackets" href="#mori" id="id20">14</a> 以及得到更快求矩阵幂次的算法，而求出矩阵的最小多项式我们可以采用随机化的 Berlekamp-Massey 算法。</p>
 <p class="rubric">脚注</p>
 <dl class="footnote brackets">
-<dt class="label" id="mori"><span class="brackets"><a class="fn-backref" href="#id19">14</a></span></dt>
+<dt class="label" id="mori"><span class="brackets"><a class="fn-backref" href="#id20">14</a></span></dt>
 <dd><p>Alin Bostan, Ryuhei Mori. <a class="reference external" href="https://arxiv.org/abs/2008.08822">A Simple and Fast Algorithm for Computing the N-th Term of a Linearly Recurrent Sequence</a>.</p>
 </dd>
 </dl>
@@ -423,7 +440,7 @@ u_{n-1}\\u_{n}\\\vdots\\u_{n+d-2}
     <p>
         &#169; 版权所有 2021, hly1204.
       <span class="lastupdated">
-        最后更新于 2021 年 06 月 06 日.
+        最后更新于 2021 年 06 月 07 日.
       </span>
 
     </p>

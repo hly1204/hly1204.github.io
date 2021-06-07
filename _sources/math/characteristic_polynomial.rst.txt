@@ -60,6 +60,25 @@ Cayley-Hamilton 定理
 .. [#zero] annihilating polynomial
 .. [#min] minimal polynomial
 
+矩阵的逆元
+------------------------
+一般我们用 Gauss-Jordan 消元法对分块矩阵 :math:`\begin{bmatrix}\mathbf{A}&\mathbf{I}\end{bmatrix}` 进行初等变换。
+
+最后得到 :math:`\begin{bmatrix}\mathbf{I}&\mathbf{A}^{-1}\end{bmatrix}` 则得到了一个解，但是注意若我们在中间过程中进行过交换行的操作，则最后得到的相当于 :math:`(\mathbf{PA})^{-1}` 其中 :math:`\mathbf{P}` 为一个排列矩阵，而排列矩阵的逆元是其自身，我们有 :math:`(\mathbf{PA})^{-1}(\mathbf{PA})=\mathbf{I}` 于是 :math:`(\mathbf{PA})\mathbf{P}` 即为所求逆矩阵，也就是在消元过程中若交换两行，那么结果的矩阵需要交换对应两列。
+
+上述 Cayley-Hamilton 定理也提示我们一种额外的方法。对于上述矩阵 :math:`\mathbf{A}` 有
+
+.. math::
+   \mathbf{A}^n+c_1\mathbf{A}^{n-1}+\cdots +c_{n-1}\mathbf{A}+c_n\mathbf{I}=0
+
+   \implies
+   -c_n\mathbf{I}=\mathbf{A}^n+c_1\mathbf{A}^{n-1}+\cdots +c_{n-1}\mathbf{A}
+
+   \implies
+   -c_n\mathbf{A}^{-1}=\mathbf{A}^{n-1}+c_1\mathbf{A}^{n-2}+\cdots +c_{n-1}\mathbf{I}
+
+而矩阵的逆存在 iff 其行列式不为零，这里 :math:`c_n` 的绝对值恰为其行列式的值。
+
 LeVerrier 方法
 ----------------------
 第一个实用的计算特征多项式的方法是由 LeVerrier 在 1840 年提出的，基于 Newton 恒等式 [#newton]_ 。
@@ -213,12 +232,16 @@ La Budde 方法 [#ref1]_ 可用来在 :math:`O(n^3)` 计算矩阵 :math:`\mathbf
 
 1. 将第 :math:`i` 行的 :math:`k` 倍加到第 :math:`j` 行，其中 :math:`i\neq j` 且 :math:`k\neq 0` 。
 2. 交换两行。
-
-其中第二个操作作用于矩阵 :math:`\mathbf{A}` 等价于使其左乘一个排列矩阵，而排列矩阵的逆为其转置，我们右乘他即交换对应的两列，这个操作也用来选主元。
+3. 将第 :math:`i` 行乘以 :math:`k` 倍。
 
 令 :math:`\mathbf{M}_{ab}` 表示矩阵 :math:`\mathbf{M}` 第 :math:`a` 行，第 :math:`b` 列的元素。
 
-对于第一个操作，其等价于左乘了一个形如 :math:`\mathbf{I}_n+\mathbf{M}` 的矩阵，其中 :math:`\mathbf{M}_{ij}=k` 其余都为零，我们右乘他的逆即 :math:`\mathbf{I}_n-\mathbf{M}` 即可。
+第一个操作其等价于左乘了一个形如 :math:`\mathbf{I}_n+\mathbf{M}` 的矩阵，其中 :math:`\mathbf{M}_{ij}=k` 其余都为零，我们右乘他的逆即 :math:`\mathbf{I}_n-\mathbf{M}` 即可。
+
+第二个操作作用于矩阵 :math:`\mathbf{A}` 等价于使其左乘一个排列矩阵（即单位矩阵交换了对应两行），而排列矩阵的逆为其自身，我们右乘他即交换对应的两列，这个操作也用来选主元。
+
+.. note::
+   我们只对次对角线以下的部分作上述变换。
 
 .. rubric:: 脚注
 

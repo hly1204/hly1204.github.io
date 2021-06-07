@@ -8,7 +8,6 @@
 
 简介
 ------------------
-
 说实话这个东西我也是第一次接触，与 Markdown 语法的简单不同，这里使用 reStructuredText_ 来构造，语法稍复杂但功能却非常丰富。
 
 而构造文档的交给 Sphinx_ 来完成，其中有一些扩展也是 reStructuredText_ 没有的。
@@ -29,7 +28,6 @@
 ----------------
 
 .. code-block:: py
-   :linenos:
    :caption: test
    :name: 示例
 
@@ -45,6 +43,8 @@
 .. literalinclude:: ../conf.py
    :linenos:
    :language: py
+
+.. 选项 :linenos: 不能使用，否则会导致拷贝按钮把行号也拷贝了。
 
 数学公式示例
 ----------------
