@@ -67,5 +67,5 @@ Twisted radix-4 FFT
 
 .. rubric:: 脚注
 
-.. [#m3] Daniel J. Bernstein. `Multidigit Multiplication For Mathematicians <https://www.researchgate.net/publication/2370542_Multidigit_Multiplication_For_Mathematicians>`_
+.. [#m3] Daniel J. Bernstein. `Multidigit Multiplication For Mathematicians <https://www.researchgate.net/publication/2370542_Multidigit_Multiplication_For_Mathematicians>`_.
 .. [#todd] Todd Mateer. `Fast Fourier Transform Algorithms with Applications <http://cr.yp.to/f2mult/mateer-thesis.pdf>`_.

@@ -44,9 +44,10 @@
    \times
    \mathbb{Z}/m_n\mathbb{Z}
 
-这里的 :math:`\times` 符号为直积（或笛卡尔积）。
+.. note::
+   这里的 :math:`\times` 符号为直积（或笛卡尔积）。
 
-例如有集合 :math:`A` 和集合 :math:`B` 那么集合 :math:`A\times B=\{(a,b)\mid a\in A\land b\in B\}` 。
+   例如有集合 :math:`A` 和集合 :math:`B` 那么集合 :math:`A\times B=\{(a,b)\mid a\in A\land b\in B\}` 。
 
 Euclid 算法
 -----------------------
@@ -102,9 +103,10 @@ Euclid 算法
    :language: py
    :lines: 1-16
 
-需要注意的是在上述求逆元（我们假设逆元存在）代码中解的范围，在 `wiki`_ 中有证明只调整一次是安全的。
+.. note::
+   需要注意的是在上述求逆元（我们假设逆元存在）代码中解的范围，在 `wiki`_ 中有证明只调整一次是安全的。
 
-.. _wiki: https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm
+   .. _wiki: https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm
 
 多项式的扩展 Euclid 算法
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -176,11 +178,9 @@ Lagrange 插值
    y_iM_i(x)N_i(x)
    \equiv
    y_j+\sum_{1\leq i\leq n\land i\neq j}y_iM_i(x)N_i(x)
-   \pmod{(x-x_i)}
+   \pmod{(x-x_j)}
 
-后一个和式中显然 :math:`M_j(x)` 都是 :math:`x-x_j` 的倍式，也就是都能满足 :math:`A(x_j)=y_j` 。
-
-稍加整理得到了
+后一个和式中显然 :math:`M_i(x)` 都是 :math:`x-x_j` 的倍式。稍加整理得到了
 
 .. math::
    A(x)
