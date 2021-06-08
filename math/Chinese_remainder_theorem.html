@@ -215,8 +215,11 @@ x\equiv x_1\pmod{m_1}\\x\equiv x_2\pmod{m_2}\\\vdots\\x\equiv x_n\pmod{m_n}
 \cdots
 \times
 \mathbb{Z}/m_n\mathbb{Z}\]</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
 <p>这里的 <span class="math notranslate nohighlight">\(\times\)</span> 符号为直积（或笛卡尔积）。</p>
 <p>例如有集合 <span class="math notranslate nohighlight">\(A\)</span> 和集合 <span class="math notranslate nohighlight">\(B\)</span> 那么集合 <span class="math notranslate nohighlight">\(A\times B=\{(a,b)\mid a\in A\land b\in B\}\)</span> 。</p>
+</div>
 </div>
 <div class="section" id="euclid">
 <h2>Euclid 算法<a class="headerlink" href="#euclid" title="永久链接至标题">¶</a></h2>
@@ -268,7 +271,10 @@ a\\b
     <span class="k">return</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">m</span> <span class="k">if</span> <span class="n">x1</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">x1</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
 <p>需要注意的是在上述求逆元（我们假设逆元存在）代码中解的范围，在 <a class="reference external" href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm">wiki</a> 中有证明只调整一次是安全的。</p>
+</div>
 <div class="section" id="id4">
 <h3>多项式的扩展 Euclid 算法<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
 <p>我们尝试将辗转相除应用于多项式上，假设要求 <span class="math notranslate nohighlight">\(S(x)\)</span> 和 <span class="math notranslate nohighlight">\(T(x)\)</span> 满足</p>
@@ -319,9 +325,8 @@ y_iM_i(x)N_i(x)
 y_iM_i(x)N_i(x)
 \equiv
 y_j+\sum_{1\leq i\leq n\land i\neq j}y_iM_i(x)N_i(x)
-\pmod{(x-x_i)}\]</div>
-<p>后一个和式中显然 <span class="math notranslate nohighlight">\(M_j(x)\)</span> 都是 <span class="math notranslate nohighlight">\(x-x_j\)</span> 的倍式，也就是都能满足 <span class="math notranslate nohighlight">\(A(x_j)=y_j\)</span> 。</p>
-<p>稍加整理得到了</p>
+\pmod{(x-x_j)}\]</div>
+<p>后一个和式中显然 <span class="math notranslate nohighlight">\(M_i(x)\)</span> 都是 <span class="math notranslate nohighlight">\(x-x_j\)</span> 的倍式。稍加整理得到了</p>
 <div class="math notranslate nohighlight">
 \[A(x)
 \equiv
