@@ -101,9 +101,18 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">中国剩余定理</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">简介</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#euclid">Euclid 算法</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">扩展 Euclid 算法</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#lagrange">Lagrange 插值</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#newton">Newton 插值</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">扩展 Euclid 算法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">多项式的扩展 Euclid 算法</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lagrange">Lagrange 插值</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">多项式的 Lagrange 插值</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#newton">Newton 插值</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">多项式的 Newton 插值</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Lucas_theorem.html">Lucas 定理及其推广</a></li>
@@ -207,19 +216,212 @@ x\equiv x_1\pmod{m_1}\\x\equiv x_2\pmod{m_2}\\\vdots\\x\equiv x_n\pmod{m_n}
 \times
 \mathbb{Z}/m_n\mathbb{Z}\]</div>
 <p>这里的 <span class="math notranslate nohighlight">\(\times\)</span> 符号为直积（或笛卡尔积）。</p>
-<p>例如有集合 <span class="math notranslate nohighlight">\(A\)</span> 和集合 <span class="math notranslate nohighlight">\(B\)</span> 那么集合 <span class="math notranslate nohighlight">\(A\times B=\{(a,b)\mid a\in A,b\in B\}\)</span> 。</p>
+<p>例如有集合 <span class="math notranslate nohighlight">\(A\)</span> 和集合 <span class="math notranslate nohighlight">\(B\)</span> 那么集合 <span class="math notranslate nohighlight">\(A\times B=\{(a,b)\mid a\in A\land b\in B\}\)</span> 。</p>
 </div>
 <div class="section" id="euclid">
 <h2>Euclid 算法<a class="headerlink" href="#euclid" title="永久链接至标题">¶</a></h2>
+<p>对于正整数 <span class="math notranslate nohighlight">\(a\)</span> 和 <span class="math notranslate nohighlight">\(b\)</span> 我们有 <span class="math notranslate nohighlight">\(\gcd(a,b)=\gcd(b,a\bmod{b})\)</span> ，这也被称为辗转相除法，当情况为 <span class="math notranslate nohighlight">\(\gcd(t,0)\)</span> 时得到了解 <span class="math notranslate nohighlight">\(\gcd(a,b)=t\)</span> ，略。</p>
 </div>
 <div class="section" id="id3">
 <h2>扩展 Euclid 算法<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>假设要求关于 <span class="math notranslate nohighlight">\(s\)</span> 和 <span class="math notranslate nohighlight">\(t\)</span> 的不定方程的一组解满足 <span class="math notranslate nohighlight">\(as+bt=\gcd(a,b)\)</span> 也可以使用 Euclid 算法，我们将上述算法使用矩阵描述有</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{bmatrix}
+b\\a\bmod b
+\end{bmatrix}
+=
+\begin{bmatrix}
+0&amp;1\\1&amp;-q
+\end{bmatrix}
+\begin{bmatrix}
+a\\b
+\end{bmatrix}\end{aligned}\end{align} \]</div>
+<p>其中 <span class="math notranslate nohighlight">\(q=\lfloor a/b\rfloor\)</span> ，向下取整符号适用范围有限，否则需要单独定义，一般也称为 Euclid 除法（或带余除法），在一些多项式中也会经常用到 Euclid 除法。</p>
+<p>我们所要做的就是模拟矩阵乘法，不停左乘这样一个矩阵，而初始时为一个 <span class="math notranslate nohighlight">\(2\times 2\)</span> 的单位矩阵，最后有</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{bmatrix}
+\gcd(a,b)\\0
+\end{bmatrix}
+=
+\begin{bmatrix}
+x_1&amp;x_2\\x_3&amp;x_4
+\end{bmatrix}
+\begin{bmatrix}
+a\\b
+\end{bmatrix}\end{aligned}\end{align} \]</div>
+<p>其中 <span class="math notranslate nohighlight">\(x_1a+x_2b=\gcd(a,b)\)</span> 给出了一个 Bézout 等式。</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">exgcd</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="c1"># 返回 (gcd(a,b), x, y) 满足 gcd(a,b)=ax+by</span>
+    <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">x3</span><span class="p">,</span> <span class="n">x4</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">b</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">a</span> <span class="o">//</span> <span class="n">b</span>
+        <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">x3</span><span class="p">,</span> <span class="n">x4</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">x3</span><span class="p">,</span> <span class="n">x4</span><span class="p">,</span> <span class="n">x1</span> <span class="o">-</span> <span class="n">x3</span> <span class="o">*</span> <span class="n">q</span><span class="p">,</span> <span class="n">x2</span> <span class="o">-</span> <span class="n">x4</span> <span class="o">*</span> <span class="n">q</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span> <span class="o">*</span> <span class="n">q</span>
+    <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span>
+
+
+<span class="k">def</span> <span class="nf">inv_mod</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="c1"># 返回 a^{-1} (mod b)</span>
+    <span class="n">x1</span><span class="p">,</span> <span class="n">x3</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">b</span>
+    <span class="k">while</span> <span class="n">b</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">a</span> <span class="o">//</span> <span class="n">b</span>
+        <span class="n">x1</span><span class="p">,</span> <span class="n">x3</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">x3</span><span class="p">,</span> <span class="n">x1</span> <span class="o">-</span> <span class="n">x3</span> <span class="o">*</span> <span class="n">q</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span> <span class="o">*</span> <span class="n">q</span>
+    <span class="k">return</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">m</span> <span class="k">if</span> <span class="n">x1</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">x1</span>
+</pre></div>
+</div>
+<p>需要注意的是在上述求逆元（我们假设逆元存在）代码中解的范围，在 <a class="reference external" href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm">wiki</a> 中有证明只调整一次是安全的。</p>
+<div class="section" id="id4">
+<h3>多项式的扩展 Euclid 算法<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>我们尝试将辗转相除应用于多项式上，假设要求 <span class="math notranslate nohighlight">\(S(x)\)</span> 和 <span class="math notranslate nohighlight">\(T(x)\)</span> 满足</p>
+<div class="math notranslate nohighlight">
+\[S(x)A(x)+T(x)B(x)=\gcd(A(x),B(x))\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(A(x)\)</span> 和 <span class="math notranslate nohighlight">\(B(x)\)</span> 已知。</p>
+<p>如果我们直接计算，那么在辗转相除的过程中多项式的度数可能下降很慢，最坏需要消耗 <span class="math notranslate nohighlight">\(O(\deg(A(x))\deg(B(x)))\)</span> 的时间。</p>
+<p>观察到多项式除法的商仅由他们的高位决定，而商序列的度数之和是线性级别的，这导出了后来的 Half-Euclid 算法，但我们在这里略过。</p>
+</div>
 </div>
 <div class="section" id="lagrange">
 <h2>Lagrange 插值<a class="headerlink" href="#lagrange" title="永久链接至标题">¶</a></h2>
+<p>实际由 Gauss 提出<a class="footnote-reference brackets" href="#cryp" id="id5">1</a> 。回顾线性方程组 <a class="reference internal" href="#equation-lineq">(1)</a> ，我们发现</p>
+<div class="math notranslate nohighlight">
+\[x\equiv
+\sum_{1\leq i\leq n}x_iM_iN_i\pmod{M},
+\quad
+M_i=M/m_i,
+\quad
+N_i=M_i^{-1}\bmod{m_i}\]</div>
+<p>观察到当我们任取一个 <span class="math notranslate nohighlight">\(1\leq j\leq n\)</span> 时</p>
+<div class="math notranslate nohighlight">
+\[\sum_{1\leq i\leq n}x_iM_iN_i
+\equiv
+x_j+
+\sum_{1\leq i\leq n\land i\neq j}x_iM_iN_i
+\pmod{m_j}\]</div>
+<p>后面和式中 <span class="math notranslate nohighlight">\(M_i\)</span> 是 <span class="math notranslate nohighlight">\(m_j\)</span> 的倍数于是在模 <span class="math notranslate nohighlight">\(m_j\)</span> 意义下同余于零。</p>
+<div class="section" id="id7">
+<h3>多项式的 Lagrange 插值<a class="footnote-reference brackets" href="#modalg" id="id6">2</a><a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p>我们将上述算法应用于多项式上，问题变为</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{cases}
+A(x)\equiv y_1\pmod{(x-x_1)}\\A(x)\equiv y_2\pmod{(x-x_2)}\\\vdots\\A(x)\equiv y_n\pmod{(x-x_n)}
+\end{cases}\end{aligned}\end{align} \]</div>
+<p>合并上述同于方程。</p>
+<p>我们也假设对于 <span class="math notranslate nohighlight">\(\forall i\neq j\)</span> 有 <span class="math notranslate nohighlight">\(x_i\neq x_j\)</span> 且我们知道 <span class="math notranslate nohighlight">\(A(x)\bmod{(x-a)}=A(a)\)</span> 。</p>
+<p>设 <span class="math notranslate nohighlight">\(M(x)=\prod_{1\leq i\leq n}(x-x_i)\)</span> 和 <span class="math notranslate nohighlight">\(M_{i}(x)=M(x)/(x-x_i)\)</span> 及 <span class="math notranslate nohighlight">\(N_{i}(x)=M_{i}^{-1}(x)\bmod{(x-x_i)}\)</span> 及</p>
+<div class="math notranslate nohighlight">
+\[A(x)
+\equiv
+\sum_{1\leq i\leq n}
+y_iM_i(x)N_i(x)
+\pmod{M(x)}\]</div>
+<p>与上面同样的，任取 <span class="math notranslate nohighlight">\(1\leq j\leq n\)</span> 都满足</p>
+<div class="math notranslate nohighlight">
+\[\sum_{1\leq i\leq n}
+y_iM_i(x)N_i(x)
+\equiv
+y_j+\sum_{1\leq i\leq n\land i\neq j}y_iM_i(x)N_i(x)
+\pmod{(x-x_i)}\]</div>
+<p>后一个和式中显然 <span class="math notranslate nohighlight">\(M_j(x)\)</span> 都是 <span class="math notranslate nohighlight">\(x-x_j\)</span> 的倍式，也就是都能满足 <span class="math notranslate nohighlight">\(A(x_j)=y_j\)</span> 。</p>
+<p>稍加整理得到了</p>
+<div class="math notranslate nohighlight">
+\[A(x)
+\equiv
+\sum_{1\leq i\leq n}
+y_i
+\frac{\prod_{j\neq i}(x-x_j)}{\prod_{j\neq i}
+(x_i-x_j)}
+\pmod{M(x)}\]</div>
+<p>为了方便，我们省略同余符号。</p>
+<p>令 <span class="math notranslate nohighlight">\(s_i=\prod_{j\neq i}\frac{1}{x_i-x_j}\)</span> 那么 <span class="math notranslate nohighlight">\(A(x)\)</span> 可以表示为</p>
+<div class="math notranslate nohighlight">
+\[A(x)=
+\sum_{1\leq i\leq n}
+y_is_i\frac{M(x)}{x-x_i}\]</div>
+<p>观察到</p>
+<div class="math notranslate nohighlight">
+\[M'(x)=\sum_{1\leq i\leq n}
+\frac{M(x)}{x-x_i}\]</div>
+<p>且</p>
+<div class="math notranslate nohighlight">
+\[M'(x_i)=
+\lim_{x\to x_i}
+\frac{M(x)-M(x_i)}{x-x_i}
+=
+\lim_{x\to x_i}
+\frac{M(x)}{x-x_i}
+=
+\frac{1}{s_i}\]</div>
+<p>结合 FFT 的基本思想（分治取模）即可得到一个快速插值的算法。具体的，我们设</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}M_a(x)&amp;=\prod_{1\leq i\leq \left\lfloor n/2 \right\rfloor}(x-x_i)\\M_b(x)&amp;=\prod_{\left\lfloor n/2 \right\rfloor \lt i\leq n}(x-x_i)\\A_a(x)&amp;=\sum_{1\leq i\leq \left\lfloor n/2 \right\rfloor}y_is_i\frac{M_a}{x-x_i}\\A_b(x)&amp;=\sum_{\left\lfloor n/2 \right\rfloor \lt i\leq n}y_is_i\frac{M_b}{x-x_i}\end{aligned}\end{align} \]</div>
+<p>那么</p>
+<div class="math notranslate nohighlight">
+\[A(x)=A_a(x)M_b(x)+A_b(x)M_a(x)\]</div>
+<p>目前存在常数更小的算法<a class="footnote-reference brackets" href="#tell" id="id8">3</a> 。</p>
+<hr class="docutils" />
+<p class="rubric">脚注</p>
+<dl class="footnote brackets">
+<dt class="label" id="cryp"><span class="brackets"><a class="fn-backref" href="#id5">1</a></span></dt>
+<dd><p>Alfred J. Menezes, Paul C. van Oorschot and Scott A. Vanstone. <a class="reference external" href="http://cacr.uwaterloo.ca/hac/">Handbook of Applied Cryptography</a>.</p>
+</dd>
+<dt class="label" id="modalg"><span class="brackets"><a class="fn-backref" href="#id6">2</a></span></dt>
+<dd><p>J. von zur Gathen and J. Gerhard. Modern computer algebra. Cambridge University Press, 1999.</p>
+</dd>
+<dt class="label" id="tell"><span class="brackets"><a class="fn-backref" href="#id8">3</a></span></dt>
+<dd><p>A. Bostan, G. Lecerf, and É. Schost. <a class="reference external" href="https://specfun.inria.fr/bostan/publications/BoLeSc03.pdf">Tellegen’s principle into practice</a>. In Proceedings of ISSAC’03, pages 37–44. ACM Press, 2003.</p>
+</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="newton">
 <h2>Newton 插值<a class="headerlink" href="#newton" title="永久链接至标题">¶</a></h2>
+<p>与 Lagrange 插值不同，我们不是直接构造出一个解，而是在计算过程中构造“部分解”。</p>
+<p>考虑合并两个关于 <span class="math notranslate nohighlight">\(x\)</span> 的同余方程如</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{cases}
+x\equiv x_1\pmod{m_1}\\x\equiv x_2\pmod{m_2}
+\end{cases}\end{aligned}\end{align} \]</div>
+<p>若 <span class="math notranslate nohighlight">\(\gcd(m_1,m_2)=1\)</span> 那么存在整数 <span class="math notranslate nohighlight">\(k_1\)</span> 和 <span class="math notranslate nohighlight">\(k_2\)</span> 满足</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}x=x_1+k_1m_1=x_2+k_2m_2\\\implies
+x_1\equiv x_2+k_2m_2\pmod{m_1}\end{aligned}\end{align} \]</div>
+<p>可用扩展 Euclid 算法求出</p>
+<div class="math notranslate nohighlight">
+\[k_1\equiv (x_2-x_1)m_1^{-1}\pmod{m_2}\]</div>
+<p>代入 <span class="math notranslate nohighlight">\(k_1\)</span> 可求出 <span class="math notranslate nohighlight">\(x_{12}=x\bmod{m_1m_2}\)</span> 。</p>
+<p>考虑给上述方程组增加一个 <span class="math notranslate nohighlight">\(x\equiv x_3\pmod{m_3}\)</span> 那么</p>
+<div class="math notranslate nohighlight">
+\[x=x_{12}+k_{12}m_1m_2=x_3+k_3m_3\]</div>
+<p>那么</p>
+<div class="math notranslate nohighlight">
+\[k_{12}
+\equiv
+(x_3-x_{12})(m_1m_2)^{-1}
+\pmod{m_3}\]</div>
+<p>如果这个方程组有 <span class="math notranslate nohighlight">\(n\)</span> 个项目，那么我们可以依次求出 <span class="math notranslate nohighlight">\(y\)</span> 满足</p>
+<div class="math notranslate nohighlight">
+\[x\equiv
+x_1+y_1m_1+y_2m_1m_2+\cdots +y_{n-1}\prod_{1\leq i\lt n}m_i
+\quad\left(\bmod{\prod_{1\leq i\leq n}m_i}\right)\]</div>
+<p>这也被称为 Garner 算法。</p>
+<p>而当模数不是两两互素时，我们一般使用两两合并的方法，这里只给出实验性的代码。</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generalized_crt2</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">m1</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">m2</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="c1"># m1 和 m2 不必互素</span>
+    <span class="c1"># a &gt;= 0 且 b &gt;= 0</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="n">m1</span><span class="p">,</span> <span class="n">b</span> <span class="o">%</span> <span class="n">m2</span>
+    <span class="n">d</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">exgcd</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
+    <span class="n">bma</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span>
+    <span class="k">if</span> <span class="n">bma</span> <span class="o">%</span> <span class="n">d</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">m2</span> <span class="o">//</span> <span class="n">d</span><span class="p">,</span> <span class="n">bma</span> <span class="o">//</span> <span class="n">d</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">%</span> <span class="n">t</span>  <span class="c1"># 取模运算导致 res 在 python 中默认为非负的</span>
+    <span class="k">return</span> <span class="n">res</span> <span class="o">*</span> <span class="n">m1</span> <span class="o">+</span> <span class="n">a</span><span class="p">,</span> <span class="n">m1</span> <span class="o">*</span> <span class="n">t</span>
+</pre></div>
+</div>
+<div class="section" id="id9">
+<h3>多项式的 Newton 插值<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<p>Newton 插值结合 FFT 可以做到与 Lagrange 插值一样快速。</p>
+<p>但因为之前的文献忘记放哪儿了并且不太清楚实际作用就先不写了。</p>
+</div>
 </div>
 </div>
 
@@ -239,7 +441,7 @@ x\equiv x_1\pmod{m_1}\\x\equiv x_2\pmod{m_2}\\\vdots\\x\equiv x_n\pmod{m_n}
     <p>
         &#169; 版权所有 2021, hly1204.
       <span class="lastupdated">
-        最后更新于 2021 年 06 月 07 日.
+        最后更新于 2021 年 06 月 08 日.
       </span>
 
     </p>

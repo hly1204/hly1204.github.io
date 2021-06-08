@@ -112,6 +112,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#gauss">用 Gauss 消元作相似变换</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id19">常系数齐次线性递推</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#berkowitz">Berkowitz 方法</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="fast_Fourier_transform.html">快速 Fourier 变换</a></li>
@@ -244,7 +245,7 @@
 \[ \begin{align}\begin{aligned}\mathbf{A}^n+c_1\mathbf{A}^{n-1}+\cdots +c_{n-1}\mathbf{A}+c_n\mathbf{I}=0\\\implies
 -c_n\mathbf{I}=\mathbf{A}^n+c_1\mathbf{A}^{n-1}+\cdots +c_{n-1}\mathbf{A}\\\implies
 -c_n\mathbf{A}^{-1}=\mathbf{A}^{n-1}+c_1\mathbf{A}^{n-2}+\cdots +c_{n-1}\mathbf{I}\end{aligned}\end{align} \]</div>
-<p>而矩阵的逆存在 iff 其行列式不为零，这里 <span class="math notranslate nohighlight">\(c_n\)</span> 的绝对值恰为其行列式的值。</p>
+<p>而矩阵的逆元存在 iff 其行列式不为零，这里 <span class="math notranslate nohighlight">\((-1)^nc_n=\det(\mathbf{A})\)</span> 。</p>
 </div>
 <div class="section" id="leverrier">
 <h2>LeVerrier 方法<a class="headerlink" href="#leverrier" title="永久链接至标题">¶</a></h2>
@@ -283,7 +284,7 @@
 </dl>
 </div>
 <div class="section" id="la-budde">
-<h2>La Budde 方法<a class="headerlink" href="#la-budde" title="永久链接至标题">¶</a></h2>
+<h2>La Budde 方法<a class="footnote-reference brackets" href="#ref1" id="id11">8</a><a class="headerlink" href="#la-budde" title="永久链接至标题">¶</a></h2>
 <div class="section" id="hessenberg">
 <h3>上 Hessenberg 矩阵<a class="headerlink" href="#hessenberg" title="永久链接至标题">¶</a></h3>
 <p>上 Hessenberg 矩阵 <span class="math notranslate nohighlight">\(\mathbf{H}\in\mathbb{C}^{n\times n},n\gt 2\)</span> 是形如</p>
@@ -292,15 +293,15 @@
 \begin{bmatrix}
 \alpha_{1}&amp;h_{12}&amp;\dots&amp;\dots&amp;h_{1n}\\\beta_{2}&amp;\alpha_{2}&amp;h_{23}&amp;&amp;\vdots\\&amp;\ddots &amp;\ddots &amp; \ddots &amp;\vdots\\&amp; &amp;\ddots &amp;\ddots &amp; h_{(n-1)n}\\&amp;&amp;&amp; \beta_{n}&amp; \alpha_{n}
 \end{bmatrix}\end{aligned}\end{align} \]</div>
-<p>的矩阵。其中 <span class="math notranslate nohighlight">\(\beta\)</span> 形成的对角线我们称为次对角线<a class="footnote-reference brackets" href="#subdiag" id="id11">7</a> 。</p>
+<p>的矩阵。其中 <span class="math notranslate nohighlight">\(\beta\)</span> 形成的对角线我们称为次对角线<a class="footnote-reference brackets" href="#subdiag" id="id12">7</a> 。</p>
 <p class="rubric">脚注</p>
 <dl class="footnote brackets">
-<dt class="label" id="subdiag"><span class="brackets"><a class="fn-backref" href="#id11">7</a></span></dt>
+<dt class="label" id="subdiag"><span class="brackets"><a class="fn-backref" href="#id12">7</a></span></dt>
 <dd><p>subdiagonal</p>
 </dd>
 </dl>
 <hr class="docutils" />
-<p>La Budde 方法<a class="footnote-reference brackets" href="#ref1" id="id12">8</a> 可用来在 <span class="math notranslate nohighlight">\(O(n^3)\)</span> 计算矩阵 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> 的特征多项式，其分为两个步骤。</p>
+<p>La Budde 方法可用来在 <span class="math notranslate nohighlight">\(O(n^3)\)</span> 计算矩阵 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> 的特征多项式，其分为两个步骤。</p>
 <ol class="arabic simple">
 <li><p>将 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> 进行（正交）相似变换为上 Hessenberg 矩阵 <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> 。</p></li>
 <li><p>计算连续主子矩阵 <span class="math notranslate nohighlight">\(\mathbf{H}_i\)</span><a class="footnote-reference brackets" href="#leadprin" id="id13">9</a> 的特征多项式。</p></li>
@@ -338,7 +339,7 @@ p_{i-m-1}(\lambda)\]</div>
 <p>直接计算上式消耗 <span class="math notranslate nohighlight">\(O(n^3)\)</span> 的时间。若该上 Hessenberg 矩阵还是三对角矩阵<a class="footnote-reference brackets" href="#tri" id="id15">11</a> ，我们有更快的算法<a class="footnote-reference brackets" href="#ref1" id="id16">8</a> 。</p>
 <p class="rubric">脚注</p>
 <dl class="footnote brackets">
-<dt class="label" id="ref1"><span class="brackets">8</span><span class="fn-backref">(<a href="#id12">1</a>,<a href="#id16">2</a>)</span></dt>
+<dt class="label" id="ref1"><span class="brackets">8</span><span class="fn-backref">(<a href="#id11">1</a>,<a href="#id16">2</a>)</span></dt>
 <dd><p>Rizwana Rehman, Ilse C.F. Ipsen. <a class="reference external" href="https://ipsen.math.ncsu.edu/ps/charpoly3.pdf">La Budde’s Method for Computing Characteristic Polynomials</a>.</p>
 </dd>
 <dt class="label" id="leadprin"><span class="brackets"><a class="fn-backref" href="#id13">9</a></span></dt>
@@ -414,11 +415,53 @@ u_{n-1}\\u_{n}\\\vdots\\u_{n+d-2}
 \[\mathbf{M}^N\mathbf{v}_0=\sum_{i=0}^{d-1}g_i\mathbf{M}^i\mathbf{v}_0\iff \mathbf{v}_N=\sum_{i=0}^{d-1}g_i\mathbf{v}_i\]</div>
 <p>观察 <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span> 的第一行我们不难得出答案。这被称为 Fiduccia 算法。</p>
 <p>上述 <span class="math notranslate nohighlight">\(\Gamma(\lambda)=\det(\lambda \mathbf{I}_d-\mathbf{M})\)</span> 也就是其特征多项式。</p>
-<p>我们不难将矩阵的特征多项式与线性递推联系起来<a class="footnote-reference brackets" href="#mori" id="id20">14</a> 以及得到更快求矩阵幂次的算法，而求出矩阵的最小多项式我们可以采用随机化的 Berlekamp-Massey 算法。</p>
+<p>我们不难将矩阵的特征多项式与线性递推联系起来<a class="footnote-reference brackets" href="#mori" id="id20">14</a> 以及得到更快求矩阵幂次的算法<a class="footnote-reference brackets" href="#mike" id="id21">15</a> ，而求出矩阵的最小多项式我们可以采用随机化的 Berlekamp-Massey 算法。</p>
 <p class="rubric">脚注</p>
 <dl class="footnote brackets">
 <dt class="label" id="mori"><span class="brackets"><a class="fn-backref" href="#id20">14</a></span></dt>
 <dd><p>Alin Bostan, Ryuhei Mori. <a class="reference external" href="https://arxiv.org/abs/2008.08822">A Simple and Fast Algorithm for Computing the N-th Term of a Linearly Recurrent Sequence</a>.</p>
+</dd>
+<dt class="label" id="mike"><span class="brackets"><a class="fn-backref" href="#id21">15</a></span></dt>
+<dd><p>Mike Paterson. <a class="reference external" href="https://www.researchgate.net/publication/220617048_On_the_Number_of_Nonscalar_Multiplications_Necessary_to_Evaluate_Polynomials">On the Number of Nonscalar Multiplications Necessary to Evaluate Polynomials</a>.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="berkowitz">
+<h2>Berkowitz 方法<a class="footnote-reference brackets" href="#marsh" id="id22">16</a><a class="headerlink" href="#berkowitz" title="永久链接至标题">¶</a></h2>
+<p>这是一种没有除法的计算特征多项式的算法，但在这里不会被提及。</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 31%" />
+<col style="width: 16%" />
+<col style="width: 29%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>算法</p></td>
+<td><p>时间</p></td>
+<td><p>适用</p></td>
+<td><p>评论</p></td>
+</tr>
+<tr class="row-even"><td><p>Berkowitz</p></td>
+<td><p><span class="math notranslate nohighlight">\(O(n^4)\)</span></p></td>
+<td><p>交换环</p></td>
+<td><p>矩阵-向量乘法</p>
+<p>无除法</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Hessenberg</p></td>
+<td><p><span class="math notranslate nohighlight">\(O(n^3)\)</span></p></td>
+<td><p>域</p></td>
+<td><p>分解、递推</p>
+<p>一些除法</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">脚注</p>
+<dl class="footnote brackets">
+<dt class="label" id="marsh"><span class="brackets"><a class="fn-backref" href="#id22">16</a></span></dt>
+<dd><p>Marshall Law. <a class="reference external" href="http://summit.sfu.ca/system/files/iritems1/17301/etd10125_.pdf">Computing Characteristic Polynomials of Matrices of Structured Polynomials</a>.</p>
 </dd>
 </dl>
 </div>
@@ -440,7 +483,7 @@ u_{n-1}\\u_{n}\\\vdots\\u_{n+d-2}
     <p>
         &#169; 版权所有 2021, hly1204.
       <span class="lastupdated">
-        最后更新于 2021 年 06 月 07 日.
+        最后更新于 2021 年 06 月 08 日.
       </span>
 
     </p>
