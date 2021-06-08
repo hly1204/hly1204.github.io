@@ -77,7 +77,7 @@ Cayley-Hamilton 定理
    \implies
    -c_n\mathbf{A}^{-1}=\mathbf{A}^{n-1}+c_1\mathbf{A}^{n-2}+\cdots +c_{n-1}\mathbf{I}
 
-而矩阵的逆存在 iff 其行列式不为零，这里 :math:`c_n` 的绝对值恰为其行列式的值。
+而矩阵的逆元存在 iff 其行列式不为零，这里 :math:`(-1)^nc_n=\det(\mathbf{A})` 。
 
 LeVerrier 方法
 ----------------------
@@ -131,7 +131,7 @@ LeVerrier 方法
 
 .. [#sim] similarity transformation
 
-La Budde 方法
+La Budde 方法 [#ref1]_ 
 ----------------------
 上 Hessenberg 矩阵
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -159,7 +159,7 @@ La Budde 方法
 
 ---------------
 
-La Budde 方法 [#ref1]_ 可用来在 :math:`O(n^3)` 计算矩阵 :math:`\mathbf{A}` 的特征多项式，其分为两个步骤。
+La Budde 方法可用来在 :math:`O(n^3)` 计算矩阵 :math:`\mathbf{A}` 的特征多项式，其分为两个步骤。
 
 1. 将 :math:`\mathbf{A}` 进行（正交）相似变换为上 Hessenberg 矩阵 :math:`\mathbf{H}` 。
 2. 计算连续主子矩阵 :math:`\mathbf{H}_i` [#leadprin]_ 的特征多项式。
@@ -313,8 +313,29 @@ La Budde 方法 [#ref1]_ 可用来在 :math:`O(n^3)` 计算矩阵 :math:`\mathbf
 
 上述 :math:`\Gamma(\lambda)=\det(\lambda \mathbf{I}_d-\mathbf{M})` 也就是其特征多项式。
 
-我们不难将矩阵的特征多项式与线性递推联系起来 [#mori]_ 以及得到更快求矩阵幂次的算法，而求出矩阵的最小多项式我们可以采用随机化的 Berlekamp-Massey 算法。
+我们不难将矩阵的特征多项式与线性递推联系起来 [#mori]_ 以及得到更快求矩阵幂次的算法 [#mike]_ ，而求出矩阵的最小多项式我们可以采用随机化的 Berlekamp-Massey 算法。
 
 .. rubric:: 脚注
 
 .. [#mori] Alin Bostan, Ryuhei Mori. `A Simple and Fast Algorithm for Computing the N-th Term of a Linearly Recurrent Sequence <https://arxiv.org/abs/2008.08822>`_.
+.. [#mike] Mike Paterson. `On the Number of Nonscalar Multiplications Necessary to Evaluate Polynomials <https://www.researchgate.net/publication/220617048_On_the_Number_of_Nonscalar_Multiplications_Necessary_to_Evaluate_Polynomials>`_.
+
+Berkowitz 方法 [#marsh]_
+----------------------------------
+这是一种没有除法的计算特征多项式的算法，但在这里不会被提及。
+
++------------+----------------+--------+---------------+
+| 算法       | 时间           | 适用   | 评论          |
++------------+----------------+--------+---------------+
+| Berkowitz  | :math:`O(n^4)` | 交换环 | 矩阵-向量乘法 |
+|            |                |        |               |
+|            |                |        | 无除法        |
++------------+----------------+--------+---------------+
+| Hessenberg | :math:`O(n^3)` | 域     | 分解、递推    |
+|            |                |        |               |
+|            |                |        | 一些除法      |
++------------+----------------+--------+---------------+
+
+.. rubric:: 脚注
+
+.. [#marsh] Marshall Law. `Computing Characteristic Polynomials of Matrices of Structured Polynomials <http://summit.sfu.ca/system/files/iritems1/17301/etd10125_.pdf>`_.
