@@ -1,6 +1,5 @@
 :Date: 2021-4-10
 :Author: hly1204
-:Status: 待补充
 
 ===================
 快速 Fourier 变换
