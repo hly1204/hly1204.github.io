@@ -17,17 +17,17 @@
 .. math::
    p(\lambda)=
    \begin{vmatrix}
-   \lambda -a_{11}&a_{12}&a_{13}&\cdots & a_{1(n-1)}&a_{1n}
+   \lambda -a_{11}&-a_{12}&-a_{13}&\cdots & -a_{1(n-1)}&-a_{1n}
 
-   a_{21}&\lambda -a_{22}&a_{23}&\cdots & a_{2(n-1)}&a_{2n}
+   -a_{21}&\lambda -a_{22}&-a_{23}&\cdots & -a_{2(n-1)}&-a_{2n}
 
-   a_{31}&a_{32}&\lambda -a_{33}&\cdots & a_{3(n-1)}&a_{3n}
+   -a_{31}&-a_{32}&\lambda -a_{33}&\cdots & -a_{3(n-1)}&-a_{3n}
 
    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots
 
-   a_{(n-1)1}&a_{(n-1)2}&a_{(n-1)3}&\cdots & \lambda -a_{(n-1)(n-1)}&a_{(n-1)n}
+   -a_{(n-1)1}&-a_{(n-1)2}&-a_{(n-1)3}&\cdots & \lambda -a_{(n-1)(n-1)}&-a_{(n-1)n}
 
-   a_{n1}&a_{n2}&a_{n3}&\cdots & a_{n(n-1)}&\lambda -a_{nn}
+   -a_{n1}&-a_{n2}&-a_{n3}&\cdots & -a_{n(n-1)}&\lambda -a_{nn}
    \end{vmatrix}
 
 .. note::
@@ -245,7 +245,7 @@ La Budde 方法可用来在 :math:`O(n^3)` 计算矩阵 :math:`\mathbf{A}` 的�
 .. rubric:: 脚注
 
 .. [#ref2] G\. H\. Golub and C\. F\. Van Loan, Matrix Computations, The Johns Hopkins University Press, Baltimore, third ed., 1996.
-.. [#ref3] `Reduction of a General Matrix to Hessenberg Form <http://www.phys.uri.edu/nigh/NumRec/bookfpdf/f11-5.pdf>`_
+.. [#ref3] `Reduction of a General Matrix to Hessenberg Form <http://www.phys.uri.edu/nigh/NumRec/bookfpdf/f11-5.pdf>`_.
 
 常系数齐次线性递推
 -----------------------------
