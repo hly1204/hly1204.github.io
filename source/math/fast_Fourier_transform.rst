@@ -55,6 +55,26 @@ Split-radix FFT
 
 Classical radix-3 FFT
 ---------------------------
+我们考虑映射
+
+.. math::
+   R[x]/(x^{3m}-b^3)&\to R[x]/(x^m-b)
+
+   &\times R[x]/(x^m-\omega b)
+
+   &\times R[x]/(x^m-\omega^2b)
+
+这个式子看起来就希望令 :math:`\omega^3=1` 且 :math:`\omega \neq 1` ，根据欧拉公式我们有
+
+.. math::
+   \omega=
+   \exp(2\pi\mathrm{i}/3)=
+   \cos \frac{2\pi}{3}+\mathrm{i}\sin\frac{2\pi}{3}=
+   -\frac{1}{2}+\frac{\sqrt{3}}{2}\mathrm{i}
+   
+此时 :math:`1+\omega +\omega ^2=0` 。
+
+代入后发现 :math:`\prod_{0\leq i\leq 2}(x^m-\omega^ib)=(x^{3m}-b^3)` 。
 
 Twisted radix-3 FFT
 ---------------------------

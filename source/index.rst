@@ -20,10 +20,3 @@ hly1204 的主页
    :caption: 数学
 
    math/*
-
-.. toctree::
-   :maxdepth: 2
-   :caption: GitHub 项目
-
-   This repo on GitHub <https://github.com/hly1204/hly1204.github.io>
-   Library <https://hly1204.github.io/library/>

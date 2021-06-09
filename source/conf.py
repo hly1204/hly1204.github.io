@@ -73,3 +73,7 @@ html_sidebars = {
     '**': ['localtoc.html', 'searchbox.html']
 }
 html_last_updated_fmt = ''
+html_style = 'css/custom.css'
+html_show_sourcelink = False
+html_show_copyright = False
+html_copy_source = False
