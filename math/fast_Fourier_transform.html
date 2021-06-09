@@ -11,10 +11,10 @@
   
 
   
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
 
   
@@ -46,6 +46,7 @@
     
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Half-Euclid 算法" href="half_Euclid.html" />
     <link rel="prev" title="特征多项式" href="characteristic_polynomial.html" /> 
 </head>
 
@@ -110,11 +111,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#twisted-radix-4-fft">Twisted radix-4 FFT</a></li>
 </ul>
 </li>
-</ul>
-<p class="caption"><span class="caption-text">GitHub 项目</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/hly1204/hly1204.github.io">This repo on GitHub</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://hly1204.github.io/library/">Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="half_Euclid.html">Half-Euclid 算法</a></li>
 </ul>
 
             
@@ -169,8 +166,6 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/math/fast_Fourier_transform.rst.txt" rel="nofollow"> 查看页面源码</a>
-          
         
       </li>
     
@@ -216,6 +211,17 @@ f_A\\f_B
 </div>
 <div class="section" id="classical-radix-3-fft">
 <h2>Classical radix-3 FFT<a class="headerlink" href="#classical-radix-3-fft" title="永久链接至标题">¶</a></h2>
+<p>我们考虑映射</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}R[x]/(x^{3m}-b^3)&amp;\to R[x]/(x^m-b)\\&amp;\times R[x]/(x^m-\omega b)\\&amp;\times R[x]/(x^m-\omega^2b)\end{aligned}\end{align} \]</div>
+<p>这个式子看起来就希望令 <span class="math notranslate nohighlight">\(\omega^3=1\)</span> 且 <span class="math notranslate nohighlight">\(\omega \neq 1\)</span> ，根据欧拉公式我们有</p>
+<div class="math notranslate nohighlight">
+\[\omega=
+\exp(2\pi\mathrm{i}/3)=
+\cos \frac{2\pi}{3}+\mathrm{i}\sin\frac{2\pi}{3}=
+-\frac{1}{2}+\frac{\sqrt{3}}{2}\mathrm{i}\]</div>
+<p>此时 <span class="math notranslate nohighlight">\(1+\omega +\omega ^2=0\)</span> 。</p>
+<p>代入后发现 <span class="math notranslate nohighlight">\(\prod_{0\leq i\leq 2}(x^m-\omega^ib)=(x^{3m}-b^3)\)</span> 。</p>
 </div>
 <div class="section" id="twisted-radix-3-fft">
 <h2>Twisted radix-3 FFT<a class="headerlink" href="#twisted-radix-3-fft" title="永久链接至标题">¶</a></h2>
@@ -243,6 +249,7 @@ f_A\\f_B
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="half_Euclid.html" class="btn btn-neutral float-right" title="Half-Euclid 算法" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="characteristic_polynomial.html" class="btn btn-neutral float-left" title="特征多项式" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
     </div>
 
@@ -250,7 +257,6 @@ f_A\\f_B
 
   <div role="contentinfo">
     <p>
-        &#169; 版权所有 2021, hly1204.
       <span class="lastupdated">
         最后更新于 2021 年 06 月 09 日.
       </span>
