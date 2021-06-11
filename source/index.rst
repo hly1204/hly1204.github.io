@@ -9,6 +9,7 @@
    :maxdepth: 2
    :glob:
    :caption: 其他
+   :hidden:
 
    misc/*
 
@@ -16,5 +17,6 @@
    :maxdepth: 2
    :glob:
    :caption: 数学
+   :hidden:
 
    math/*
