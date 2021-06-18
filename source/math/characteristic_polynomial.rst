@@ -216,6 +216,9 @@ La Budde 方法可用来在 :math:`O(n^3)` 计算矩阵 :math:`\mathbf{A}` 的�
 
 直接计算上式消耗 :math:`O(n^3)` 的时间。若该上 Hessenberg 矩阵还是三对角矩阵 [#tri]_ ，我们有更快的算法 [#ref1]_ 。
 
+.. note::
+   :math:`0\times 0` 矩阵的行列式为 :math:`1` 是 well-defined 的，并不是特殊情况。谢谢 hos\-lyric 指出这点！
+
 .. rubric:: 脚注
 
 .. [#ref1] Rizwana Rehman, Ilse C.F. Ipsen. `La Budde's Method for Computing Characteristic Polynomials <https://ipsen.math.ncsu.edu/ps/charpoly3.pdf>`_.
