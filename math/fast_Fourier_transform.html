@@ -102,6 +102,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Lucas_theorem.html">Lucas 定理及其推广</a></li>
 <li class="toctree-l1"><a class="reference internal" href="characteristic_polynomial.html">特征多项式</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">快速 Fourier 变换</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#bit-reversal">bit reversal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#classical-radix-2-fft">Classical radix-2 FFT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#twisted-radix-2-fft">Twisted radix-2 FFT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#split-radix-fft">Split-radix FFT</a></li>
@@ -134,7 +135,7 @@
 
       <div class="wy-nav-content">
         
-        <div class="rst-content style-external-links">
+        <div class="rst-content">
         
           
 
@@ -180,6 +181,10 @@
   <div class="section" id="fourier">
 <h1>快速 Fourier 变换<a class="headerlink" href="#fourier" title="永久链接至标题">¶</a></h1>
 <p>让我们关注在环 <span class="math notranslate nohighlight">\(R\)</span> 上的运算。</p>
+<div class="section" id="bit-reversal">
+<h2>bit reversal<a class="headerlink" href="#bit-reversal" title="永久链接至标题">¶</a></h2>
+<p>TODO</p>
+</div>
 <div class="section" id="classical-radix-2-fft">
 <h2>Classical radix-2 FFT<a class="headerlink" href="#classical-radix-2-fft" title="永久链接至标题">¶</a></h2>
 <p>在 Bernstein 的论文中也称为 original radix-2 FFT ，这里使用标题的称呼。该算法最早由 Gauss 提出后由 Cooley 和 Tukey 重新发表。</p>
@@ -195,33 +200,34 @@ f_Y\\f_Z
 \end{bmatrix}
 =
 \begin{bmatrix}
-b&amp;1\\-b&amp;1
+1&amp;1\\-1&amp;1
 \end{bmatrix}
 \begin{bmatrix}
-f_A\\f_B
+b\cdot f_A\\f_B
 \end{bmatrix}\end{aligned}\end{align} \]</div>
 <p>一些工程师经常把这个变换画成一个图然后称为“蝶形操作”。而 classical radix-2 FFT 就是不停应用直到最后模一个线性的多项式，也就等价于求得点值。</p>
-<p>注意到只需要 <span class="math notranslate nohighlight">\(2b\)</span> 是可逆的那么上述算法就是可逆的，把上面的过程倒过来，也就是做一个求和和差分再乘以 <span class="math notranslate nohighlight">\((2b)^{-1}\)</span> 也可以得到答案（大多数时候我们会将这里每一步的 <span class="math notranslate nohighlight">\(2\)</span> 累积到最后处理）。</p>
+<p>注意到只需要 <span class="math notranslate nohighlight">\(2b\)</span> 是可逆的那么上述算法就是可逆的。</p>
 </div>
 <div class="section" id="twisted-radix-2-fft">
 <h2>Twisted radix-2 FFT<a class="headerlink" href="#twisted-radix-2-fft" title="永久链接至标题">¶</a></h2>
+<p>该算法由 Gentleman 和 Saude 发表，与前者不同的是，这降低了编写难度。</p>
 </div>
 <div class="section" id="split-radix-fft">
 <h2>Split-radix FFT<a class="headerlink" href="#split-radix-fft" title="永久链接至标题">¶</a></h2>
+<p>TODO</p>
 </div>
 <div class="section" id="classical-radix-3-fft">
 <h2>Classical radix-3 FFT<a class="headerlink" href="#classical-radix-3-fft" title="永久链接至标题">¶</a></h2>
 <p>我们考虑映射</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}R[x]/(x^{3m}-b^3)&amp;\to R[x]/(x^m-b)\\&amp;\times R[x]/(x^m-\omega b)\\&amp;\times R[x]/(x^m-\omega^2b)\end{aligned}\end{align} \]</div>
-<p>这个式子看起来就希望令 <span class="math notranslate nohighlight">\(\omega^3=1\)</span> 且 <span class="math notranslate nohighlight">\(\omega \neq 1\)</span> ，根据欧拉公式我们有</p>
+<p>这个式子看起来就希望令 <span class="math notranslate nohighlight">\(\omega^3=1\)</span> 且 <span class="math notranslate nohighlight">\(\omega \neq 1\)</span> ，显然 <span class="math notranslate nohighlight">\(\omega^3-1=(\omega-1)(\omega^2+\omega+1)\)</span> ，根据欧拉公式（或求根公式）我们有</p>
 <div class="math notranslate nohighlight">
 \[\omega=
 \exp(2\pi\mathrm{i}/3)=
 \cos \frac{2\pi}{3}+\mathrm{i}\sin\frac{2\pi}{3}=
 -\frac{1}{2}+\frac{\sqrt{3}}{2}\mathrm{i}\]</div>
-<p>此时 <span class="math notranslate nohighlight">\(1+\omega +\omega ^2=0\)</span> 。</p>
-<p>代入后发现 <span class="math notranslate nohighlight">\(\prod_{0\leq i\leq 2}(x^m-\omega^ib)=(x^{3m}-b^3)\)</span> 。</p>
+<p>此时 <span class="math notranslate nohighlight">\(\omega^2+\omega+1=0\)</span> 代入后发现 <span class="math notranslate nohighlight">\(\prod_{0\leq i\leq 2}(x^m-\omega^ib)=(x^{3m}-b^3)\)</span> 。</p>
 </div>
 <div class="section" id="twisted-radix-3-fft">
 <h2>Twisted radix-3 FFT<a class="headerlink" href="#twisted-radix-3-fft" title="永久链接至标题">¶</a></h2>
@@ -258,7 +264,7 @@ f_A\\f_B
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        最后更新于 2021 年 06 月 11 日.
+        最后更新于 2021 年 06 月 18 日.
       </span>
 
     </p>
