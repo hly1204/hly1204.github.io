@@ -232,8 +232,7 @@
 </div>
 <div class="section" id="id7">
 <h2>矩阵的逆元<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
-<p>对于上述定义中的矩阵，一般我们用 Gauss-Jordan 消元法对分块矩阵 <span class="math notranslate nohighlight">\(\begin{bmatrix}\mathbf{A}&amp;\mathbf{I}\end{bmatrix}\)</span> 进行初等变换，细节在后面的章节描述。</p>
-<p>最后得到 <span class="math notranslate nohighlight">\(\begin{bmatrix}\mathbf{I}&amp;\mathbf{A}^{-1}\end{bmatrix}\)</span> 则得到了一个解，但是注意若我们在中间过程中进行过交换行的操作，则最后得到的相当于 <span class="math notranslate nohighlight">\((\mathbf{PA})^{-1}\)</span> 其中 <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> 为一个排列矩阵，而排列矩阵的逆元是其自身，我们有 <span class="math notranslate nohighlight">\((\mathbf{PA})^{-1}(\mathbf{PA})=\mathbf{I}\)</span> 于是 <span class="math notranslate nohighlight">\((\mathbf{PA})^{-1}\mathbf{P}\)</span> 即为所求逆矩阵，也就是在消元过程中若交换两行，那么结果的矩阵需要交换对应两列。</p>
+<p>对于上述定义中的矩阵，一般我们用 Gauss-Jordan 消元法对分块矩阵 <span class="math notranslate nohighlight">\(\begin{bmatrix}\mathbf{A}&amp;\mathbf{I}\end{bmatrix}\)</span> 进行初等变换得到 <span class="math notranslate nohighlight">\(\begin{bmatrix}\mathbf{I}&amp;\mathbf{A}^{-1}\end{bmatrix}\)</span> 则得到了一个解。</p>
 <p>上述 Cayley-Hamilton 定理也提示我们一种额外的方法。对于上述矩阵 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> 有</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}\mathbf{A}^n+c_1\mathbf{A}^{n-1}+\cdots +c_{n-1}\mathbf{A}+c_n\mathbf{I}=0\\\implies
@@ -482,7 +481,7 @@ u_{n-1}\\u_{n}\\\vdots\\u_{n+d-2}
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        最后更新于 2021 年 06 月 18 日.
+        最后更新于 2021 年 06 月 20 日.
       </span>
 
     </p>
